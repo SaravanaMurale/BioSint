@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">BioSint</string>
 
+    <string name="forget_password">Forget Your Password? </string>
+    <string name="click_here">Click Here</string>
     <string name="login">Login</string>
+    <string name="login_account">Login Account</string>
     <string name="logout">LogOut</string>
+    <string name="dont_have">Dont have an account?</string>
 
 
 </resources>
