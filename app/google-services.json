@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "574438042310",
+    "firebase_url": "https://biosint-d3722.firebaseio.com",
+    "project_id": "biosint-d3722",
+    "storage_bucket": "biosint-d3722.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574438042310:android:6b73b29e8e812d18af45c7",
+        "android_client_info": {
+          "package_name": "com.nutro.biosint"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574438042310-q6kd43rbf2as6of8nsph49k7v01ll0j3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwP202Xl7sNJMLa4YvOgD8OpzVUpelkBk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574438042310-q6kd43rbf2as6of8nsph49k7v01ll0j3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
