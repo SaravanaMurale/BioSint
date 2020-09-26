@@ -1,15 +1,19 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/bg_start</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="colorAccent">@color/lightBlue</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="EditTextHintColor" parent="TextAppearance.AppCompat">
 
@@ -23,6 +27,31 @@
 -->
     </style>
 
+    <!--Calendar view-->
 
+
+    <style name="CalenderViewCustom" parent="Theme.AppCompat">
+
+        <item name="colorAccent">@android:color/secondary_text_dark</item>
+
+        <item name="colorPrimary">@android:color/darker_gray</item>
+
+        <item name="android:textColorPrimary">@color/darkgreen</item>
+
+    </style>
+
+
+    <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+
+        <item name="android:textColor">@color/cyan</item>
+
+    </style>
+
+
+    <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+
+        <item name="android:textColor">@color/darkgreen</item>
+
+    </style>
 
 </resources>

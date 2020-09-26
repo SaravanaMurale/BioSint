@@ -81,6 +81,7 @@
             android:drawableRight="@drawable/ic_right_arrow"
             android:gravity="left|center"
             android:padding="@dimen/twenty_dp"
+            android:layout_marginTop="@dimen/ten_dp"
             android:text="@string/login" />
 
         <TextView

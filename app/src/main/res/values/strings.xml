@@ -8,5 +8,16 @@
     <string name="logout">LogOut</string>
     <string name="dont_have">Dont have an account?</string>
 
+    <string name="sign_up_accout">Sign Up Account Details</string>
+
+    <string name="create_acc">Create Account</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+
+
 
 </resources>
