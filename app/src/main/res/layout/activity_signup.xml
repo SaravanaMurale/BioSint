@@ -13,6 +13,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
+
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -21,55 +25,6 @@
             android:text="@string/sign_up_accout"
             android:textColor="@color/black"
             android:textSize="@dimen/thirty_dp" />
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_company_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/loginAccount"
-            android:layout_marginLeft="@dimen/ten_dp"
-            android:layout_marginTop="@dimen/twenty_dp"
-            android:layout_marginRight="@dimen/ten_dp"
-            android:background="@drawable/background_rectangle_shape">
-
-            <EditText
-                android:id="@+id/login_company_name"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/fifty_dp"
-                android:background="@color/light_black"
-                android:fontFamily="sans-serif-condensed"
-                android:gravity="left|center_vertical"
-                android:hint="Company Name"
-                android:singleLine="true"
-                android:textColorHint="@color/white"
-                android:theme="@style/EditTextHintColor" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_contact_person"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/loginAccount"
-            android:layout_marginLeft="@dimen/ten_dp"
-            android:layout_marginTop="@dimen/twenty_dp"
-            android:layout_marginRight="@dimen/ten_dp">
-
-            <EditText
-                android:id="@+id/login_contact_person"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/fifty_dp"
-                android:background="@color/light_black"
-                android:fontFamily="sans-serif-condensed"
-                android:gravity="left|center_vertical"
-                android:hint="Contact Person"
-                android:singleLine="true"
-                android:textColorHint="@color/white"
-                android:theme="@style/EditTextHintColor" />
-
-        </com.google.android.material.textfield.TextInputLayout>
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -82,7 +37,7 @@
             android:layout_marginRight="@dimen/ten_dp">
 
             <EditText
-                android:id="@+id/login_designation"
+                android:id="@+id/login_email"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/fifty_dp"
                 android:background="@color/light_black"
@@ -113,7 +68,7 @@
                 android:background="@color/light_black"
                 android:fontFamily="sans-serif-condensed"
                 android:gravity="left|center_vertical"
-                android:hint="Company Name"
+                android:hint="Mobile Number"
                 android:inputType="phone"
                 android:maxLength="10"
                 android:singleLine="true"
@@ -122,11 +77,59 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_company_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/loginAccount"
+            android:layout_marginLeft="@dimen/ten_dp"
+            android:layout_marginTop="@dimen/twenty_dp"
+            android:layout_marginRight="@dimen/ten_dp">
+
+            <EditText
+                android:id="@+id/login_company_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty_dp"
+                android:background="@color/light_black"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="left|center_vertical"
+                android:hint="Company Name"
+                android:singleLine="true"
+                android:textColorHint="@color/white"
+                android:theme="@style/EditTextHintColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_contact_person"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/loginAccount"
+            android:layout_marginLeft="@dimen/ten_dp"
+            android:layout_marginTop="@dimen/twenty_dp"
+            android:layout_marginRight="@dimen/ten_dp">
+
+            <EditText
+                android:id="@+id/login_contact_person"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty_dp"
+                android:background="@color/light_black"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="left|center_vertical"
+                android:hint="Contact Person"
+                android:singleLine="true"
+                android:textColorHint="@color/white"
+                android:theme="@style/EditTextHintColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <Button
+            android:id="@+id/createAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/thirty_dp"
+            android:enabled="false"
             android:padding="@dimen/twenty_dp"
             android:text="@string/create_acc"
             android:textAllCaps="true" />
