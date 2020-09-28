@@ -8,17 +8,27 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.nutro.biosint.R;
+import com.nutro.biosint.modelrequest.UserDTO;
+import com.nutro.biosint.modelresponse.UserResponse;
+import com.nutro.biosint.utils.AppConstants;
+import com.nutro.biosint.utils.PreferenceUtil;
 
 import static com.nutro.biosint.utils.MathUtil.validateEmail;
 import static com.nutro.biosint.utils.MathUtil.validateMobile;
@@ -34,18 +44,27 @@ public class SignupActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth;
 
+    FirebaseFirestore db;
+    CollectionReference addUserCollection;
+    DocumentReference addUserDocument;
+
+    public interface UserDetailsFirestoreCallBack {
+        public void userDetailsCallBack(UserResponse userResponse);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        FirebaseApp.initializeApp(this);
-
-        mAuth = FirebaseAuth.getInstance();
+        initFireBase();
 
 
         initView();
+
+        addUserCollection = db.collection("User");
+
 
         contactPerson.addTextChangedListener(new MyTextWatcher(contactPerson));
         contactEmail.addTextChangedListener(new MyTextWatcher(contactEmail));
@@ -56,22 +75,42 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mAuth.createUserWithEmailAndPassword(contactEmail.getText().toString(), "").addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                checkUserInFireStore(new UserDetailsFirestoreCallBack() {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+                    public void userDetailsCallBack(UserResponse userResponse) {
 
-                        if (task.isSuccessful()) {
-                            String userId = mAuth.getCurrentUser().getUid();
-                            String email = mAuth.getCurrentUser().getPhoneNumber();
+                        if (userResponse == null) {
 
-                            System.out.println("EmailAndUserId " + userId + " " + email);
+                            mAuth.createUserWithEmailAndPassword(contactEmail.getText().toString(), "aaaaaa").addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
 
+                                    if (task.isSuccessful()) {
+                                        String userId = mAuth.getCurrentUser().getUid();
+                                        String email = mAuth.getCurrentUser().getEmail();
+
+                                        addUserDocument = addUserCollection.document(email);
+
+                                        UserDTO userDTO = new UserDTO(userId, contactMobileNum.getText().toString(), AppConstants.getDeviceID(SignupActivity.this), true, AppConstants.ADMIN_ROLE, contactEmail.getText().toString());
+
+                                        addUserDocument.set(userDTO);
+
+                                        System.out.println("EmailAndUserId " + userId + " " + email);
+
+                                    }
+
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+
+                                }
+                            });
+
+
+                        } else if (userResponse.getUserId() != null) {
+                            PreferenceUtil.setValueString(SignupActivity.this, PreferenceUtil.USERID, userResponse.getUserId());
                         }
-
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
 
                     }
                 });
@@ -80,6 +119,35 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void checkUserInFireStore(final UserDetailsFirestoreCallBack userDetailsFirestoreCallBack) {
+
+        addUserDocument = addUserCollection.document(contactEmail.getText().toString());
+
+        addUserDocument.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                //if (documentSnapshot.exists()) {
+
+                UserResponse userResponse = documentSnapshot.toObject(UserResponse.class);
+
+                userDetailsFirestoreCallBack.userDetailsCallBack(userResponse);
+
+                //}
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                System.out.println("Exception" + e.getMessage().toString());
+                Toast.makeText(SignupActivity.this, e.getMessage().toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+
 
     private class MyTextWatcher implements TextWatcher {
 
@@ -123,14 +191,18 @@ public class SignupActivity extends AppCompatActivity {
 
     private void initView() {
 
-
-
         contactEmail = (EditText) findViewById(R.id.login_email);
         contactMobileNum = (EditText) findViewById(R.id.login_mobile_number);
         contactCompanyName = (EditText) findViewById(R.id.login_company_name);
-        contactPerson=(EditText)findViewById(R.id.login_contact_person);
+        contactPerson = (EditText) findViewById(R.id.login_contact_person);
 
         createAccount = (Button) findViewById(R.id.createAccount);
 
+    }
+
+    private void initFireBase() {
+        FirebaseApp.initializeApp(this);
+        mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
     }
 }

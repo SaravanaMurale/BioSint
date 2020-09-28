@@ -12,6 +12,9 @@ public class AppConstants {
         return deviceID;
     }
 
+    public static final int ADMIN_ROLE=1;
+    public static final int EMP_ROLE=2;
+
     //Ctrl+Alt+O --> Remove unused imports
     public static final int GPS_PROVIDER_CODE = 55;
     public static final int LOCATION_PERMISSION_REQUEST_CODE = 1256;
