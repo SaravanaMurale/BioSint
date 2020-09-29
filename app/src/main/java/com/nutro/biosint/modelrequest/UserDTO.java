@@ -8,19 +8,24 @@ public class UserDTO {
     private boolean userActiveStatus;
     private int userRole;
     private String email;
+    private String password;
 
     public UserDTO() {
     }
 
-    public UserDTO(String userId, String mobileNumber, String deviceId, boolean userActiveStatus, int userRole, String email) {
+    public UserDTO(String userId, String mobileNumber, String deviceId, boolean userActiveStatus, int userRole, String email, String password) {
         this.userId = userId;
         this.mobileNumber = mobileNumber;
         this.deviceId = deviceId;
         this.userActiveStatus = userActiveStatus;
         this.userRole = userRole;
         this.email = email;
+        this.password = password;
     }
 
+    public UserDTO(String password) {
+        this.password = password;
+    }
 
     public String getUserId() {
         return userId;
@@ -68,5 +73,13 @@ public class UserDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

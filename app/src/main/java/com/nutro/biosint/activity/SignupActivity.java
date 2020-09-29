@@ -1,6 +1,7 @@
 package com.nutro.biosint.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -89,13 +90,17 @@ public class SignupActivity extends AppCompatActivity {
                                         String userId = mAuth.getCurrentUser().getUid();
                                         String email = mAuth.getCurrentUser().getEmail();
 
+                                        PreferenceUtil.setValueString(SignupActivity.this, PreferenceUtil.USERID, userId);
+
                                         addUserDocument = addUserCollection.document(email);
 
-                                        UserDTO userDTO = new UserDTO(userId, contactMobileNum.getText().toString(), AppConstants.getDeviceID(SignupActivity.this), true, AppConstants.ADMIN_ROLE, contactEmail.getText().toString());
+                                        UserDTO userDTO = new UserDTO(userId, contactMobileNum.getText().toString(), AppConstants.getDeviceID(SignupActivity.this), true, AppConstants.ADMIN_ROLE, contactEmail.getText().toString(), "aaaaaa");
 
                                         addUserDocument.set(userDTO);
 
                                         System.out.println("EmailAndUserId " + userId + " " + email);
+
+                                        launchPasswordActivity(email);
 
                                     }
 
@@ -110,6 +115,7 @@ public class SignupActivity extends AppCompatActivity {
 
                         } else if (userResponse.getUserId() != null) {
                             PreferenceUtil.setValueString(SignupActivity.this, PreferenceUtil.USERID, userResponse.getUserId());
+                            launchPasswordActivity(userResponse.getEmail());
                         }
 
                     }
@@ -118,6 +124,14 @@ public class SignupActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void launchPasswordActivity(String email) {
+
+        Intent intent = new Intent(SignupActivity.this, PasswordActivity.class);
+        intent.putExtra("EMAIL",email);
+        startActivity(intent);
+
     }
 
     private void checkUserInFireStore(final UserDetailsFirestoreCallBack userDetailsFirestoreCallBack) {
