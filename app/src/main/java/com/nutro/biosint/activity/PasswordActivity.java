@@ -1,5 +1,6 @@
 package com.nutro.biosint.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -12,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
@@ -67,8 +70,16 @@ public class PasswordActivity extends AppCompatActivity {
     private void setPassword() {
 
         //String pwd=newPassword.getText().toString();
-        UserDTO userDTO = new UserDTO(newPassword.getText().toString());
-        addUserDocument.update("password", newPassword.getText().toString());
+        //UserDTO userDTO = new UserDTO(newPassword.getText().toString());
+        addUserDocument.update("password", newPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Intent intent = new Intent(PasswordActivity.this, DrawerActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     private class MyTextWatcher implements TextWatcher {

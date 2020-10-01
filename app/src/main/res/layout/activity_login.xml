@@ -26,7 +26,7 @@
             />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_login_mobile"
+            android:id="@+id/input_login_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/loginAccount"
@@ -35,13 +35,13 @@
             android:layout_marginRight="@dimen/ten_dp">
 
             <EditText
-                android:id="@+id/login_mobile"
+                android:id="@+id/login_email"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/fifty_dp"
                 android:fontFamily="sans-serif-condensed"
                 android:gravity="left"
-                android:hint="Mobile Number"
-                android:inputType="phone"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
                 android:maxLength="10"
                 android:singleLine="true"
                 android:theme="@style/EditTextHintColor" />
@@ -52,7 +52,7 @@
             android:id="@+id/input_login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/input_login_mobile"
+            android:layout_below="@id/input_login_email"
             android:layout_marginLeft="@dimen/ten_dp"
             android:layout_marginTop="@dimen/five_dp"
             android:layout_marginRight="@dimen/ten_dp"
