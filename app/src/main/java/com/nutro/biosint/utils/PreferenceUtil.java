@@ -10,6 +10,7 @@ public class PreferenceUtil {
 
     public static final String USERID = "user_id";
     public static final String SHARED_PREF_NAME = "biosint";
+    public static final String USER_ROLE="user_role";
 
     public static void setValueString(Context context, String key, String value) {
 
