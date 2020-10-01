@@ -3,6 +3,7 @@ package com.nutro.biosint.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,7 +42,8 @@ public class DrawerActivity extends AppCompatActivity
         fragmentTransaction.replace(R.id.screenArea, quoteFragment);
         fragmentTransaction.commit();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.manager_view);
+
         navigationView.setNavigationItemSelectedListener(this);
     }
 

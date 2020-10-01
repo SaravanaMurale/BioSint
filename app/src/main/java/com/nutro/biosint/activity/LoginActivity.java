@@ -24,6 +24,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.nutro.biosint.R;
 import com.nutro.biosint.modelresponse.UserResponse;
 import com.nutro.biosint.utils.PreferenceUtil;
+import com.nutro.biosint.utils.ToastUtils;
 
 import static com.nutro.biosint.utils.MathUtil.validatePassword;
 
@@ -64,12 +65,17 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void getUserData(UserResponse userResponse) {
 
-                        System.out.println("USERID " + userResponse.getUserId());
-                        System.out.println("USERROLE " + userResponse.getUserRole());
+                        if(userResponse!=null) {
 
-                        PreferenceUtil.setValueSInt(LoginActivity.this, PreferenceUtil.USER_ROLE, userResponse.getUserRole());
+                            System.out.println("USERID " + userResponse.getUserId());
+                            System.out.println("USERROLE " + userResponse.getUserRole());
 
-                        launchHomeActivity();
+                            PreferenceUtil.setValueSInt(LoginActivity.this, PreferenceUtil.USER_ROLE, userResponse.getUserRole());
+
+                            launchHomeActivity();
+                        }else if(userResponse==null){
+                            ToastUtils.getInstance(LoginActivity.this).showLongToast(getString(R.string.wrong_username));
+                        }
 
                     }
                 });
