@@ -14,12 +14,12 @@ import com.nutro.biosint.modelrequest.EmployeeNameDTO;
 
 import java.util.List;
 
-public class ManagerCheckInViewAdapter extends RecyclerView.Adapter<ManagerCheckInViewAdapter.ManagerCheckInViewHolder> {
+public class ViewUserAdapter extends RecyclerView.Adapter<ViewUserAdapter.ManagerCheckInViewHolder> {
 
     private Context mCtx;
     private List<EmployeeNameDTO> employeeNameDTOList;
 
-    public ManagerCheckInViewAdapter(Context mCtx, List<EmployeeNameDTO> employeeNameDTOList) {
+    public ViewUserAdapter(Context mCtx, List<EmployeeNameDTO> employeeNameDTOList) {
         this.mCtx = mCtx;
         this.employeeNameDTOList = employeeNameDTOList;
     }
@@ -40,7 +40,7 @@ public class ManagerCheckInViewAdapter extends RecyclerView.Adapter<ManagerCheck
     @Override
     public void onBindViewHolder(@NonNull ManagerCheckInViewHolder holder, int position) {
 
-        holder.employeeName.setText(employeeNameDTOList.get(position).getEmployeeName());
+        //holder.assignWork.setText(employeeNameDTOList.get(position).getEmployeeName());
 
     }
 
@@ -51,12 +51,13 @@ public class ManagerCheckInViewAdapter extends RecyclerView.Adapter<ManagerCheck
 
     public class ManagerCheckInViewHolder extends RecyclerView.ViewHolder {
 
-        TextView employeeName;
+        TextView assignWork,viewCheckIns;
 
         public ManagerCheckInViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            employeeName = (TextView) itemView.findViewById(R.id.employeeName);
+            assignWork = (TextView) itemView.findViewById(R.id.assignWork);
+            viewCheckIns = (TextView) itemView.findViewById(R.id.viewCheckIns);
         }
     }
 

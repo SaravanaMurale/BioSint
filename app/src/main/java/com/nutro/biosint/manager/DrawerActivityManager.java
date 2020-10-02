@@ -17,6 +17,11 @@ import com.google.android.material.navigation.NavigationView;
 import com.nutro.biosint.R;
 import com.nutro.biosint.activity.LoginActivity;
 import com.nutro.biosint.fragmentmanager.HomeFragmentManager;
+import com.nutro.biosint.fragmentmanager.ManageCheckInsFragment;
+import com.nutro.biosint.fragmentmanager.ManageClientsFragment;
+import com.nutro.biosint.fragmentmanager.ManageLeadsFragment;
+import com.nutro.biosint.fragmentmanager.ManageUserFragment;
+import com.nutro.biosint.fragmentmanager.SettingsFragment;
 
 
 public class DrawerActivityManager extends AppCompatActivity
@@ -88,27 +93,38 @@ public class DrawerActivityManager extends AppCompatActivity
 
         int id = item.getItemId();
 
-        /*if (id == R.id.orderShipment) {
+        if (id == R.id.managerhome) {
 
-            fragment = new HomeFragment();
+            fragment = new HomeFragmentManager();
 
-            *//*Intent intent=new Intent(DrawerActivity.this,LoginActivity.class);
-            startActivity(intent);*//*
+        } else if (id == R.id.manageUsers) {
 
-        } else if (id == R.id.myProfile) {
+            fragment = new ManageUserFragment();
 
-            fragment = new MyProfileFragment();
+        } else if (id == R.id.manageClients) {
 
-        } else if (id == R.id.myOrders) {
+            fragment = new ManageClientsFragment();
 
-            fragment = new MyPastOrdersFragment();
+        } else if (id == R.id.manageCheckins) {
 
-        } else if (id == R.id.logOut) {
+            fragment = new ManageCheckInsFragment();
+
+        }
+        else if (id == R.id.manageLeads) {
+
+            fragment = new ManageLeadsFragment();
+
+        }
+        else if (id == R.id.settings) {
+
+            fragment = new SettingsFragment();
+
+        }
+        else if (id == R.id.logOut) {
 
             callLoginActivity();
 
         }
-*/
         if (fragment != null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
