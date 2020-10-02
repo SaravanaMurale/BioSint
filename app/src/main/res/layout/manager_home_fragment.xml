@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--Check-IN-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fifteen_dp"
+            app:cardCornerRadius="@dimen/ten_dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/ten_dp">
+
+
+                <TextView
+                    android:id="@+id/checkInText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Check-in" />
+
+                <ImageView
+                    android:id="@+id/emp1Icone"
+                    android:layout_width="@dimen/twenty_dp"
+                    android:layout_height="@dimen/twenty_dp"
+                    android:layout_below="@id/checkInText"
+                    android:layout_marginTop="@dimen/fifteen_dp"
+                    android:src="@drawable/online_icon" />
+
+
+                <TextView
+                    android:id="@+id/emp1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/checkInText"
+                    android:layout_marginLeft="@dimen/three_dp"
+                    android:layout_marginTop="@dimen/fifteen_dp"
+                    android:layout_toRightOf="@id/emp1Icone"
+                    android:text="Saravana Murali" />
+
+                <ImageView
+                    android:id="@+id/emp2Icone"
+                    android:layout_width="@dimen/twenty_dp"
+                    android:layout_height="@dimen/twenty_dp"
+                    android:layout_below="@id/emp1"
+                    android:layout_marginTop="@dimen/ten_dp"
+                    android:src="@drawable/online_icon" />
+
+
+                <TextView
+                    android:id="@+id/emp2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/emp1"
+                    android:layout_marginLeft="@dimen/three_dp"
+                    android:layout_marginTop="@dimen/ten_dp"
+                    android:layout_toRightOf="@id/emp2Icone"
+                    android:text="Saravana" />
+
+                <ImageView
+                    android:id="@+id/emp3Icone"
+                    android:layout_width="@dimen/twenty_dp"
+                    android:layout_height="@dimen/twenty_dp"
+                    android:layout_below="@id/emp2"
+                    android:layout_marginTop="@dimen/ten_dp"
+                    android:src="@drawable/online_icon" />
+
+
+                <TextView
+                    android:id="@+id/emp3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/emp2"
+                    android:layout_marginLeft="@dimen/three_dp"
+                    android:layout_marginTop="@dimen/ten_dp"
+                    android:layout_toRightOf="@id/emp3Icone"
+                    android:text="Murali" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/emp3Icone"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="@dimen/three_dp"
+                    android:layout_marginTop="@dimen/ten_dp"
+                    android:text="More..."
+                    android:textColor="@color/black" />
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+        <!--End of Check-IN-->
+
+        <!--Expense Report-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fifteen_dp"
+            app:cardCornerRadius="@dimen/ten_dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/ten_dp">
+
+
+                <TextView
+                    android:id="@+id/expenseReportText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Expense Reported" />
+
+                <ImageView
+                    android:id="@+id/report1Icon"
+                    android:layout_width="@dimen/twenty_dp"
+                    android:layout_height="@dimen/twenty_dp"
+                    android:layout_below="@id/expenseReportText"
+                    android:layout_marginTop="@dimen/fifteen_dp"
+                    android:src="@drawable/online_icon" />
+
+
+                <TextView
+                    android:id="@+id/report1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/expenseReportText"
+                    android:layout_marginLeft="@dimen/three_dp"
+                    android:layout_marginTop="@dimen/fifteen_dp"
+                    android:layout_toRightOf="@id/report1Icon"
+                    android:text="Saravana Murali" />
+
+                <ImageView
+                    android:id="@+id/report2Icon"
+                    android:layout_width="@dimen/twenty_dp"
+                    android:layout_height="@dimen/twenty_dp"
+                    android:layout_below="@id/report1"
+                    android:layout_marginTop="@dimen/ten_dp"
+                    android:src="@drawable/online_icon" />
+
+
+                <TextView
+                    android:id="@+id/report2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/report1"
+                    android:layout_marginLeft="@dimen/three_dp"
+                    android:layout_marginTop="@dimen/ten_dp"
+                    android:layout_toRightOf="@id/report2Icon"
+                    android:text="Saravana" />
+
+                <ImageView
+                    android:id="@+id/report3Icon"
+                    android:layout_width="@dimen/twenty_dp"
+                    android:layout_height="@dimen/twenty_dp"
+                    android:layout_below="@id/report2"
+                    android:layout_marginTop="@dimen/ten_dp"
+                    android:src="@drawable/online_icon" />
+
+
+                <TextView
+                    android:id="@+id/report3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/report2"
+                    android:layout_marginLeft="@dimen/three_dp"
+                    android:layout_marginTop="@dimen/ten_dp"
+                    android:layout_toRightOf="@id/report2Icon"
+                    android:text="Murali" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/report3Icon"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="@dimen/three_dp"
+                    android:layout_marginTop="@dimen/ten_dp"
+                    android:text="More..."
+                    android:textColor="@color/black" />
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+        <!--End of Expense Report-->
+
+    </LinearLayout>
+
+
+</ScrollView>

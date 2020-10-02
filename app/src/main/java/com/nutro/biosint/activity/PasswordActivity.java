@@ -16,12 +16,11 @@ import android.widget.EditText;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.nutro.biosint.R;
-import com.nutro.biosint.modelrequest.UserDTO;
+import com.nutro.biosint.manager.DrawerActivityManager;
 
 import static com.nutro.biosint.utils.MathUtil.validatePassword;
 
@@ -75,7 +74,7 @@ public class PasswordActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    Intent intent = new Intent(PasswordActivity.this, DrawerActivity.class);
+                    Intent intent = new Intent(PasswordActivity.this, DrawerActivityManager.class);
                     startActivity(intent);
                 }
             }

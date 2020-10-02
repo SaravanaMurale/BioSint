@@ -1,6 +1,5 @@
 package com.nutro.biosint.activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -13,15 +12,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.nutro.biosint.R;
+import com.nutro.biosint.manager.DrawerActivityManager;
 import com.nutro.biosint.modelresponse.UserResponse;
 import com.nutro.biosint.utils.PreferenceUtil;
 import com.nutro.biosint.utils.ToastUtils;
@@ -65,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void getUserData(UserResponse userResponse) {
 
-                        if(userResponse!=null) {
+                        if (userResponse != null) {
 
                             System.out.println("USERID " + userResponse.getUserId());
                             System.out.println("USERROLE " + userResponse.getUserRole());
@@ -73,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                             PreferenceUtil.setValueSInt(LoginActivity.this, PreferenceUtil.USER_ROLE, userResponse.getUserRole());
 
                             launchHomeActivity();
-                        }else if(userResponse==null){
+                        } else if (userResponse == null) {
                             ToastUtils.getInstance(LoginActivity.this).showLongToast(getString(R.string.wrong_username));
                         }
 
@@ -86,9 +84,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void launchHomeActivity() {
+        Intent intent = null    ;
+        if (PreferenceUtil.getValueInt(LoginActivity.this, PreferenceUtil.USER_ROLE) == 1) {
+            intent = new Intent(LoginActivity.this, DrawerActivityManager.class);
 
-        Intent intent = new Intent(LoginActivity.this, DrawerActivity.class);
+        } else if (PreferenceUtil.getValueInt(LoginActivity.this, PreferenceUtil.USER_ROLE) == 2) {
+            intent = new Intent(LoginActivity.this, DrawerActivityEmployee.class);
+        }
         startActivity(intent);
+
 
     }
 
