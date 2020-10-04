@@ -29,6 +29,20 @@
     <string name="manage_works">Manage Works</string>
     <string name="manage_leads">Manage Leads</string>
     <string name="settings">Settings</string>
+    
+    <!--Add Employee-->
+    <string name="employee_email">Employee Email Address(Username)*</string>
+    <string name="emp_password">Employee Password*</string>
+    <string name="emp_name">Employee Name*</string>
+    <string name="emp_actual_email">Employee Email*</string>
+    <string name="emp_mobile">Employee Mobile*</string>
+    <string name="emp_desi">Employee Designation*</string>
+    <string name="shift_start">Shift Start Time*</string>
+    <string name="shift_end">Shift End Time*</string>
+    <string name="upload_photo">Upload Employee Photo*</string>
+    <string name="emp_type">Employee Type</string>
+    <string name="send_login">Send login credential to mobile</string>
+    <string name="add_emp">Add Employee</string>
 
 
 

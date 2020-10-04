@@ -1,9 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/twenty_dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/employee_email"
+            android:textColor="@color/dark_gray" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_emp_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten_dp"
+            android:layout_marginRight="@dimen/ten_dp">
+
+            <EditText
+                android:id="@+id/login_emp_email"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty_dp"
+                android:background="@color/light_black"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="left|center_vertical"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:singleLine="true"
+                android:textColorHint="@color/white"
+                android:theme="@style/EditTextHintColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten_dp"
+            android:text="@string/emp_password" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_emp_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten_dp"
+            android:layout_marginRight="@dimen/ten_dp">
+
+            <EditText
+                android:id="@+id/login_emp_password"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty_dp"
+                android:background="@color/light_black"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="left|center_vertical"
+                android:hint="Password"
+                android:inputType="textVisiblePassword"
+                android:singleLine="true"
+                android:textColorHint="@color/white"
+                android:theme="@style/EditTextHintColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten_dp"
+            android:text="@string/emp_name"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_emp_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten_dp"
+            android:layout_marginRight="@dimen/ten_dp">
+
+            <EditText
+                android:id="@+id/login_emp_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty_dp"
+                android:background="@color/light_black"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="left|center_vertical"
+                android:hint="Employee Name"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textColorHint="@color/white"
+                android:theme="@style/EditTextHintColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten_dp"
+            android:text="@string/emp_mobile"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_emp_mobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten_dp"
+            android:layout_marginRight="@dimen/ten_dp">
+
+            <EditText
+                android:id="@+id/login_emp_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty_dp"
+                android:background="@color/light_black"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="left|center_vertical"
+                android:hint="Mobile Number"
+                android:inputType="phone"
+                android:singleLine="true"
+                android:textColorHint="@color/white"
+                android:theme="@style/EditTextHintColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten_dp"
+            android:text="@string/emp_desi"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_emp_design"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten_dp"
+            android:layout_marginRight="@dimen/ten_dp">
+
+            <EditText
+                android:id="@+id/login_emp_design"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty_dp"
+                android:background="@color/light_black"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="left|center_vertical"
+                android:hint="Designation"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textColorHint="@color/white"
+                android:theme="@style/EditTextHintColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten_dp"
+            android:text="@string/shift_start"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_emp_shift_start_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten_dp"
+            android:layout_marginRight="@dimen/ten_dp">
+
+            <EditText
+                android:id="@+id/login_emp_shift_start_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty_dp"
+                android:background="@color/light_black"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="left|center_vertical"
+                android:hint="9:00 AM"
+                android:inputType="time"
+                android:singleLine="true"
+                android:textColorHint="@color/white"
+                android:theme="@style/EditTextHintColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten_dp"
+            android:text="@string/shift_end"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_emp_shift_end_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten_dp"
+            android:layout_marginRight="@dimen/ten_dp">
+
+            <EditText
+                android:id="@+id/login_emp_shift_end_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty_dp"
+                android:background="@color/light_black"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="left|center_vertical"
+                android:hint="6:00 PM"
+                android:inputType="time"
+                android:singleLine="true"
+                android:textColorHint="@color/white"
+                android:theme="@style/EditTextHintColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/send_login"
+            android:layout_marginTop="@dimen/ten_dp"
+            />
+
+        <Button
+            android:id="@+id/btnAddEmp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_emp"
+            android:background="@drawable/background_rectangle_shape"
+            android:layout_marginTop="@dimen/ten_dp"
+            android:enabled="true"
+            android:textColor="@color/black"
+            />
 
 
-</RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</ScrollView>
