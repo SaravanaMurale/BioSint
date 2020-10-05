@@ -57,7 +57,7 @@ public class AddEmployeeFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
-        addEmployeeCollection = db.collection("Employee");
+        addEmployeeCollection = db.collection("User");
 
         btnAddEmp = (Button) view.findViewById(R.id.btnAddEmp);
 

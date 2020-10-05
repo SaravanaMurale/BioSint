@@ -51,6 +51,8 @@ public class SplashScreen extends AppCompatActivity {
             } else if (user_id != null && AppConstants.EMP_ROLE == role) {
                 intent = new Intent(SplashScreen.this, DrawerActivityEmployee.class);
 
+            } else if (user_id == null) {
+                intent = new Intent(SplashScreen.this, LoginActivity.class);
             }
 
             startActivity(intent);

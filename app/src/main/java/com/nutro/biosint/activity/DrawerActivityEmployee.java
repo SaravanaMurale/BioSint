@@ -24,6 +24,7 @@ import com.nutro.biosint.fragmentemployee.EmployeeProfileFragment;
 import com.nutro.biosint.fragmentemployee.MyCheckInFragment;
 import com.nutro.biosint.fragmentemployee.ViewExpenseFragment;
 import com.nutro.biosint.fragmentmanager.HomeFragmentManager;
+import com.nutro.biosint.utils.PreferenceUtil;
 
 
 public class DrawerActivityEmployee extends AppCompatActivity
@@ -110,27 +111,27 @@ public class DrawerActivityEmployee extends AppCompatActivity
 
             fragment = new MyCheckInFragment();
 
-        }else if (id == R.id.empAddExpense) {
+        } else if (id == R.id.empAddExpense) {
 
             fragment = new AddExpenseFragment();
 
-        }else if (id == R.id.empViewExpense) {
+        } else if (id == R.id.empViewExpense) {
 
             fragment = new ViewExpenseFragment();
 
-        }else if (id == R.id.empAttendance) {
+        } else if (id == R.id.empAttendance) {
 
             fragment = new EmpAttendanceFragment();
 
-        }else if (id == R.id.empLocation) {
+        } else if (id == R.id.empLocation) {
 
             fragment = new EmployeeLocationFragment();
 
-        }else if (id == R.id.empProfile) {
+        } else if (id == R.id.empProfile) {
 
             fragment = new EmployeeProfileFragment();
 
-        }else if (id == R.id.empShare) {
+        } else if (id == R.id.empShare) {
 
             fragment = new MyCheckInFragment();
 
@@ -154,7 +155,7 @@ public class DrawerActivityEmployee extends AppCompatActivity
 
     private void callLoginActivity() {
 
-        //PreferenceUtil.clear(DrawerActivity.this);
+        PreferenceUtil.clear(DrawerActivityEmployee.this);
 
         Intent intent = new Intent(DrawerActivityEmployee.this, LoginActivity.class);
         startActivity(intent);

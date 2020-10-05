@@ -22,6 +22,7 @@ import com.nutro.biosint.fragmentmanager.ManageClientsFragment;
 import com.nutro.biosint.fragmentmanager.ManageLeadsFragment;
 import com.nutro.biosint.fragmentmanager.ManageUserFragment;
 import com.nutro.biosint.fragmentmanager.SettingsFragment;
+import com.nutro.biosint.utils.PreferenceUtil;
 
 
 public class DrawerActivityManager extends AppCompatActivity
@@ -109,18 +110,15 @@ public class DrawerActivityManager extends AppCompatActivity
 
             fragment = new ManageCheckInsFragment();
 
-        }
-        else if (id == R.id.manageLeads) {
+        } else if (id == R.id.manageLeads) {
 
             fragment = new ManageLeadsFragment();
 
-        }
-        else if (id == R.id.settings) {
+        } else if (id == R.id.settings) {
 
             fragment = new SettingsFragment();
 
-        }
-        else if (id == R.id.logOut) {
+        } else if (id == R.id.logOut) {
 
             callLoginActivity();
 
@@ -140,7 +138,7 @@ public class DrawerActivityManager extends AppCompatActivity
 
     private void callLoginActivity() {
 
-        //PreferenceUtil.clear(DrawerActivity.this);
+        PreferenceUtil.clear(DrawerActivityManager.this);
 
         Intent intent = new Intent(DrawerActivityManager.this, LoginActivity.class);
         startActivity(intent);
