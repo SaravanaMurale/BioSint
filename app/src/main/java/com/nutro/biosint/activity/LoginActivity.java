@@ -68,6 +68,8 @@ public class LoginActivity extends AppCompatActivity {
                             System.out.println("USERID " + userResponse.getUserId());
                             System.out.println("USERROLE " + userResponse.getUserRole());
 
+                            PreferenceUtil.setValueString(LoginActivity.this, PreferenceUtil.USERID, userResponse.getUserId());
+
                             PreferenceUtil.setValueSInt(LoginActivity.this, PreferenceUtil.USER_ROLE, userResponse.getUserRole());
 
                             launchHomeActivity();
@@ -84,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void launchHomeActivity() {
-        Intent intent = null    ;
+        Intent intent = null;
         if (PreferenceUtil.getValueInt(LoginActivity.this, PreferenceUtil.USER_ROLE) == 1) {
             intent = new Intent(LoginActivity.this, DrawerActivityManager.class);
 

@@ -5,24 +5,33 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/home"
+            android:id="@+id/emp_home"
             android:title="@string/home" />
         <item
-            android:id="@+id/manageUsers"
-            android:title="@string/manage_users" />
+            android:id="@+id/empCheckIn"
+            android:title="@string/emp_add_checkin" />
 
         <item
-            android:id="@+id/manageClients"
-            android:title="@string/manage_clients" />
+            android:id="@+id/empMyCheckIn"
+            android:title="@string/emp_my_checkin" />
         <item
-            android:id="@+id/manageCheckins"
-            android:title="@string/manage_checkins" />
+            android:id="@+id/empAddExpense"
+            android:title="@string/emp_add_expense" />
         <item
-            android:id="@+id/manageLeads"
-            android:title="@string/manage_leads" />
+            android:id="@+id/empViewExpense"
+            android:title="@string/emp_view_expense" />
         <item
-            android:id="@+id/settings"
-            android:title="@string/settings" />
+            android:id="@+id/empAttendance"
+            android:title="@string/emp_attendance" />
+        <item
+            android:id="@+id/empLocation"
+            android:title="@string/emp_location" />
+        <item
+            android:id="@+id/empProfile"
+            android:title="@string/emp_profile" />
+        <item
+            android:id="@+id/empShare"
+            android:title="@string/share" />
         <item
             android:id="@+id/logOut"
             android:title="@string/logout" />

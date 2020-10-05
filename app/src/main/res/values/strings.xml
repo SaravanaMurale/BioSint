@@ -21,7 +21,7 @@
 
     <string name="wrong_username">You have entered wrong username or password</string>
 
-    <!--Menu-->
+    <!--Manager Menu-->
     <string name="home">Home</string>
     <string name="manage_users">Manage Users</string>
     <string name="manage_clients">Manage Clients</string>
@@ -29,6 +29,17 @@
     <string name="manage_works">Manage Works</string>
     <string name="manage_leads">Manage Leads</string>
     <string name="settings">Settings</string>
+
+    <!--Employee Menu-->
+    <string name="emp_add_checkin">Add Check-in</string>
+    <string name="emp_my_checkin">My Check-ins</string>
+    <string name="emp_add_expense">Add Expense</string>
+    <string name="emp_view_expense">View Expense</string>
+    <string name="emp_attendance">Attendance</string>
+    <string name="emp_location">Location</string>
+    <string name="emp_profile">Profile</string>
+    <string name="share">Share</string>
+
     
     <!--Add Employee-->
     <string name="employee_email">Employee Email Address(Username)*</string>
