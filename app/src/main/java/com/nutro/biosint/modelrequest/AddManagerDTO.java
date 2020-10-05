@@ -1,6 +1,6 @@
 package com.nutro.biosint.modelrequest;
 
-public class UserDTO {
+public class AddManagerDTO {
 
     private String userId;
     private String mobileNumber;
@@ -10,20 +10,16 @@ public class UserDTO {
     private String email;
     private String password;
 
-    public UserDTO() {
+    public AddManagerDTO() {
     }
 
-    public UserDTO(String userId, String mobileNumber, String deviceId, boolean userActiveStatus, int userRole, String email, String password) {
+    public AddManagerDTO(String userId, String mobileNumber, String deviceId, boolean userActiveStatus, int userRole, String email, String password) {
         this.userId = userId;
         this.mobileNumber = mobileNumber;
         this.deviceId = deviceId;
         this.userActiveStatus = userActiveStatus;
         this.userRole = userRole;
         this.email = email;
-        this.password = password;
-    }
-
-    public UserDTO(String password) {
         this.password = password;
     }
 

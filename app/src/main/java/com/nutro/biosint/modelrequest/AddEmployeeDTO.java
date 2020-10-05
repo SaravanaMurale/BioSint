@@ -2,31 +2,43 @@ package com.nutro.biosint.modelrequest;
 
 public class AddEmployeeDTO {
 
+    String userId;
     String managerUserId;
-    String employeeUserId;
-    String empName;
-    String empEmailId;
-    String empPassword;
-    String empMobileNum;
+    String name;
+    String email;
+    String password;
+    String mobileNumber;
+    String deviceId;
     String empDesi;
     String empStartWorkTime;
     String empEndWorkTime;
-    int role;
+    int userRole;
+    private boolean userActiveStatus;
 
-    public AddEmployeeDTO() {
-    }
+    /*public AddEmployeeDTO() {
+    }*/
 
-    public AddEmployeeDTO(String managerUserId, String employeeUserId, String empName, String empEmailId, String empPassword, String empMobileNum, String empDesi, String empStartWorkTime, String empEndWorkTime,int role) {
+    public AddEmployeeDTO(String userId, String managerUserId, String name, String email, String password, String mobileNumber, String deviceId, String empDesi, String empStartWorkTime, String empEndWorkTime, int userRole, boolean userActiveStatus) {
+        this.userId = userId;
         this.managerUserId = managerUserId;
-        this.employeeUserId = employeeUserId;
-        this.empName = empName;
-        this.empEmailId = empEmailId;
-        this.empPassword = empPassword;
-        this.empMobileNum = empMobileNum;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.mobileNumber = mobileNumber;
+        this.deviceId = deviceId;
         this.empDesi = empDesi;
         this.empStartWorkTime = empStartWorkTime;
         this.empEndWorkTime = empEndWorkTime;
-        this.role=role;
+        this.userRole = userRole;
+        this.userActiveStatus = userActiveStatus;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getManagerUserId() {
@@ -37,44 +49,44 @@ public class AddEmployeeDTO {
         this.managerUserId = managerUserId;
     }
 
-    public String getEmployeeUserId() {
-        return employeeUserId;
+    public String getName() {
+        return name;
     }
 
-    public void setEmployeeUserId(String employeeUserId) {
-        this.employeeUserId = employeeUserId;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getEmpName() {
-        return empName;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmpName(String empName) {
-        this.empName = empName;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getEmpEmailId() {
-        return empEmailId;
+    public String getPassword() {
+        return password;
     }
 
-    public void setEmpEmailId(String empEmailId) {
-        this.empEmailId = empEmailId;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getEmpPassword() {
-        return empPassword;
+    public String getMobileNumber() {
+        return mobileNumber;
     }
 
-    public void setEmpPassword(String empPassword) {
-        this.empPassword = empPassword;
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
     }
 
-    public String getEmpMobileNum() {
-        return empMobileNum;
+    public String getDeviceId() {
+        return deviceId;
     }
 
-    public void setEmpMobileNum(String empMobileNum) {
-        this.empMobileNum = empMobileNum;
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
     }
 
     public String getEmpDesi() {
@@ -101,11 +113,19 @@ public class AddEmployeeDTO {
         this.empEndWorkTime = empEndWorkTime;
     }
 
-    public int getRole() {
-        return role;
+    public int getUserRole() {
+        return userRole;
     }
 
-    public void setRole(int role) {
-        this.role = role;
+    public void setUserRole(int userRole) {
+        this.userRole = userRole;
+    }
+
+    public boolean isUserActiveStatus() {
+        return userActiveStatus;
+    }
+
+    public void setUserActiveStatus(boolean userActiveStatus) {
+        this.userActiveStatus = userActiveStatus;
     }
 }

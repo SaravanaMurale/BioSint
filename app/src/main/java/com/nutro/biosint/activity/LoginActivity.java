@@ -11,6 +11,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
@@ -31,6 +32,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText loginEmail, loginPassword;
     private Button loginBtn;
 
+    TextView callSignUpActivity;
+
     private FirebaseFirestore firebaseFirestore;
     private CollectionReference userCollectionRef;
     private DocumentReference userDocumentRef;
@@ -50,10 +53,19 @@ public class LoginActivity extends AppCompatActivity {
 
         loginBtn = (Button) findViewById(R.id.loginBtn);
 
+        callSignUpActivity=(TextView)findViewById(R.id.callSignUpActivity);
+
         initFireStore();
 
         loginEmail.addTextChangedListener(new MyTextWatcher(loginEmail));
         loginPassword.addTextChangedListener(new MyTextWatcher(loginPassword));
+
+        callSignUpActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override

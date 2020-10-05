@@ -26,7 +26,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.nutro.biosint.R;
-import com.nutro.biosint.modelrequest.UserDTO;
+import com.nutro.biosint.modelrequest.AddManagerDTO;
 import com.nutro.biosint.modelresponse.UserResponse;
 import com.nutro.biosint.utils.AppConstants;
 import com.nutro.biosint.utils.PreferenceUtil;
@@ -94,7 +94,7 @@ public class SignupActivity extends AppCompatActivity {
 
                                         addUserDocument = addUserCollection.document(email);
 
-                                        UserDTO userDTO = new UserDTO(userId, contactMobileNum.getText().toString(), AppConstants.getDeviceID(SignupActivity.this), true, AppConstants.ADMIN_ROLE, contactEmail.getText().toString(), "aaaaaa");
+                                        AddManagerDTO userDTO = new AddManagerDTO(userId, contactMobileNum.getText().toString(), AppConstants.getDeviceID(SignupActivity.this), true, AppConstants.ADMIN_ROLE, contactEmail.getText().toString(), "aaaaaa");
 
                                         addUserDocument.set(userDTO);
 

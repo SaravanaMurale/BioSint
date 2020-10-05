@@ -125,7 +125,8 @@ public class AddEmployeeFragment extends Fragment {
 
                                     addEmployeeDocument = addEmployeeCollection.document(empEmail);
                                     String managerUserId = PreferenceUtil.getValueString(getContext(), PreferenceUtil.USERID);
-                                    AddEmployeeDTO addEmployeeDTO = new AddEmployeeDTO(managerUserId, empUserId, name, empEmail, password, mobileNum, empDesignation, shiftStartTime, shiftEndTime, AppConstants.EMP_ROLE);
+
+                                    AddEmployeeDTO addEmployeeDTO=new AddEmployeeDTO(empUserId,managerUserId,name,email,password,mobileNum,AppConstants.getDeviceID(getActivity()),empDesignation,shiftStartTime,shiftEndTime,AppConstants.EMP_ROLE,true);
 
                                     addEmployeeDocument.set(addEmployeeDTO);
 
