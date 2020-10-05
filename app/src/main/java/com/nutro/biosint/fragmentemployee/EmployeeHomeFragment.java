@@ -1,4 +1,4 @@
-package com.nutro.biosint.fragment;
+package com.nutro.biosint.fragmentemployee;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class ManagerHomeFragment extends Fragment {
+public class EmployeeHomeFragment extends Fragment {
 
     @Nullable
     @Override

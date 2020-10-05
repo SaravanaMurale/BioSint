@@ -15,6 +15,14 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 import com.nutro.biosint.R;
+import com.nutro.biosint.fragmentemployee.AddCheckInFragment;
+import com.nutro.biosint.fragmentemployee.AddExpenseFragment;
+import com.nutro.biosint.fragmentemployee.EmpAttendanceFragment;
+import com.nutro.biosint.fragmentemployee.EmployeeHomeFragment;
+import com.nutro.biosint.fragmentemployee.EmployeeLocationFragment;
+import com.nutro.biosint.fragmentemployee.EmployeeProfileFragment;
+import com.nutro.biosint.fragmentemployee.MyCheckInFragment;
+import com.nutro.biosint.fragmentemployee.ViewExpenseFragment;
 import com.nutro.biosint.fragmentmanager.HomeFragmentManager;
 
 
@@ -87,27 +95,50 @@ public class DrawerActivityEmployee extends AppCompatActivity
 
         int id = item.getItemId();
 
-        /*if (id == R.id.orderShipment) {
+        if (id == R.id.emp_home) {
 
-            fragment = new HomeFragment();
+            fragment = new EmployeeHomeFragment();
 
-            *//*Intent intent=new Intent(DrawerActivity.this,LoginActivity.class);
-            startActivity(intent);*//*
+            /*Intent intent=new Intent(DrawerActivity.this,LoginActivity.class);
+            startActivity(intent);*/
 
-        } else if (id == R.id.myProfile) {
+        } else if (id == R.id.empCheckIn) {
 
-            fragment = new MyProfileFragment();
+            fragment = new AddCheckInFragment();
 
-        } else if (id == R.id.myOrders) {
+        } else if (id == R.id.empMyCheckIn) {
 
-            fragment = new MyPastOrdersFragment();
+            fragment = new MyCheckInFragment();
+
+        }else if (id == R.id.empAddExpense) {
+
+            fragment = new AddExpenseFragment();
+
+        }else if (id == R.id.empViewExpense) {
+
+            fragment = new ViewExpenseFragment();
+
+        }else if (id == R.id.empAttendance) {
+
+            fragment = new EmpAttendanceFragment();
+
+        }else if (id == R.id.empLocation) {
+
+            fragment = new EmployeeLocationFragment();
+
+        }else if (id == R.id.empProfile) {
+
+            fragment = new EmployeeProfileFragment();
+
+        }else if (id == R.id.empShare) {
+
+            fragment = new MyCheckInFragment();
 
         } else if (id == R.id.logOut) {
 
             callLoginActivity();
 
         }
-*/
         if (fragment != null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

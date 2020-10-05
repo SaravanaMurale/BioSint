@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 
 import com.nutro.biosint.R;
+import com.nutro.biosint.manager.DrawerActivityManager;
+import com.nutro.biosint.utils.AppConstants;
 import com.nutro.biosint.utils.PreferenceUtil;
 
 public class SplashScreen extends AppCompatActivity {
 
-    String user_id;
-    int role;
+    private String user_id;
+    private int role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,19 +40,20 @@ public class SplashScreen extends AppCompatActivity {
         @Override
         public void onFinish() {
 
-            Intent intent;
+            Intent intent = null;
 
-            user_id=PreferenceUtil.getValueString(SplashScreen.this, PreferenceUtil.USERID);
+            user_id = PreferenceUtil.getValueString(SplashScreen.this, PreferenceUtil.USERID);
+            role = PreferenceUtil.getValueInt(SplashScreen.this, PreferenceUtil.USER_ROLE);
 
-            if (user_id==null) {
-                //intent = new Intent(SplashScreen.this, Log.class);
+            if (user_id != null && AppConstants.ADMIN_ROLE == role) {
+                intent = new Intent(SplashScreen.this, DrawerActivityManager.class);
 
-            } else {
-                //intent = new Intent(SplashScreen.this, BottomTabbedActivity.class);
+            } else if (user_id != null && AppConstants.EMP_ROLE == role) {
+                intent = new Intent(SplashScreen.this, DrawerActivityEmployee.class);
 
             }
 
-            //startActivity(intent);
+            startActivity(intent);
             finish();
 
         }
