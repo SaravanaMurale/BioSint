@@ -11,20 +11,27 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.nutro.biosint.R;
 import com.nutro.biosint.modelrequest.EmployeeNameDTO;
+import com.nutro.biosint.modelresponse.ManageEmployeeResponse;
 
 import java.util.List;
 
 public class ViewUserAdapter extends RecyclerView.Adapter<ViewUserAdapter.ManagerCheckInViewHolder> {
 
     private Context mCtx;
-    private List<EmployeeNameDTO> employeeNameDTOList;
+    private List<ManageEmployeeResponse> employeeNameDTOList;
+    public EmployeeClickListener employeeClickListener;
 
-    public ViewUserAdapter(Context mCtx, List<EmployeeNameDTO> employeeNameDTOList) {
-        this.mCtx = mCtx;
-        this.employeeNameDTOList = employeeNameDTOList;
+    public interface EmployeeClickListener {
+        public void onEmployeeClick(ManageEmployeeResponse manageEmployeeResponse);
     }
 
-    public void setData(List<EmployeeNameDTO> employeeNameDTOList) {
+    public ViewUserAdapter(Context mCtx, List<ManageEmployeeResponse> employeeNameDTOList, EmployeeClickListener employeeClickListener) {
+        this.mCtx = mCtx;
+        this.employeeNameDTOList = employeeNameDTOList;
+        this.employeeClickListener = employeeClickListener;
+    }
+
+    public void setData(List<ManageEmployeeResponse> employeeNameDTOList) {
         this.employeeNameDTOList = employeeNameDTOList;
         notifyDataSetChanged();
     }
@@ -42,6 +49,9 @@ public class ViewUserAdapter extends RecyclerView.Adapter<ViewUserAdapter.Manage
 
         //holder.assignWork.setText(employeeNameDTOList.get(position).getEmployeeName());
 
+        holder.empName.setText(employeeNameDTOList.get(position).getEmpName());
+        holder.empDesignation.setText(employeeNameDTOList.get(position).getEmpDesignation());
+
     }
 
     @Override
@@ -51,13 +61,40 @@ public class ViewUserAdapter extends RecyclerView.Adapter<ViewUserAdapter.Manage
 
     public class ManagerCheckInViewHolder extends RecyclerView.ViewHolder {
 
-        TextView assignWork,viewCheckIns;
+        TextView empName, empDesignation, assignWork, viewCheckIn;
 
         public ManagerCheckInViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            empName = (TextView) itemView.findViewById(R.id.employeeName);
+            empDesignation = (TextView) itemView.findViewById(R.id.employeeDesignation);
             assignWork = (TextView) itemView.findViewById(R.id.assignWork);
-            viewCheckIns = (TextView) itemView.findViewById(R.id.viewCheckIns);
+            viewCheckIn = (TextView) itemView.findViewById(R.id.viewCheckIns);
+
+            //ManageEmployeeResponse manageEmployeeResponse=employeeNameDTOList.get(getAdapterPosition());
+
+            assignWork.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    ManageEmployeeResponse manageEmployeeResponse=employeeNameDTOList.get(getAdapterPosition());
+
+                    employeeClickListener.onEmployeeClick(manageEmployeeResponse);
+
+                    //call assign job fragment
+                }
+            });
+
+            viewCheckIn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    ManageEmployeeResponse manageEmployeeResponse=employeeNameDTOList.get(getAdapterPosition());
+
+                    employeeClickListener.onEmployeeClick(manageEmployeeResponse);
+
+                }
+            });
         }
     }
 
