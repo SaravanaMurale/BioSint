@@ -30,7 +30,7 @@ public class ViewEmployeeCheckInReportFragment extends Fragment implements GetMy
 
        // GetMyEmpDetails.getMyEmpDetails();
 
-        getMyEmpDetails=new GetMyEmpDetails(getActivity());
+        getMyEmpDetails=new GetMyEmpDetails(getActivity(),this);
 
         getMyEmpDetails.getEmployeeDetails();
 
@@ -40,6 +40,12 @@ public class ViewEmployeeCheckInReportFragment extends Fragment implements GetMy
     @Override
     public void getMyEmployeeDetails(List<ManageEmployeeResponse> manageEmployeeResponse) {
 
+        System.out.println("IamInterfaceCalled");
+        System.out.println("EMMMPPPs " + manageEmployeeResponse.get(0).getName());
+        System.out.println("EMMMPPPs " + manageEmployeeResponse.get(0).getEmpDesi());
+
+        System.out.println("EMMMPPPs " + manageEmployeeResponse.get(1).getName());
+        System.out.println("EMMMPPPs " + manageEmployeeResponse.get(1).getEmpDesi());
 
 
     }

@@ -18,21 +18,18 @@ import java.util.List;
 
 public class GetMyEmpDetails {
 
-    Context context;
+    private Context context;
+    private FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+    private CollectionReference employeeCollectionRef = firebaseFirestore.collection("User");
+    GetMyAllEmployeeDetailsListener getMyAllEmployeeDetailsListener;
 
-    public GetMyEmpDetails(Context context) {
-
-        this.context=context;
+    public GetMyEmpDetails(Context context, GetMyAllEmployeeDetailsListener getMyAllEmployeeDetailsListener) {
+        this.context = context;
+        this.getMyAllEmployeeDetailsListener = getMyAllEmployeeDetailsListener;
     }
 
 
-
-    private FirebaseFirestore firebaseFirestore;
-    private CollectionReference employeeCollectionRef;
-
-    GetMyAllEmployeeDetailsListener getMyAllEmployeeDetailsListener;
-
-    List<ManageEmployeeResponse> manageEmployeeResponseList=new ArrayList<>();
+    List<ManageEmployeeResponse> manageEmployeeResponseList = new ArrayList<>();
 
     public interface GetMyAllEmployeeDetailsListener {
         void getMyEmployeeDetails(List<ManageEmployeeResponse> manageEmployeeResponse);

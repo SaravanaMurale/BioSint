@@ -2,30 +2,30 @@ package com.nutro.biosint.modelresponse;
 
 public class ManageEmployeeResponse {
 
-    private String empName;
-    private String empDesignation;
+    private String name;
+    private String empDesi;
 
     public ManageEmployeeResponse() {
     }
 
-    public ManageEmployeeResponse(String empName, String empDesignation) {
-        this.empName = empName;
-        this.empDesignation = empDesignation;
+    public ManageEmployeeResponse(String name, String empDesi) {
+        this.name = name;
+        this.empDesi = empDesi;
     }
 
-    public String getEmpName() {
-        return empName;
+    public String getName() {
+        return name;
     }
 
-    public void setEmpName(String empName) {
-        this.empName = empName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getEmpDesignation() {
-        return empDesignation;
+    public String getEmpDesi() {
+        return empDesi;
     }
 
-    public void setEmpDesignation(String empDesignation) {
-        this.empDesignation = empDesignation;
+    public void setEmpDesi(String empDesi) {
+        this.empDesi = empDesi;
     }
 }

@@ -123,7 +123,20 @@ public class ManageUserFragment extends Fragment implements ViewUserAdapter.Empl
     }
 
     @Override
-    public void onEmployeeClick(ManageEmployeeResponse manageEmployeeResponse) {
+    public void onWorkAssignClick(ManageEmployeeResponse manageEmployeeResponse) {
+
+    }
+
+    @Override
+    public void onViewCheckInClick(ManageEmployeeResponse manageEmployeeResponse) {
+
+        Fragment fragment = new ViewEmployeeCheckInReportFragment();
+
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.screenArea, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
 
     }
 }

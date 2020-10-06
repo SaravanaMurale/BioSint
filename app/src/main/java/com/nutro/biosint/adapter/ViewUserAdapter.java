@@ -22,7 +22,8 @@ public class ViewUserAdapter extends RecyclerView.Adapter<ViewUserAdapter.Manage
     public EmployeeClickListener employeeClickListener;
 
     public interface EmployeeClickListener {
-        public void onEmployeeClick(ManageEmployeeResponse manageEmployeeResponse);
+        public void onWorkAssignClick(ManageEmployeeResponse manageEmployeeResponse);
+        public void onViewCheckInClick(ManageEmployeeResponse manageEmployeeResponse);
     }
 
     public ViewUserAdapter(Context mCtx, List<ManageEmployeeResponse> employeeNameDTOList, EmployeeClickListener employeeClickListener) {
@@ -49,8 +50,8 @@ public class ViewUserAdapter extends RecyclerView.Adapter<ViewUserAdapter.Manage
 
         //holder.assignWork.setText(employeeNameDTOList.get(position).getEmployeeName());
 
-        holder.empName.setText(employeeNameDTOList.get(position).getEmpName());
-        holder.empDesignation.setText(employeeNameDTOList.get(position).getEmpDesignation());
+        holder.empName.setText(employeeNameDTOList.get(position).getName());
+        holder.empDesignation.setText(employeeNameDTOList.get(position).getEmpDesi());
 
     }
 
@@ -79,7 +80,7 @@ public class ViewUserAdapter extends RecyclerView.Adapter<ViewUserAdapter.Manage
 
                     ManageEmployeeResponse manageEmployeeResponse=employeeNameDTOList.get(getAdapterPosition());
 
-                    employeeClickListener.onEmployeeClick(manageEmployeeResponse);
+                    employeeClickListener.onWorkAssignClick(manageEmployeeResponse);
 
                     //call assign job fragment
                 }
@@ -91,7 +92,7 @@ public class ViewUserAdapter extends RecyclerView.Adapter<ViewUserAdapter.Manage
 
                     ManageEmployeeResponse manageEmployeeResponse=employeeNameDTOList.get(getAdapterPosition());
 
-                    employeeClickListener.onEmployeeClick(manageEmployeeResponse);
+                    employeeClickListener.onViewCheckInClick(manageEmployeeResponse);
 
                 }
             });
