@@ -11,12 +11,18 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.nutro.biosint.R;
+import com.nutro.biosint.adapter.ViewUserAdapter;
 
 public class ManageUserFragment extends Fragment {
 
     Button addEmployeeBtn;
+
+    RecyclerView viewUserRecyclerView;
+    ViewUserAdapter viewUserAdapter;
 
     @Nullable
     @Override
@@ -25,6 +31,10 @@ public class ManageUserFragment extends Fragment {
         View view=inflater.inflate(R.layout.manage_user_fragment,container,false);
 
         addEmployeeBtn=(Button)view.findViewById(R.id.addEmployeeBtn);
+
+        viewUserRecyclerView=(RecyclerView)view.findViewById(R.id.viewUserRecyclerView);
+        //viewUserRecyclerView.setLayoutManager(new LinearLayoutManager());
+
 
         addEmployeeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
