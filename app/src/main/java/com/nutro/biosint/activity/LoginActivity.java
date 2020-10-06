@@ -20,7 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.nutro.biosint.R;
-import com.nutro.biosint.manager.DrawerActivityManager;
+import com.nutro.biosint.manageractivity.DrawerActivityManager;
 import com.nutro.biosint.modelresponse.UserResponse;
 import com.nutro.biosint.utils.PreferenceUtil;
 import com.nutro.biosint.utils.ToastUtils;
@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
 
         loginBtn = (Button) findViewById(R.id.loginBtn);
 
-        callSignUpActivity=(TextView)findViewById(R.id.callSignUpActivity);
+        callSignUpActivity = (TextView) findViewById(R.id.callSignUpActivity);
 
         initFireStore();
 
@@ -63,6 +63,8 @@ public class LoginActivity extends AppCompatActivity {
         callSignUpActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(intent);
 
             }
         });

@@ -1,4 +1,4 @@
-package com.nutro.biosint.manager;
+package com.nutro.biosint.manageractivity;
 
 import android.content.Intent;
 import android.os.Bundle;

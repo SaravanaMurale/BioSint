@@ -20,7 +20,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.nutro.biosint.R;
-import com.nutro.biosint.manager.DrawerActivityManager;
+import com.nutro.biosint.manageractivity.DrawerActivityManager;
 
 import static com.nutro.biosint.utils.MathUtil.validatePassword;
 
