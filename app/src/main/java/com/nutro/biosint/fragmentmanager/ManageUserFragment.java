@@ -23,7 +23,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.nutro.biosint.R;
 import com.nutro.biosint.adapter.ViewUserAdapter;
 import com.nutro.biosint.modelresponse.ManageEmployeeResponse;
-import com.nutro.biosint.modelresponse.UserResponse;
 import com.nutro.biosint.utils.PreferenceUtil;
 
 import java.util.ArrayList;
