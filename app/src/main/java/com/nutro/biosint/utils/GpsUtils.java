@@ -125,36 +125,6 @@ public class GpsUtils {
 
     }
 
-    /*Double lat1=12.9929;
-        Double lon1=80.2219;
-
-        Double lat2=12.9803;
-        Double lon2=80.1772;
-
-       Double km= distance(lat1,lon1,lat2,lon2);*/
-
-
-    private double distance(double storeLatitute, double storeLongitute, double deliveryLat, double deliveryLon) {
-        double theta = storeLongitute - deliveryLon;
-        double dist = Math.sin(deg2rad(storeLatitute))
-                * Math.sin(deg2rad(deliveryLat))
-                + Math.cos(deg2rad(storeLatitute))
-                * Math.cos(deg2rad(deliveryLat))
-                * Math.cos(deg2rad(theta));
-        dist = Math.acos(dist);
-        dist = rad2deg(dist);
-        dist = dist * 60 * 1.1515;
-        return (dist);
-    }
-
-    private double deg2rad(double deg) {
-        return (deg * Math.PI / 180.0);
-    }
-
-    private double rad2deg(double rad) {
-        return (rad * 180.0 / Math.PI);
-    }
-
 
 
 }

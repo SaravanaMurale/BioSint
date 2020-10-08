@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_shape"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/thirty_dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/add_checkin"
+            android:textColor="@color/white"
+            android:textSize="@dimen/thirty_dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/twenty_dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/checkin_details"
+            android:textColor="@color/white" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/twenty_dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_checkin_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/loginAccount"
+                android:layout_marginTop="@dimen/twenty_dp">
+
+                <EditText
+                    android:id="@+id/login_checkin_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty_dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="left|center_vertical"
+                    android:hint="Name"
+                    android:singleLine="true"
+                    android:textColorHint="@color/white"
+                    android:theme="@style/EditTextHintColor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_checkin_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/loginAccount"
+                android:layout_marginTop="@dimen/twenty_dp">
+
+                <EditText
+                    android:id="@+id/login_checkin_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty_dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="left|center_vertical"
+                    android:hint="Details"
+                    android:singleLine="true"
+                    android:textColorHint="@color/white"
+                    android:theme="@style/EditTextHintColor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_checkin_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/loginAccount"
+                android:layout_marginTop="@dimen/twenty_dp">
+
+                <EditText
+                    android:id="@+id/login_checkin_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty_dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="left|center_vertical"
+                    android:hint="Location"
+                    android:singleLine="true"
+                    android:textColorHint="@color/white"
+                    android:theme="@style/EditTextHintColor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnAddCheckIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:background="@color/white"
+                android:text="@string/add_checkin"
+                android:textAllCaps="true" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>
