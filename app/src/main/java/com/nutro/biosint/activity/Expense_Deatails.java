@@ -25,7 +25,7 @@ public class Expense_Deatails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_expense__deatails);
+        setContentView(R.layout.layout_expense__deatails_fragment);
 
         cost_Purpose = (EditText)findViewById(R.id.cost_Purpose);
         phone_No = (EditText)findViewById(R.id.phone_No);

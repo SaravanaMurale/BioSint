@@ -13,7 +13,7 @@ public class Employee_Location extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_employee__location);
+        setContentView(R.layout.layout_employee__location);
 
 
 

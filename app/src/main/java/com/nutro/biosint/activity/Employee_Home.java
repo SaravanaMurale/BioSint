@@ -11,6 +11,6 @@ public class Employee_Home extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_employee__home);
+        setContentView(R.layout.layout_employee__home_fragment);
     }
 }

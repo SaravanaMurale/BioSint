@@ -14,7 +14,7 @@ public class Attendance_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_attendance_);
+        setContentView(R.layout.layout_attendance_fragment);
 
         Calendar c = Calendar.getInstance();
         System.out.println("Current time => "+c.getTime());
