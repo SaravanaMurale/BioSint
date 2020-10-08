@@ -8,11 +8,16 @@ import android.content.Intent;
 import android.location.Address;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -37,6 +42,7 @@ import java.util.List;
 
 import static com.nutro.biosint.utils.AppConstants.GPS_PROVIDER_CODE;
 import static com.nutro.biosint.utils.AppConstants.LOCATION_PERMISSION_REQUEST_CODE;
+import static com.nutro.biosint.utils.MathUtil.validateName;
 
 public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
 
@@ -52,25 +58,47 @@ public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
     private LocationManager locationManager;
     Double myLocationLat, myLocationLon;
 
+    private Button btnAddCheckIn;
+    private EditText login_checkin_name;
+    private EditText login_checkin_details;
+    private EditText login_checkin_location;
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_add_checkin_fragment, container, false);
+        View view = inflater.inflate(R.layout.employee_add_checkin_fragment, container, false);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         mapView = mapFragment.getView();
+
+        btnAddCheckIn = (Button) view.findViewById(R.id.btnAddCheckIn);
+        login_checkin_name = (EditText) view.findViewById(R.id.login_checkin_name);
+        login_checkin_details = (EditText) view.findViewById(R.id.login_checkin_details);
+        login_checkin_location = (EditText) view.findViewById(R.id.login_checkin_location);
+
+        checkLocationPermission();
+
+        login_checkin_name.addTextChangedListener(new MyTextWatcher(login_checkin_name));
+        login_checkin_details.addTextChangedListener(new MyTextWatcher(login_checkin_details));
+        login_checkin_location.addTextChangedListener(new MyTextWatcher(login_checkin_location));
+
 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
 
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
 
 
-        checkLocationPermission();
-
-
         return view;
     }
+
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mGoogleMap = googleMap;
+    }
+
 
     private void checkLocationPermission() {
 
@@ -95,13 +123,6 @@ public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
         }
 
     }
-
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-
-    }
-
 
     private void enableGPS() {
 
@@ -223,12 +244,64 @@ public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
 
             System.out.println("MyAddress" + address + " " + area + " " + city + " " + postalCode);
 
+            login_checkin_location.setText(address + " " + area + " " + city + " " + postalCode);
+
 
         } else {
 
             Toast.makeText(getActivity(), "Please try again", Toast.LENGTH_LONG).show();
         }
 
+    }
+
+    private class MyTextWatcher implements TextWatcher {
+
+        private View view;
+
+        private MyTextWatcher(View view) {
+            this.view = view;
+        }
+
+        @SuppressLint("ResourceAsColor")
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            String name = login_checkin_name.getText().toString().trim();
+            String details = login_checkin_details.getText().toString().trim();
+            String location = login_checkin_location.getText().toString().trim();
+
+            btnAddCheckIn.setEnabled(validateName(name) && validateName(details) && validateName(location));
+
+            if (btnAddCheckIn.isEnabled()) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        btnAddCheckIn.setBackground(getActivity().getDrawable(R.drawable.background_rectangle_shape));
+                        btnAddCheckIn.setTextColor(getActivity().getApplication().getResources().getColor(R.color.white));
+                    }
+
+                }
+            } else if (!btnAddCheckIn.isEnabled()) {
+                btnAddCheckIn.setEnabled(false);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    btnAddCheckIn.setBackground(getActivity().getDrawable(R.color.gray));
+
+                }
+
+            }
+
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
     }
 }
    

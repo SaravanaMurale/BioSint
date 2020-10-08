@@ -21,7 +21,7 @@ import com.nutro.biosint.fragmentemployee.EmpAttendanceFragment;
 import com.nutro.biosint.fragmentemployee.EmployeeHomeFragment;
 import com.nutro.biosint.fragmentemployee.EmployeeLocationFragment;
 import com.nutro.biosint.fragmentemployee.EmployeeProfileFragment;
-import com.nutro.biosint.fragmentemployee.MyCheckInFragment;
+import com.nutro.biosint.fragmentemployee.ViewCheckInFragment;
 import com.nutro.biosint.fragmentemployee.ViewExpenseFragment;
 import com.nutro.biosint.fragmentmanager.HomeFragmentManager;
 import com.nutro.biosint.utils.PreferenceUtil;
@@ -109,7 +109,7 @@ public class DrawerActivityEmployee extends AppCompatActivity
 
         } else if (id == R.id.empMyCheckIn) {
 
-            fragment = new MyCheckInFragment();
+            fragment = new ViewCheckInFragment();
 
         } else if (id == R.id.empAddExpense) {
 
@@ -133,7 +133,7 @@ public class DrawerActivityEmployee extends AppCompatActivity
 
         } else if (id == R.id.empShare) {
 
-            fragment = new MyCheckInFragment();
+            fragment = new ViewCheckInFragment();
 
         } else if (id == R.id.logOut) {
 
