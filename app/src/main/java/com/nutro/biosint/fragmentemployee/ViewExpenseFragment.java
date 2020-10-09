@@ -38,7 +38,12 @@ public class ViewExpenseFragment extends Fragment implements ViewExpenseAdapter.
         viewExpenseAdapter = new ViewExpenseAdapter(getActivity(), viewExpenseResponseList, ViewExpenseFragment.this);
 
 
+        getExpenseReport();
+        
         return view;
+    }
+
+    private void getExpenseReport() {
     }
 
     @Override
