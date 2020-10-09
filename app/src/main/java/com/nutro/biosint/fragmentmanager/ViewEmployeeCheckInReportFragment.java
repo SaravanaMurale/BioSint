@@ -26,9 +26,6 @@ public class ViewEmployeeCheckInReportFragment extends Fragment implements GetMy
     Spinner spinner;
     List<String> employeeNameDTOList;
 
-    String[] country = { "India", "USA", "China", "Japan", "Other"};
-
-
 
     @Nullable
     @Override
@@ -66,6 +63,8 @@ public class ViewEmployeeCheckInReportFragment extends Fragment implements GetMy
 */
         for (int i = 0; i <manageEmployeeResponse.size() ; i++) {
             employeeNameDTOList.add(manageEmployeeResponse.get(i).getName());
+
+            System.out.println("EmployeeR");
 
         }
 

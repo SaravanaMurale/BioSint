@@ -58,6 +58,9 @@
     <string name="add_checkin">Add Check-In</string>
     <string name="checkin_details">Please enter check-in related data in the form, the location will be auto populated via GPS but you can manually enter that for the photo use your camera to take a photo</string>
 
+    <string name="purpose">Purpose</string>
+    <string name="amount">Amount</string>
+
 
 
 

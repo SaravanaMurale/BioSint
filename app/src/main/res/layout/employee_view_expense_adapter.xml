@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/twenty_dp"
+        app:cardCornerRadius="@dimen/ten_dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/ten_dp"
+            >
+
+            <TextView
+                android:id="@+id/purposeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/purpose"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/purposeDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/purposeText"
+                android:maxLines="1"
+                android:text="Parcel Office" />
+
+            <TextView
+                android:id="@+id/packsTaken"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/purposeText"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:maxLines="1"
+                android:text="100kg sales packs taken" />
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/packsTaken"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:background="@color/gray" />
+
+            <TextView
+                android:id="@+id/viewExpDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="22nd Sep 2020"
+                android:layout_below="@id/line"
+                android:layout_marginTop="@dimen/ten_dp"
+                />
+
+            <ImageView
+                android:id="@+id/viewExpStatus"
+                android:layout_width="@dimen/thirty_dp"
+                android:layout_height="@dimen/thirty_dp"
+                android:layout_below="@id/line"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:layout_toRightOf="@id/viewExpDate"
+                android:layout_marginLeft="@dimen/five_dp"
+                android:src="@drawable/camera"
+                />
+
+            <TextView
+                android:id="@+id/viewExpPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/ten_dp"
+                android:text="40"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/amount"
+                android:layout_below="@id/line"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:layout_toLeftOf="@id/viewExpPrice"
+                android:layout_marginRight="@dimen/five_dp"
+                />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
