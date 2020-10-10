@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">BioSint</string>
 
+    <string name="google_maps_key">AIzaSyD57uVtpaX6fa7PYBuCXEjlsAdIYIdvDyA</string>
+
     <string name="forget_password">Forget Your Password? </string>
     <string name="click_here">Click Here</string>
     <string name="login">Login</string>

@@ -10,13 +10,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.nutro.biosint.utils.PermissionUtils;
 
 import static com.nutro.biosint.utils.AppConstants.LOCATION_PERMISSION_REQUEST_CODE;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     Button sendEmail;
+    private View mapView;
+
+    private GoogleMap mGoogleMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +30,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         sendEmail = (Button) findViewById(R.id.sendEmail);
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapMain);
+        mapFragment.getMapAsync(this);
+        mapView = mapFragment.getView();
+
 
         sendEmail.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
 
     }
 }

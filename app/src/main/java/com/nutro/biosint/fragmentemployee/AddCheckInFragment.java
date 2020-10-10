@@ -55,7 +55,7 @@ public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
     private LocationCallback locationCallback;
     private final float DEFAULT_ZOOM = 13;
 
-    private LocationManager locationManager;
+    public LocationManager locationManager;
     Double myLocationLat, myLocationLon;
 
     private Button btnAddCheckIn;
@@ -63,40 +63,51 @@ public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
     private EditText login_checkin_details;
     private EditText login_checkin_location;
 
+    private SupportMapFragment mapFragment;
+    private boolean gpsEnabled;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.employee_add_checkin_fragment, container, false);
+        View rootView = inflater.inflate(R.layout.employee_add_checkin_fragment, container, false);
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-        mapView = mapFragment.getView();
 
-        btnAddCheckIn = (Button) view.findViewById(R.id.btnAddCheckIn);
-        login_checkin_name = (EditText) view.findViewById(R.id.login_checkin_name);
-        login_checkin_details = (EditText) view.findViewById(R.id.login_checkin_details);
-        login_checkin_location = (EditText) view.findViewById(R.id.login_checkin_location);
+        if (mapFragment == null) {
+            mapFragment = SupportMapFragment.newInstance();
+            /*mapFragment.getMapAsync(new OnMapReadyCallback() {
+                @Override
+                public void onMapReady(GoogleMap googleMap) {
+                    //LatLng latLng = new LatLng(1.289545, 103.849972);
+                    *//*googleMap.addMarker(new MarkerOptions().position(latLng)
+                            .title("Singapore"));*//*
+                    //googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+                }
+            });*/
+        }
 
+        // R.id.map is a FrameLayout, not a Fragment
+        getChildFragmentManager().beginTransaction().replace(R.id.map, mapFragment).commit();
+
+        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
+        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         checkLocationPermission();
+
+        btnAddCheckIn = (Button) rootView.findViewById(R.id.btnAddCheckIn);
+        login_checkin_name = (EditText) rootView.findViewById(R.id.login_checkin_name);
+        login_checkin_details = (EditText) rootView.findViewById(R.id.login_checkin_details);
+        login_checkin_location = (EditText) rootView.findViewById(R.id.login_checkin_location);
+
 
         login_checkin_name.addTextChangedListener(new MyTextWatcher(login_checkin_name));
         login_checkin_details.addTextChangedListener(new MyTextWatcher(login_checkin_details));
         login_checkin_location.addTextChangedListener(new MyTextWatcher(login_checkin_location));
 
 
-        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
-
-        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
 
 
-        return view;
-    }
 
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mGoogleMap = googleMap;
+        return rootView;
     }
 
 
@@ -115,7 +126,14 @@ public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
 
                 //If permission is granted turn on gps
 
-                enableGPS();
+
+                if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                    getDeviceLocation();
+                } else if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                    System.out.println("IamcalledEnalbleGPS");
+                    enableGPS();
+                }
+                //enableGPS();
 
 
             }
@@ -178,6 +196,8 @@ public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
 
                         myLocationLat = mLastKnownLocation.getLatitude();
                         myLocationLon = mLastKnownLocation.getLongitude();
+
+                        System.out.println("LATITIDEANDLONGITITE "+myLocationLat+" "+myLocationLon);
 
                         getAddressFromLatiandLongi(myLocationLat, myLocationLon);
 
@@ -252,6 +272,11 @@ public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
             Toast.makeText(getActivity(), "Please try again", Toast.LENGTH_LONG).show();
         }
 
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mGoogleMap = googleMap;
     }
 
     private class MyTextWatcher implements TextWatcher {
