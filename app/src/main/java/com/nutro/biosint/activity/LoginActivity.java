@@ -81,6 +81,11 @@ public class LoginActivity extends AppCompatActivity {
 
                             System.out.println("USERID " + userResponse.getUserId());
                             System.out.println("USERROLE " + userResponse.getUserRole());
+                            System.out.println("ManagerUserId " + userResponse.getManagerUserId());
+
+                            if (userResponse.getManagerUserId() != null) {
+                                PreferenceUtil.setValueString(LoginActivity.this, PreferenceUtil.MANAGER_USER_ID, userResponse.getManagerUserId());
+                            }
 
                             PreferenceUtil.setValueString(LoginActivity.this, PreferenceUtil.USERID, userResponse.getUserId());
 

@@ -54,6 +54,13 @@ public class GpsUtils {
         //**************************
     }
 
+    public boolean gpsStatus(){
+        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            return true;
+        }
+        return false;
+    }
+
     // method for turn on GPS
     public void turnGPSOn(final onGpsListener onGpsListener) {
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {

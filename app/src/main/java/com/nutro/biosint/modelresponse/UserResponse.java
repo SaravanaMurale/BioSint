@@ -8,17 +8,19 @@ public class UserResponse {
     private String userId;
     private String email;
     private int userRole;
+    private String managerUserId;
 
     public UserResponse() {
     }
 
-    public UserResponse(String deviceId, String mobileNumber, boolean userActiveStatus, String userId, String email, int userRole) {
+    public UserResponse(String deviceId, String mobileNumber, boolean userActiveStatus, String userId, String email, int userRole, String managerUserId) {
         this.deviceId = deviceId;
         this.mobileNumber = mobileNumber;
         this.userActiveStatus = userActiveStatus;
         this.userId = userId;
         this.email = email;
         this.userRole = userRole;
+        this.managerUserId = managerUserId;
     }
 
     public String getDeviceId() {
@@ -67,5 +69,13 @@ public class UserResponse {
 
     public void setUserRole(int userRole) {
         this.userRole = userRole;
+    }
+
+    public String getManagerUserId() {
+        return managerUserId;
+    }
+
+    public void setManagerUserId(String managerUserId) {
+        this.managerUserId = managerUserId;
     }
 }

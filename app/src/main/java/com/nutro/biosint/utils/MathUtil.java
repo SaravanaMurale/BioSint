@@ -3,6 +3,9 @@ package com.nutro.biosint.utils;
 import android.content.Context;
 import android.graphics.Typeface;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class MathUtil {
 
     public static boolean validatePassword(String password) {
@@ -80,6 +83,15 @@ public class MathUtil {
         Double d = Double.parseDouble(stringVal);
 
         return d;
+    }
+
+    public static String dateAndTime() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date d = new Date();
+        String dateAndTime = sdf.format(d);
+
+        return dateAndTime;
     }
 
 }

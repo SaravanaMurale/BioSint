@@ -32,11 +32,19 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.GeoPoint;
 import com.nutro.biosint.R;
+import com.nutro.biosint.modelrequest.AddEmployeeCheckInDTO;
 import com.nutro.biosint.utils.GpsUtils;
+import com.nutro.biosint.utils.MathUtil;
 import com.nutro.biosint.utils.PermissionUtils;
+import com.nutro.biosint.utils.PreferenceUtil;
 
 import java.util.List;
 
@@ -64,7 +72,11 @@ public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
     private EditText login_checkin_location;
 
     private SupportMapFragment mapFragment;
-    private boolean gpsEnabled;
+    private boolean gpsEnabledStatus;
+
+    FirebaseFirestore db;
+    CollectionReference addEmployeeCheckInCollection;
+    DocumentReference addEmployeeCheckInDocument;
 
 
     @Nullable
@@ -72,6 +84,9 @@ public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.employee_add_checkin_fragment, container, false);
 
+        initFireBase();
+
+        addEmployeeCheckInCollection = db.collection("CheckIn");
 
         if (mapFragment == null) {
             mapFragment = SupportMapFragment.newInstance();
@@ -104,10 +119,12 @@ public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
         login_checkin_location.addTextChangedListener(new MyTextWatcher(login_checkin_location));
 
 
-
-
-
         return rootView;
+    }
+
+    private void initFireBase() {
+
+        db = FirebaseFirestore.getInstance();
     }
 
 
@@ -127,13 +144,14 @@ public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
                 //If permission is granted turn on gps
 
 
-                if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                gpsEnabledStatus = new GpsUtils(getActivity()).gpsStatus();
+
+                if (gpsEnabledStatus) {
                     getDeviceLocation();
-                } else if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                } else if (!gpsEnabledStatus) {
                     System.out.println("IamcalledEnalbleGPS");
                     enableGPS();
                 }
-                //enableGPS();
 
 
             }
@@ -168,6 +186,7 @@ public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
 
                 isGPS = true;
 
+
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -197,7 +216,7 @@ public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
                         myLocationLat = mLastKnownLocation.getLatitude();
                         myLocationLon = mLastKnownLocation.getLongitude();
 
-                        System.out.println("LATITIDEANDLONGITITE "+myLocationLat+" "+myLocationLon);
+                        System.out.println("LATITIDEANDLONGITITE " + myLocationLat + " " + myLocationLon);
 
                         getAddressFromLatiandLongi(myLocationLat, myLocationLon);
 
@@ -297,8 +316,8 @@ public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-            String name = login_checkin_name.getText().toString().trim();
-            String details = login_checkin_details.getText().toString().trim();
+            final String name = login_checkin_name.getText().toString().trim();
+            final String details = login_checkin_details.getText().toString().trim();
             String location = login_checkin_location.getText().toString().trim();
 
             btnAddCheckIn.setEnabled(validateName(name) && validateName(details) && validateName(location));
@@ -308,6 +327,15 @@ public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         btnAddCheckIn.setBackground(getActivity().getDrawable(R.drawable.background_rectangle_shape));
                         btnAddCheckIn.setTextColor(getActivity().getApplication().getResources().getColor(R.color.white));
+
+                        btnAddCheckIn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                addCheckInFireStore(name, details);
+                            }
+                        });
+
+
                     }
 
                 }
@@ -327,6 +355,17 @@ public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
         public void afterTextChanged(Editable s) {
 
         }
+    }
+
+    private void addCheckInFireStore(String name, String details) {
+
+        addEmployeeCheckInDocument = addEmployeeCheckInCollection.document(PreferenceUtil.getEmpUserId(getContext()));
+        GeoPoint geoPoint = new GeoPoint(myLocationLat, myLocationLon);
+
+        AddEmployeeCheckInDTO addEmployeeCheckInDTO = new AddEmployeeCheckInDTO(PreferenceUtil.getManagerId(getContext()), name, details, geoPoint, MathUtil.dateAndTime());
+        addEmployeeCheckInDocument.set(addEmployeeCheckInDTO);
+
+
     }
 }
    
