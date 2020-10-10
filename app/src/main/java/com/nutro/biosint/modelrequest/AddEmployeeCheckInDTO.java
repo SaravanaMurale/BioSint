@@ -20,8 +20,8 @@ public class AddEmployeeCheckInDTO extends EmployeeBaseDTO {
         this.date = date;
     }
 
-    public AddEmployeeCheckInDTO(String managerUserId, String checkInName, String checkInDetails, GeoPoint geoPoint, String date) {
-        super(managerUserId);
+    public AddEmployeeCheckInDTO(String managerUserId, String empUserId, String checkInName, String checkInDetails, GeoPoint geoPoint, String date) {
+        super(managerUserId, empUserId);
         this.checkInName = checkInName;
         this.checkInDetails = checkInDetails;
         this.geoPoint = geoPoint;

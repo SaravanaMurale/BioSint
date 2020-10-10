@@ -32,7 +32,6 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -78,6 +77,12 @@ public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
     CollectionReference addEmployeeCheckInCollection;
     DocumentReference addEmployeeCheckInDocument;
 
+
+    //AddCheckInListener addCheckInListener;
+
+    interface AddCheckInListener {
+        public void onAddCheckInClick();
+    }
 
     @Nullable
     @Override
@@ -359,13 +364,35 @@ public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
 
     private void addCheckInFireStore(String name, String details) {
 
-        addEmployeeCheckInDocument = addEmployeeCheckInCollection.document(PreferenceUtil.getEmpUserId(getContext()));
+        addEmployeeCheckInDocument = addEmployeeCheckInCollection.document();
         GeoPoint geoPoint = new GeoPoint(myLocationLat, myLocationLon);
+        AddEmployeeCheckInDTO addEmployeeCheckInDTO = new AddEmployeeCheckInDTO(PreferenceUtil.getManagerId(getContext()),PreferenceUtil.getEmpUserId(getContext()), name, details, geoPoint, MathUtil.dateAndTime());
 
-        AddEmployeeCheckInDTO addEmployeeCheckInDTO = new AddEmployeeCheckInDTO(PreferenceUtil.getManagerId(getContext()), name, details, geoPoint, MathUtil.dateAndTime());
-        addEmployeeCheckInDocument.set(addEmployeeCheckInDTO);
+        addCheckInDetails(addEmployeeCheckInDTO, new AddCheckInListener() {
+            @Override
+            public void onAddCheckInClick() {
+
+                Toast.makeText(getActivity(), "CheckInAdded", Toast.LENGTH_LONG).show();
+
+            }
+        });
 
 
     }
+
+    private void addCheckInDetails(AddEmployeeCheckInDTO addEmployeeCheckInDTO, final AddCheckInListener addCheckInListener) {
+        addEmployeeCheckInDocument.set(addEmployeeCheckInDTO).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                if (task.isSuccessful()) {
+                    addCheckInListener.onAddCheckInClick();
+                }
+
+            }
+        });
+    }
+
+
 }
    

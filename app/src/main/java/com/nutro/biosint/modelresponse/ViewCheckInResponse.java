@@ -1,19 +1,21 @@
 package com.nutro.biosint.modelresponse;
 
+import com.google.firebase.firestore.GeoPoint;
+
 public class ViewCheckInResponse {
 
     private String viewCheckInName;
     private String viewCheckInDetails;
-    private String viewCheckInAddress;
+    private GeoPoint geoPoint;
     private String viewCheckInDate;
 
     public ViewCheckInResponse() {
     }
 
-    public ViewCheckInResponse(String viewCheckInName, String viewCheckInDetails, String viewCheckInAddress, String viewCheckInDate) {
+    public ViewCheckInResponse(String viewCheckInName, String viewCheckInDetails, GeoPoint geoPoint, String viewCheckInDate) {
         this.viewCheckInName = viewCheckInName;
         this.viewCheckInDetails = viewCheckInDetails;
-        this.viewCheckInAddress = viewCheckInAddress;
+        this.geoPoint = geoPoint;
         this.viewCheckInDate = viewCheckInDate;
     }
 
@@ -33,12 +35,12 @@ public class ViewCheckInResponse {
         this.viewCheckInDetails = viewCheckInDetails;
     }
 
-    public String getViewCheckInAddress() {
-        return viewCheckInAddress;
+    public GeoPoint getGeoPoint() {
+        return geoPoint;
     }
 
-    public void setViewCheckInAddress(String viewCheckInAddress) {
-        this.viewCheckInAddress = viewCheckInAddress;
+    public void setGeoPoint(GeoPoint geoPoint) {
+        this.geoPoint = geoPoint;
     }
 
     public String getViewCheckInDate() {
