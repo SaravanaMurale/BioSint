@@ -64,7 +64,7 @@ public class ViewCheckInFragment extends Fragment implements ViewCheckInAdapter.
         viewEmployeeCheckInCollection = db.collection("CheckIn");
 
         selectDate = (TextView) view.findViewById(R.id.selectDate);
-        viewCheckInRecyclerView = (RecyclerView) view.findViewById(R.id.viewUserRecyclerView);
+        viewCheckInRecyclerView = (RecyclerView) view.findViewById(R.id.myCheckinRecyclerView);
         viewCheckInRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         viewCheckInRecyclerView.setHasFixedSize(true);
 
@@ -110,10 +110,11 @@ public class ViewCheckInFragment extends Fragment implements ViewCheckInAdapter.
                     }
                 }, year, month, day);
 
+                datePickerDialog.show();
+
 
             }
         });
-
 
         return view;
     }
@@ -122,7 +123,7 @@ public class ViewCheckInFragment extends Fragment implements ViewCheckInAdapter.
 
         viewEmployeeCheckInCollection.whereEqualTo("managerUserId", PreferenceUtil.getManagerId(getContext()))
                 .whereEqualTo("empUserId", PreferenceUtil.getEmpUserId(getContext()))
-                .whereEqualTo("date",userSelectedDate)
+                .whereEqualTo("date", userSelectedDate)
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
