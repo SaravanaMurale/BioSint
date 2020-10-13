@@ -6,8 +6,8 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -17,12 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.PasswordActivity"></activity>
-         <activity android:name=".activity.SignupActivity"></activity>
+        <activity android:name=".activity.SignupActivity"></activity>
         <!--<activity android:name=".activity.SplashScreen" />-->
         <activity android:name=".activity.DrawerActivityEmployee"></activity>
-         <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.LoginActivity" />
         <activity android:name=".manageractivity.DrawerActivityManager" />
-        <activity android:name=".activity.SplashScreen">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

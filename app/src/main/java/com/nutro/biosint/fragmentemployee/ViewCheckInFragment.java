@@ -1,8 +1,6 @@
 package com.nutro.biosint.fragmentemployee;
 
 import android.app.DatePickerDialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +22,6 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.nutro.biosint.R;
 import com.nutro.biosint.adapteremployee.ViewCheckInAdapter;
-import com.nutro.biosint.modelresponse.UserResponse;
 import com.nutro.biosint.modelresponse.ViewCheckInResponse;
 import com.nutro.biosint.utils.PreferenceUtil;
 

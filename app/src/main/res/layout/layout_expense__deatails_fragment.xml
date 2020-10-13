@@ -4,114 +4,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="@dimen/twenty_dp"
+    android:background="@drawable/background_shape"
     android:orientation="vertical"
     tools:context=".activity.Expense_Deatails">
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/add_expense"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-condensed"
+        />
 
 
-
-
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:text="@string/add_expense_details"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/twenty_dp"
+        android:layout_marginLeft="@dimen/twenty_dp"
+        android:layout_marginRight="@dimen/twenty_dp"
+        android:fontFamily="sans-serif-condensed"
+        />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_add_exp_purpose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/login_add_exp_purpose"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty_dp"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="left|center_vertical"
+            android:hint="Purpose"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textColorHint="@color/white"
+            android:theme="@style/EditTextHintColor" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/addExpenseSelectDate"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty_dp"
+        android:layout_marginTop="@dimen/ten_dp"
+        android:background="@drawable/rounded_border" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_add_expense_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/login_add_expense_details"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty_dp"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="left|center_vertical"
+            android:hint="Details"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textColorHint="@color/white"
+            android:theme="@style/EditTextHintColor" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_add_expense_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/login_add_expense_amount"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty_dp"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="left|center_vertical"
+            android:hint="Amount"
+            android:inputType="number"
+            android:singleLine="true"
+            android:textColorHint="@color/white"
+            android:theme="@style/EditTextHintColor" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnAddExpense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ten_dp"
+        android:background="@color/white"
         android:gravity="center"
-        android:orientation="vertical">
+        android:text="@string/add_expense" />
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="Count Your Purchase"
-            android:textSize="25sp" />
-
-        <EditText
-            android:id="@+id/cost_Purpose"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:hint="Cost Purpose" />
-
-
-             />
-
-        <Button
-           android:id="@+id/showDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="@drawable/round_button"
-            android:text="Click to select date"
-            android:textColor="@color/white" />
-
-        <CalendarView
-            android:id="@+id/calendarView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:dateTextAppearance="@style/CalenderViewDateCustomText"
-            android:theme="@style/CalenderViewCustom"
-            android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <EditText
-            android:id="@+id/phone_No"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Summary" />
-
-
-        <EditText
-            android:id="@+id/email_Id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Amount" />
-
-        <Button
-            android:id="@+id/add_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="@drawable/round_button"
-            android:drawableRight="@drawable/camera"
-            android:text="Add your image"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/update"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="@drawable/round_button"
-            android:text="Confirm Updation"
-            android:textColor="@color/white" />
-
-
-        <Button
-            android:id="@+id/change_pwd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="@drawable/round_button"
-            android:padding="10dp"
-            android:text="Change Password"
-            android:textColor="@color/white" />
-    </LinearLayout>
-
-
-
-</ScrollView>
-    </LinearLayout>
+</LinearLayout>
 

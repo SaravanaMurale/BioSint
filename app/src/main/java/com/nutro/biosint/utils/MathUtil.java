@@ -36,6 +36,7 @@ public class MathUtil {
         return true;
     }
 
+
     public static boolean validateName(String name) {
 
         if (name.length() < 3) {
@@ -43,6 +44,16 @@ public class MathUtil {
         }
 
         return true;
+
+    }
+
+    public static boolean validateAmount(String amount) {
+
+        if (amount.length() > 0) {
+            return true;
+        }
+
+        return false;
 
     }
 
@@ -84,6 +95,23 @@ public class MathUtil {
 
         return d;
     }
+
+    public static String date() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date d = new Date();
+        String date = sdf.format(d);
+        return date;
+    }
+
+    public static String time() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        Date d = new Date();
+        String time = sdf.format(d);
+        return time;
+    }
+
 
     public static String dateAndTime() {
 

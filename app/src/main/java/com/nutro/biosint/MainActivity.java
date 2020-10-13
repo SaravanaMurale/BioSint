@@ -13,16 +13,16 @@ import android.widget.Toast;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.nutro.biosint.utils.MathUtil;
 import com.nutro.biosint.utils.PermissionUtils;
+
+import java.util.Calendar;
 
 import static com.nutro.biosint.utils.AppConstants.LOCATION_PERMISSION_REQUEST_CODE;
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MainActivity extends AppCompatActivity {
 
     Button sendEmail;
-    private View mapView;
-
-    private GoogleMap mGoogleMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +31,15 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         sendEmail = (Button) findViewById(R.id.sendEmail);
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapMain);
-        mapFragment.getMapAsync(this);
-        mapView = mapFragment.getView();
+
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        String dateAndTime = MathUtil.dateAndTime();
+
+        System.out.println("DATENADTIME " + dateAndTime);
 
 
         sendEmail.setOnClickListener(new View.OnClickListener() {
@@ -67,8 +73,5 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
 
-    }
 }

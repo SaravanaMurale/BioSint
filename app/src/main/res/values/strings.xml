@@ -62,6 +62,8 @@
 
     <string name="purpose">Purpose</string>
     <string name="amount">Amount</string>
+    <string name="add_expense">Add Expense</string>
+    <string name="add_expense_details">Please enter your daily epense here. Name your expense like a ticket or something similar, also you can write down the details of your expense if you wish.</string>
 
 
 
