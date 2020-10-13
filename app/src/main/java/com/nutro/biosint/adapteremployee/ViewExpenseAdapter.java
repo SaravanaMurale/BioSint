@@ -43,7 +43,7 @@ public class ViewExpenseAdapter extends RecyclerView.Adapter<ViewExpenseAdapter.
     public ViewExpenseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from(mCtx);
-        View view = layoutInflater.inflate(R.layout.employee_view_expense_adapter, parent);
+        View view = layoutInflater.inflate(R.layout.employee_view_expense_adapter, parent,false);
 
         return new ViewExpenseViewHolder(view);
     }

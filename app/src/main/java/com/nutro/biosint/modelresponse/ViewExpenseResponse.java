@@ -14,6 +14,9 @@ public class ViewExpenseResponse {
     @PropertyName("expenseAmount")
     private String viewExpPrice;
 
+    public ViewExpenseResponse() {
+    }
+
     public ViewExpenseResponse(String purposeDetail, String packsTaken, String viewExpDate, int viewExpStatus, String viewExpPrice) {
         this.purposeDetail = purposeDetail;
         this.packsTaken = packsTaken;

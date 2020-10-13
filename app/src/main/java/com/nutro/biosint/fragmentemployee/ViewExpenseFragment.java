@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -94,7 +95,15 @@ public class ViewExpenseFragment extends Fragment implements ViewExpenseAdapter.
                             @Override
                             public void onViewExpenseReport(List<ViewExpenseResponse> viewExpenseResponseList) {
 
-                                viewExpenseAdapter.setData(viewExpenseResponseList);
+
+                                if (viewExpenseResponseList.size() > 0) {
+                                    viewExpenseAdapter.setData(viewExpenseResponseList);
+                                } else if (viewExpenseResponseList.size() == 0) {
+
+                                    Toast.makeText(getActivity(), "you dont have any data for selected Date", Toast.LENGTH_LONG).show();
+
+                                }
+
 
                             }
                         });
@@ -116,7 +125,7 @@ public class ViewExpenseFragment extends Fragment implements ViewExpenseAdapter.
 
         viewEmployeeExpenseCollection.whereEqualTo("managerUserId", PreferenceUtil.getManagerId(getContext()))
                 .whereEqualTo("empUserId", PreferenceUtil.getEmpUserId(getContext()))
-                .whereEqualTo("date", userSelectedDate)
+                .whereEqualTo("expenseDate", userSelectedDate)
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
