@@ -27,7 +27,7 @@ public class ViewExpenseFragment extends Fragment implements ViewExpenseAdapter.
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_expense__deatails_fragment, container, false);
+        View view = inflater.inflate(R.layout.employee_view_expense, container, false);
 
         viewExpenseRecyclerView = (RecyclerView) view.findViewById(R.id.viewExpenseRecyclerView);
         viewExpenseRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
