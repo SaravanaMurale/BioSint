@@ -14,8 +14,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/ten_dp"
-            >
+            android:padding="@dimen/ten_dp">
 
             <TextView
                 android:id="@+id/purposeText"
@@ -53,42 +52,38 @@
                 android:id="@+id/viewExpDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="22nd Sep 2020"
                 android:layout_below="@id/line"
                 android:layout_marginTop="@dimen/ten_dp"
-                />
+                android:text="22nd Sep 2020" />
 
             <ImageView
                 android:id="@+id/viewExpStatus"
                 android:layout_width="@dimen/thirty_dp"
                 android:layout_height="@dimen/thirty_dp"
                 android:layout_below="@id/line"
+                android:layout_marginLeft="@dimen/five_dp"
                 android:layout_marginTop="@dimen/ten_dp"
                 android:layout_toRightOf="@id/viewExpDate"
-                android:layout_marginLeft="@dimen/five_dp"
-                android:src="@drawable/camera"
-                />
+                android:src="@drawable/camera" />
 
             <TextView
                 android:id="@+id/viewExpPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/line"
-                android:layout_marginTop="@dimen/ten_dp"
                 android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/ten_dp"
                 android:layout_marginRight="@dimen/ten_dp"
-                android:text="40"
-                />
+                android:text="40" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/amount"
                 android:layout_below="@id/line"
                 android:layout_marginTop="@dimen/ten_dp"
-                android:layout_toLeftOf="@id/viewExpPrice"
                 android:layout_marginRight="@dimen/five_dp"
-                />
+                android:layout_toLeftOf="@id/viewExpPrice"
+                android:text="@string/amount" />
 
         </RelativeLayout>
 
