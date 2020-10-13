@@ -6,6 +6,7 @@ public class AddExpenseDTO extends EmployeeBaseDTO {
     private String expenseDate;
     private String expenseDetails;
     private String expenseAmount;
+    private String time;
 
 
     public AddExpenseDTO(String expensePurpuse, String expenseDate, String expenseDetails, String expenseAmount) {
@@ -15,12 +16,13 @@ public class AddExpenseDTO extends EmployeeBaseDTO {
         this.expenseAmount = expenseAmount;
     }
 
-    public AddExpenseDTO(String managerUserId, String empUserId, String expensePurpuse, String expenseDate, String expenseDetails, String expenseAmount) {
+    public AddExpenseDTO(String managerUserId, String empUserId, String expensePurpuse, String expenseDate, String expenseDetails, String expenseAmount,String time) {
         super(managerUserId, empUserId);
         this.expensePurpuse = expensePurpuse;
         this.expenseDate = expenseDate;
         this.expenseDetails = expenseDetails;
         this.expenseAmount = expenseAmount;
+        this.time=time;
     }
 
     public String getExpensePurpuse() {
@@ -53,5 +55,13 @@ public class AddExpenseDTO extends EmployeeBaseDTO {
 
     public void setExpenseAmount(String expenseAmount) {
         this.expenseAmount = expenseAmount;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

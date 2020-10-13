@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -43,6 +44,8 @@ public class AddExpenseFragment extends Fragment {
     CollectionReference addEmployeeExpenseCollection;
     DocumentReference addEmployeeExpenseDocument;
 
+    Button btnAddExpense;
+
     private interface AddExpenseListener {
 
         public void addExpense();
@@ -62,6 +65,8 @@ public class AddExpenseFragment extends Fragment {
         login_add_expense_amount = (EditText) view.findViewById(R.id.login_add_expense_amount);
 
         addExpenseSelectDate = (TextView) view.findViewById(R.id.addExpenseSelectDate);
+
+        btnAddExpense=(Button)view.findViewById(R.id.btnAddExpense);
 
         login_add_exp_purpose.addTextChangedListener(new MyTextWatcher(login_add_exp_purpose));
         login_add_expense_details.addTextChangedListener(new MyTextWatcher(login_add_expense_details));
@@ -129,15 +134,15 @@ public class AddExpenseFragment extends Fragment {
             final String details = login_add_expense_details.getText().toString().trim();
             final String amount = login_add_expense_amount.getText().toString().trim();
 
-            addExpenseSelectDate.setEnabled(validateName(purpose) && validateName(details) && validateAmount(amount));
+            btnAddExpense.setEnabled(validateName(purpose) && validateName(details) && validateAmount(amount));
 
-            if (addExpenseSelectDate.isEnabled()) {
+            if (btnAddExpense.isEnabled()) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        addExpenseSelectDate.setBackground(getActivity().getDrawable(R.drawable.background_rectangle_shape));
-                        addExpenseSelectDate.setTextColor(getActivity().getApplication().getResources().getColor(R.color.white));
+                        btnAddExpense.setBackground(getActivity().getDrawable(R.drawable.background_rectangle_shape));
+                        btnAddExpense.setTextColor(getActivity().getApplication().getResources().getColor(R.color.white));
 
-                        addExpenseSelectDate.setOnClickListener(new View.OnClickListener() {
+                        btnAddExpense.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 addExpenseInFireStore(purpose, details, amount, new AddExpenseListener() {
@@ -155,10 +160,10 @@ public class AddExpenseFragment extends Fragment {
                     }
 
                 }
-            } else if (!addExpenseSelectDate.isEnabled()) {
-                addExpenseSelectDate.setEnabled(false);
+            } else if (!btnAddExpense.isEnabled()) {
+                btnAddExpense.setEnabled(false);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    addExpenseSelectDate.setBackground(getActivity().getDrawable(R.color.gray));
+                    btnAddExpense.setBackground(getActivity().getDrawable(R.color.gray));
 
                 }
 
@@ -177,7 +182,7 @@ public class AddExpenseFragment extends Fragment {
 
         addEmployeeExpenseDocument = addEmployeeExpenseCollection.document();
 
-        AddExpenseDTO addExpenseDTO = new AddExpenseDTO(PreferenceUtil.getManagerId(getContext()), PreferenceUtil.getEmpUserId(getContext()), purpose, userSelectedDate, details, amount);
+        AddExpenseDTO addExpenseDTO = new AddExpenseDTO(PreferenceUtil.getManagerId(getContext()), PreferenceUtil.getEmpUserId(getContext()), purpose, userSelectedDate, details, amount, MathUtil.time());
 
         addEmployeeExpenseDocument.set(addExpenseDTO).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

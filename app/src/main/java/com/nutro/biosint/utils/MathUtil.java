@@ -49,11 +49,11 @@ public class MathUtil {
 
     public static boolean validateAmount(String amount) {
 
-        if (amount.length() > 0) {
-            return true;
+        if (amount.length() < 0) {
+            return false;
         }
 
-        return false;
+        return true;
 
     }
 
