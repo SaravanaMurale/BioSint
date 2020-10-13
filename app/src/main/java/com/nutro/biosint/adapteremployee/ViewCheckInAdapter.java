@@ -44,7 +44,7 @@ public class ViewCheckInAdapter extends RecyclerView.Adapter<ViewCheckInAdapter.
     @Override
     public MyCheckInViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(mCtx);
-        View view = layoutInflater.inflate(R.layout.employee_view_checkin_adapter, parent);
+        View view = layoutInflater.inflate(R.layout.employee_view_checkin_adapter, parent,false);
 
         return new MyCheckInViewHolder(view);
     }

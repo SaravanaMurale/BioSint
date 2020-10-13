@@ -9,10 +9,11 @@
         android:id="@+id/selectDate"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fifty_dp"
-        android:background="@drawable/rounded_border"
         android:layout_marginLeft="@dimen/twenty_dp"
         android:layout_marginRight="@dimen/twenty_dp"
-        />
+        android:background="@drawable/rounded_border"
+        android:gravity="center"
+        android:textColor="@color/white" />
 
 
     <androidx.recyclerview.widget.RecyclerView

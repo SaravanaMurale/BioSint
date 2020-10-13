@@ -1,6 +1,9 @@
 package com.nutro.biosint.modelrequest;
 
 import com.google.firebase.firestore.GeoPoint;
+import com.google.firebase.firestore.ServerTimestamp;
+
+import java.util.Date;
 
 public class AddEmployeeCheckInDTO extends EmployeeBaseDTO {
 
@@ -8,6 +11,7 @@ public class AddEmployeeCheckInDTO extends EmployeeBaseDTO {
     private String checkInDetails;
     private GeoPoint geoPoint;
     private String date;
+    private String time;
 
 
     public AddEmployeeCheckInDTO() {
@@ -20,12 +24,14 @@ public class AddEmployeeCheckInDTO extends EmployeeBaseDTO {
         this.date = date;
     }
 
-    public AddEmployeeCheckInDTO(String managerUserId, String empUserId, String checkInName, String checkInDetails, GeoPoint geoPoint, String date) {
+    public AddEmployeeCheckInDTO(String managerUserId, String empUserId, String checkInName, String checkInDetails, GeoPoint geoPoint, String date,String time) {
         super(managerUserId, empUserId);
         this.checkInName = checkInName;
         this.checkInDetails = checkInDetails;
         this.geoPoint = geoPoint;
         this.date = date;
+        this.time=time;
+
     }
 
     public String getCheckInName() {
@@ -58,5 +64,13 @@ public class AddEmployeeCheckInDTO extends EmployeeBaseDTO {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

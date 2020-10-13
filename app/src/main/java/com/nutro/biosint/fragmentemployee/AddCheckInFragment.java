@@ -36,6 +36,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.GeoPoint;
 import com.nutro.biosint.R;
@@ -152,7 +153,13 @@ public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
                 gpsEnabledStatus = new GpsUtils(getActivity()).gpsStatus();
 
                 if (gpsEnabledStatus) {
-                    getDeviceLocation();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            getDeviceLocation();
+                        }
+                    },10000);
+
                 } else if (!gpsEnabledStatus) {
                     System.out.println("IamcalledEnalbleGPS");
                     enableGPS();
@@ -366,7 +373,7 @@ public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
 
         addEmployeeCheckInDocument = addEmployeeCheckInCollection.document();
         GeoPoint geoPoint = new GeoPoint(myLocationLat, myLocationLon);
-        AddEmployeeCheckInDTO addEmployeeCheckInDTO = new AddEmployeeCheckInDTO(PreferenceUtil.getManagerId(getContext()),PreferenceUtil.getEmpUserId(getContext()), name, details, geoPoint, MathUtil.dateAndTime());
+        AddEmployeeCheckInDTO addEmployeeCheckInDTO = new AddEmployeeCheckInDTO(PreferenceUtil.getManagerId(getContext()), PreferenceUtil.getEmpUserId(getContext()), name, details, geoPoint, MathUtil.date(), MathUtil.time());
 
         addCheckInDetails(addEmployeeCheckInDTO, new AddCheckInListener() {
             @Override

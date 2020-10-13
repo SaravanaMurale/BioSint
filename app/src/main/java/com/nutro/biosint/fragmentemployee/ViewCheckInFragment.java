@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -23,6 +25,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.nutro.biosint.R;
 import com.nutro.biosint.adapteremployee.ViewCheckInAdapter;
 import com.nutro.biosint.modelresponse.ViewCheckInResponse;
+import com.nutro.biosint.utils.MathUtil;
 import com.nutro.biosint.utils.PreferenceUtil;
 
 import java.text.SimpleDateFormat;
@@ -68,6 +71,7 @@ public class ViewCheckInFragment extends Fragment implements ViewCheckInAdapter.
         viewCheckInResponseList = new ArrayList<>();
 
         viewCheckInAdapter = new ViewCheckInAdapter(getActivity(), viewCheckInResponseList, ViewCheckInFragment.this);
+        viewCheckInRecyclerView.setAdapter(viewCheckInAdapter);
 
 
         Calendar calendar = Calendar.getInstance();
@@ -94,13 +98,29 @@ public class ViewCheckInFragment extends Fragment implements ViewCheckInAdapter.
                         userSelectedDate = date;
                         selectDate.setText("" + date);
 
+                        viewCheckInResponseList.clear();
+                        viewCheckInAdapter.notifyDataSetChanged();
                         getMyCheckInDataBasedOnDate(userSelectedDate, new DateWiseCheckInReportListener() {
                             @Override
                             public void onViewCheckInReport(List<ViewCheckInResponse> viewCheckInResponseList) {
 
-                                viewCheckInAdapter.setDate(viewCheckInResponseList);
+                                System.out.println("CalledInsideInteface");
+                                Toast.makeText(getActivity(), "CalledInsideInteface", Toast.LENGTH_LONG).show();
+
+                                System.out.println("DAtaFieldSize " + viewCheckInResponseList.size());
+
+                                if (viewCheckInResponseList.size() > 0) {
+                                    viewCheckInAdapter.setDate(viewCheckInResponseList);
+                                } else if (viewCheckInResponseList.size() == 0) {
+
+                                    Toast.makeText(getActivity(), "you dont have any data for selected Date", Toast.LENGTH_LONG).show();
+
+                                }
+
 
                             }
+
+
                         });
 
 
@@ -118,6 +138,8 @@ public class ViewCheckInFragment extends Fragment implements ViewCheckInAdapter.
 
     private void getMyCheckInDataBasedOnDate(String userSelectedDate, final DateWiseCheckInReportListener dateWiseCheckInReportListener) {
 
+        System.out.println("Iamcalled");
+
         viewEmployeeCheckInCollection.whereEqualTo("managerUserId", PreferenceUtil.getManagerId(getContext()))
                 .whereEqualTo("empUserId", PreferenceUtil.getEmpUserId(getContext()))
                 .whereEqualTo("date", userSelectedDate)
@@ -132,6 +154,12 @@ public class ViewCheckInFragment extends Fragment implements ViewCheckInAdapter.
 
                 dateWiseCheckInReportListener.onViewCheckInReport(viewCheckInResponseList);
 
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+                System.out.println("ViewCheckInError " + e.getMessage().toString());
             }
         });
 
