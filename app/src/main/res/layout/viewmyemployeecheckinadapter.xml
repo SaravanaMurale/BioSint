@@ -21,7 +21,9 @@
                 android:id="@+id/myEmpImage"
                 android:layout_width="@dimen/hundren_dp"
                 android:layout_height="@dimen/hundren_dp"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:src="@color/darkgreen"
+                />
 
             <TextView
                 android:id="@+id/myEmpCheckInArea"
