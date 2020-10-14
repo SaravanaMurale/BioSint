@@ -17,9 +17,9 @@ import com.google.android.material.navigation.NavigationView;
 import com.nutro.biosint.R;
 import com.nutro.biosint.activity.LoginActivity;
 import com.nutro.biosint.fragmentmanager.HomeFragmentManager;
-import com.nutro.biosint.fragmentmanager.ManageClientsFragment;
-import com.nutro.biosint.fragmentmanager.ManageLeadsFragment;
-import com.nutro.biosint.fragmentmanager.ManageUserFragment;
+import com.nutro.biosint.fragmentmanager.AddClientsFragment;
+import com.nutro.biosint.fragmentmanager.AssignClientsFragment;
+import com.nutro.biosint.fragmentmanager.AddUserFragment;
 import com.nutro.biosint.fragmentmanager.SettingsFragment;
 import com.nutro.biosint.fragmentmanager.ViewEmployeeCheckInReportFragment;
 import com.nutro.biosint.modelresponse.ManageEmployeeResponse;
@@ -110,21 +110,21 @@ public class DrawerActivityManager extends AppCompatActivity
 
             fragment = new HomeFragmentManager();
 
-        } else if (id == R.id.manageUsers) {
+        } else if (id == R.id.addUsers) {
 
-            fragment = new ManageUserFragment(employeeNameDTOList);
+            fragment = new AddUserFragment(employeeNameDTOList);
 
-        } else if (id == R.id.manageClients) {
+        } else if (id == R.id.addClients) {
 
-            fragment = new ManageClientsFragment();
+            fragment = new AddClientsFragment();
+
+        } else if (id == R.id.assignClients) {
+
+            fragment = new AssignClientsFragment();
 
         } else if (id == R.id.manageCheckins) {
             //fragment = new ManageCheckInsFragment();
             fragment = new ViewEmployeeCheckInReportFragment(employeeNameDTOList);
-
-        } else if (id == R.id.manageLeads) {
-
-            fragment = new ManageLeadsFragment();
 
         } else if (id == R.id.settings) {
 
@@ -165,7 +165,7 @@ public class DrawerActivityManager extends AppCompatActivity
 
         }*/
 
-        employeeNameDTOList=manageEmployeeResponse;
+        employeeNameDTOList = manageEmployeeResponse;
 
     }
 }

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/ten_dp"
+        android:layout_marginRight="@dimen/ten_dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_client_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/twenty_dp">
+
+            <EditText
+                android:id="@+id/login_client_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty_dp"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="left|center_vertical"
+                android:hint="@string/client_name"
+                android:singleLine="true"
+                android:textColorHint="@color/white"
+                android:theme="@style/EditTextHintColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_client_designation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fifteen_dp">
+
+            <EditText
+                android:id="@+id/login_client_designation"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty_dp"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="left|center_vertical"
+                android:hint="@string/client_desig"
+                android:singleLine="true"
+                android:textColorHint="@color/white"
+                android:theme="@style/EditTextHintColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_client_organization"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fifteen_dp">
+
+            <EditText
+                android:id="@+id/login_client_organization"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty_dp"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="left|center_vertical"
+                android:hint="@string/client_orga"
+                android:singleLine="true"
+                android:textColorHint="@color/white"
+                android:theme="@style/EditTextHintColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_client_mobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fifteen_dp">
+
+            <EditText
+                android:id="@+id/login_client_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty_dp"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="left|center_vertical"
+                android:hint="@string/client_mobile"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:singleLine="true"
+                android:textColorHint="@color/white"
+                android:theme="@style/EditTextHintColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_client_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fifteen_dp">
+
+            <EditText
+                android:id="@+id/login_client_email"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty_dp"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="left|center_vertical"
+                android:hint="@string/client_email"
+                android:inputType="textEmailAddress"
+                android:singleLine="true"
+                android:textColorHint="@color/white"
+                android:theme="@style/EditTextHintColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_client_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fifteen_dp">
+
+            <EditText
+                android:id="@+id/login_client_address"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/one_fifty_dp"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="left"
+                android:hint="@string/client_address"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textColorHint="@color/white"
+                android:theme="@style/EditTextHintColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_client_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fifteen_dp">
+
+            <EditText
+                android:id="@+id/login_client_details"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/one_fifty_dp"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="left"
+                android:hint="@string/client_details"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textColorHint="@color/white"
+                android:theme="@style/EditTextHintColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fifteen_dp"
+            android:text="client_status" />
+
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fifteen_dp">
+
+            <RadioButton
+                android:id="@+id/radioOld"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:checked="false"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/client_old"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/radioNew"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:checked="false"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/client_new"
+                android:textSize="20dp" />
+        </RadioGroup>
+
+    </LinearLayout>
+
+
+</ScrollView>

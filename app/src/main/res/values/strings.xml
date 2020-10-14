@@ -9,27 +9,22 @@
     <string name="login_account">Login Account</string>
     <string name="logout">Logout</string>
     <string name="dont_have">Dont have an account?</string>
-
     <string name="sign_up_accout">Sign Up Account Details</string>
-
     <string name="create_acc">Create Account</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
     <string name="change_password">Change Password</string>
     <string name="submit">Submit</string>
-
     <string name="wrong_username">You have entered wrong username or password</string>
 
     <!--Manager Menu-->
     <string name="home">Home</string>
-    <string name="manage_users">Manage Users</string>
-    <string name="manage_clients">Manage Clients</string>
+    <string name="add_users">Add Users</string>
+    <string name="add_clients">Add Clients</string>
     <string name="manage_checkins">Manage Check-ins</string>
     <string name="manage_works">Manage Works</string>
-    <string name="manage_leads">Manage Leads</string>
+    <string name="assign_clients">Assign Clients</string>
     <string name="settings">Settings</string>
 
     <!--Employee Menu-->
@@ -42,7 +37,7 @@
     <string name="emp_profile">Profile</string>
     <string name="share">Share</string>
 
-    
+
     <!--Add Employee-->
     <string name="employee_email">Employee Email Address(Username)*</string>
     <string name="emp_password">Employee Password*</string>
@@ -56,16 +51,25 @@
     <string name="emp_type">Employee Type</string>
     <string name="send_login">Send login credential to mobile</string>
     <string name="add_emp">Add Employee</string>
-
     <string name="add_checkin">Add Check-In</string>
     <string name="checkin_details">Please enter check-in related data in the form, the location will be auto populated via GPS but you can manually enter that for the photo use your camera to take a photo</string>
-
     <string name="purpose">Purpose</string>
     <string name="amount">Amount</string>
     <string name="add_expense">Add Expense</string>
     <string name="add_expense_details">Please enter your daily epense here. Name your expense like a ticket or something similar, also you can write down the details of your expense if you wish.</string>
 
-
+    <!--Add Clients-->
+    <string name="client_name">Client Name</string>
+    <string name="client_desig">Designation</string>
+    <string name="client_orga">Organiation</string>
+    <string name="client_mobile">Mobile Number</string>
+    <string name="client_email">Email</string>
+    <string name="client_address">Address</string>
+    <string name="client_website">Website Name</string>
+    <string name="client_details">Details</string>
+    <string name="client_status">Customer Status</string>
+    <string name="client_old">Old</string>
+    <string name="client_new">New</string>
 
 
 

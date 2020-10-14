@@ -28,7 +28,7 @@ import com.nutro.biosint.utils.PreferenceUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ManageUserFragment extends Fragment implements ViewUserAdapter.EmployeeClickListener {
+public class AddUserFragment extends Fragment implements ViewUserAdapter.EmployeeClickListener {
 
     Button addEmployeeBtn;
 
@@ -42,7 +42,7 @@ public class ManageUserFragment extends Fragment implements ViewUserAdapter.Empl
 
     List<ManageEmployeeResponse> employeeNameDTOList;
 
-    public ManageUserFragment(List<ManageEmployeeResponse> employeeNameDTOList) {
+    public AddUserFragment(List<ManageEmployeeResponse> employeeNameDTOList) {
         this.employeeNameDTOList = employeeNameDTOList;
     }
 
