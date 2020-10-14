@@ -62,5 +62,17 @@ public class GetMyEmpDetails {
 
     }
 
+    public static List<String> getEmployeeName(List<ManageEmployeeResponse> employeeNameDTOList) {
+        List<String> empName = new ArrayList<>();
+        for (int i = 0; i < employeeNameDTOList.size(); i++) {
+
+            empName.add(employeeNameDTOList.get(i).getName());
+
+        }
+
+        return empName;
+
+    }
+
 
 }

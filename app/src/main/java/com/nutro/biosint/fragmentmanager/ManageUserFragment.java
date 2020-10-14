@@ -40,6 +40,12 @@ public class ManageUserFragment extends Fragment implements ViewUserAdapter.Empl
     private FirebaseFirestore firebaseFirestore;
     private CollectionReference employeeCollectionRef;
 
+    List<ManageEmployeeResponse> employeeNameDTOList;
+
+    public ManageUserFragment(List<ManageEmployeeResponse> employeeNameDTOList) {
+        this.employeeNameDTOList = employeeNameDTOList;
+    }
+
     public interface EmployeeDetailsGetListener {
         void getEmployeeDetails(List<ManageEmployeeResponse> manageEmployeeResponse);
     }
@@ -129,7 +135,7 @@ public class ManageUserFragment extends Fragment implements ViewUserAdapter.Empl
     @Override
     public void onViewCheckInClick(ManageEmployeeResponse manageEmployeeResponse) {
 
-        Fragment fragment = new ViewEmployeeCheckInReportFragment();
+        Fragment fragment = new ViewEmployeeCheckInReportFragment(employeeNameDTOList);
 
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

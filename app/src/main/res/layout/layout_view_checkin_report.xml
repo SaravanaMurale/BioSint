@@ -14,4 +14,11 @@
         />
 
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/viewEmployeeCheckInRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/employeeNameSpinner"
+        android:layout_margin="@dimen/ten_dp" />
+
 </RelativeLayout>

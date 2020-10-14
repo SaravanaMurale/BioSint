@@ -34,7 +34,7 @@ public class DrawerActivityManager extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, GetMyEmpDetails.GetMyAllEmployeeDetailsListener {
 
     GetMyEmpDetails getMyEmpDetails;
-    List<String> employeeNameDTOList;
+    List<ManageEmployeeResponse> employeeNameDTOList;
 
 
     @Override
@@ -112,7 +112,7 @@ public class DrawerActivityManager extends AppCompatActivity
 
         } else if (id == R.id.manageUsers) {
 
-            fragment = new ManageUserFragment();
+            fragment = new ManageUserFragment(employeeNameDTOList);
 
         } else if (id == R.id.manageClients) {
 
@@ -160,9 +160,12 @@ public class DrawerActivityManager extends AppCompatActivity
 
     @Override
     public void getMyEmployeeDetails(List<ManageEmployeeResponse> manageEmployeeResponse) {
-        for (int i = 0; i < manageEmployeeResponse.size(); i++) {
+        /*for (int i = 0; i < manageEmployeeResponse.size(); i++) {
             employeeNameDTOList.add(manageEmployeeResponse.get(i).getName());
 
-        }
+        }*/
+
+        employeeNameDTOList=manageEmployeeResponse;
+
     }
 }
