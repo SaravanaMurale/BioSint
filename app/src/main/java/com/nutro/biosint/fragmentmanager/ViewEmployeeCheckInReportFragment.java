@@ -20,30 +20,47 @@ import com.nutro.biosint.utils.GetMyEmpDetails;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewEmployeeCheckInReportFragment extends Fragment implements GetMyEmpDetails.GetMyAllEmployeeDetailsListener, AdapterView.OnItemSelectedListener {
+public class ViewEmployeeCheckInReportFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     GetMyEmpDetails getMyEmpDetails;
     Spinner spinner;
     List<String> employeeNameDTOList;
+
+    public ViewEmployeeCheckInReportFragment() {
+
+    }
+
+    public ViewEmployeeCheckInReportFragment(List<String> employeeNameDTOList) {
+
+        this.employeeNameDTOList = employeeNameDTOList;
+
+
+    }
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view=inflater.inflate(R.layout.layout_view_checkin_report,container,false);
+        View view = inflater.inflate(R.layout.layout_view_checkin_report, container, false);
 
-        spinner = (Spinner)view.findViewById(R.id.employeeNameSpinner);
-        //spinner.setOnItemSelectedListener(this);
+        //getMyEmpDetails = new GetMyEmpDetails(getActivity(), this);
 
-        employeeNameDTOList=new ArrayList<>();
-        getMyEmpDetails=new GetMyEmpDetails(getActivity(),this);
+        spinner = (Spinner) view.findViewById(R.id.employeeNameSpinner);
 
-        getMyEmpDetails.getEmployeeDetails();
+        //employeeNameDTOList = new ArrayList<>();
+
+        //getMyEmpDetails.getEmployeeDetails();
+        /*employeeNameDTOList.add("first");
+        employeeNameDTOList.add("second");
+        employeeNameDTOList.add("third");
+        employeeNameDTOList.add("fourth");
+        employeeNameDTOList.add("fifth");*/
+
 
         ArrayAdapter<String> adapter =
-                new ArrayAdapter<String>(getActivity(),  android.R.layout.simple_spinner_dropdown_item, employeeNameDTOList);
-        adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
+                new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, employeeNameDTOList);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinner.setAdapter(adapter);
 
@@ -51,29 +68,20 @@ public class ViewEmployeeCheckInReportFragment extends Fragment implements GetMy
         return view;
     }
 
-    @Override
+   /* @Override
     public void getMyEmployeeDetails(List<ManageEmployeeResponse> manageEmployeeResponse) {
 
-        /*System.out.println("IamInterfaceCalled");
-        System.out.println("EMMMPPPs " + manageEmployeeResponse.get(0).getName());
-        System.out.println("EMMMPPPs " + manageEmployeeResponse.get(0).getEmpDesi());
-
-        System.out.println("EMMMPPPs " + manageEmployeeResponse.get(1).getName());
-        System.out.println("EMMMPPPs " + manageEmployeeResponse.get(1).getEmpDesi());
-*/
-        for (int i = 0; i <manageEmployeeResponse.size() ; i++) {
+        for (int i = 0; i < manageEmployeeResponse.size(); i++) {
             employeeNameDTOList.add(manageEmployeeResponse.get(i).getName());
-
-            System.out.println("EmployeeR");
 
         }
 
 
-    }
+    }*/
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        System.out.println("SelectedSpinnerIs "+employeeNameDTOList.get(position));
+        System.out.println("SelectedSpinnerIs " + employeeNameDTOList.get(position));
     }
 
     @Override

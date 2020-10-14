@@ -17,16 +17,25 @@ import com.google.android.material.navigation.NavigationView;
 import com.nutro.biosint.R;
 import com.nutro.biosint.activity.LoginActivity;
 import com.nutro.biosint.fragmentmanager.HomeFragmentManager;
-import com.nutro.biosint.fragmentmanager.ManageCheckInsFragment;
 import com.nutro.biosint.fragmentmanager.ManageClientsFragment;
 import com.nutro.biosint.fragmentmanager.ManageLeadsFragment;
 import com.nutro.biosint.fragmentmanager.ManageUserFragment;
 import com.nutro.biosint.fragmentmanager.SettingsFragment;
+import com.nutro.biosint.fragmentmanager.ViewEmployeeCheckInReportFragment;
+import com.nutro.biosint.modelresponse.ManageEmployeeResponse;
+import com.nutro.biosint.utils.GetMyEmpDetails;
 import com.nutro.biosint.utils.PreferenceUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class DrawerActivityManager extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, GetMyEmpDetails.GetMyAllEmployeeDetailsListener {
+
+    GetMyEmpDetails getMyEmpDetails;
+    List<String> employeeNameDTOList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +44,9 @@ public class DrawerActivityManager extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        employeeNameDTOList = new ArrayList<>();
+        getMyEmpDetails = new GetMyEmpDetails(DrawerActivityManager.this, DrawerActivityManager.this);
+        getMyEmpDetails.getEmployeeDetails();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -107,8 +119,8 @@ public class DrawerActivityManager extends AppCompatActivity
             fragment = new ManageClientsFragment();
 
         } else if (id == R.id.manageCheckins) {
-
-            fragment = new ManageCheckInsFragment();
+            //fragment = new ManageCheckInsFragment();
+            fragment = new ViewEmployeeCheckInReportFragment(employeeNameDTOList);
 
         } else if (id == R.id.manageLeads) {
 
@@ -144,5 +156,13 @@ public class DrawerActivityManager extends AppCompatActivity
         startActivity(intent);
         finish();
 
+    }
+
+    @Override
+    public void getMyEmployeeDetails(List<ManageEmployeeResponse> manageEmployeeResponse) {
+        for (int i = 0; i < manageEmployeeResponse.size(); i++) {
+            employeeNameDTOList.add(manageEmployeeResponse.get(i).getName());
+
+        }
     }
 }

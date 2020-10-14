@@ -10,10 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/fifty_dp"
         android:layout_margin="@dimen/ten_dp"
-        android:background="@color/white"
 
         />
-
 
 
 </RelativeLayout>
