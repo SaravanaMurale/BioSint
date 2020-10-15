@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -16,25 +17,40 @@ import com.nutro.biosint.R;
 
 public class AddClientsFragment extends Fragment {
 
-    RadioButton genderradioButton;
+
     RadioGroup radioGroup;
+    RadioButton genderradioButton;
+    Button btn_addClient;
+
+    int selectedId;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.manager_add_clients_fragment, container, false);
+        final View view = inflater.inflate(R.layout.manager_add_clients_fragment, container, false);
 
         radioGroup = (RadioGroup) view.findViewById(R.id.radioGroup);
+        btn_addClient = (Button) view.findViewById(R.id.btn_addClient);
 
-        int selectedId = radioGroup.getCheckedRadioButtonId();
-        genderradioButton = (RadioButton) view.findViewById(selectedId);
+        btn_addClient.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        if (selectedId == -1) {
-            Toast.makeText(getActivity(), "Nothing selected", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(getActivity(), genderradioButton.getText(), Toast.LENGTH_SHORT).show();
-        }
+                selectedId = radioGroup.getCheckedRadioButtonId();
+                genderradioButton = (RadioButton) view.findViewById(selectedId);
+
+                if (selectedId == -1) {
+                    Toast.makeText(getActivity(), "Nothing selected", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity(), genderradioButton.getText().toString(), Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
 
         return view;
     }
+
+
 }

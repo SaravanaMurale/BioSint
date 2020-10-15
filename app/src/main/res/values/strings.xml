@@ -67,10 +67,10 @@
     <string name="client_address">Address</string>
     <string name="client_website">Website Name</string>
     <string name="client_details">Details</string>
-    <string name="client_status">Customer Status</string>
+    <string name="client_status">Client Status</string>
     <string name="client_old">Old</string>
     <string name="client_new">New</string>
-
+    <string name="add_client">Add Client</string>
 
 
 </resources>
