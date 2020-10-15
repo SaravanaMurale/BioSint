@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -111,11 +112,10 @@ public class AddClientsFragment extends Fragment {
             public void onComplete(@NonNull Task<Void> task) {
 
                 if (task.isSuccessful()) {
-
+                    addClientListener.addClient();
 
                 }
 
-                addClientListener.addClient();
 
             }
         }).addOnFailureListener(new OnFailureListener() {

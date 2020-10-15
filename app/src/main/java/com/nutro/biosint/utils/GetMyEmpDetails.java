@@ -27,7 +27,6 @@ public class GetMyEmpDetails {
         this.getMyAllEmployeeDetailsListener = getMyAllEmployeeDetailsListener;
     }
 
-
     List<ManageEmployeeResponse> manageEmployeeResponseList = new ArrayList<>();
 
     public interface GetMyAllEmployeeDetailsListener {

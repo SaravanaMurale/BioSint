@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/ten_dp"
+    >
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_assignclient_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/twenty_dp">
+
+        <EditText
+            android:id="@+id/login_assignclient_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty_dp"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="left|center_vertical"
+            android:hint="@string/client_name"
+            android:singleLine="true"
+            android:textColorHint="@color/white"
+            android:theme="@style/EditTextHintColor" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_assignclient_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/twenty_dp">
+
+        <EditText
+            android:id="@+id/login_assignclient_details"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/one_fifty_dp"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="left"
+            android:hint="@string/client_details"
+            android:singleLine="true"
+            android:textColorHint="@color/white"
+            android:theme="@style/EditTextHintColor" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/deadlineDate"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty_dp"
+        android:background="@drawable/rounded_border"
+        android:layout_marginTop="@dimen/ten_dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/select_client"
+        android:layout_marginTop="@dimen/ten_dp"
+        />
+
+    <Spinner
+        android:id="@+id/assignClientSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty_dp"
+        android:layout_marginTop="@dimen/ten_dp"
+
+        />
+
+    <Button
+        android:id="@+id/btnAssignClient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ten_dp"
+        android:text="@string/assign_client"
+        />
+
+
+
+
+
+</LinearLayout>

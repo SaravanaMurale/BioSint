@@ -23,6 +23,8 @@ import com.nutro.biosint.fragmentmanager.AddUserFragment;
 import com.nutro.biosint.fragmentmanager.SettingsFragment;
 import com.nutro.biosint.fragmentmanager.ViewEmployeeCheckInReportFragment;
 import com.nutro.biosint.modelresponse.ManageEmployeeResponse;
+import com.nutro.biosint.modelresponse.MyClientResponse;
+import com.nutro.biosint.utils.GetMyClientDetails;
 import com.nutro.biosint.utils.GetMyEmpDetails;
 import com.nutro.biosint.utils.PreferenceUtil;
 
@@ -31,10 +33,13 @@ import java.util.List;
 
 
 public class DrawerActivityManager extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, GetMyEmpDetails.GetMyAllEmployeeDetailsListener {
+        implements NavigationView.OnNavigationItemSelectedListener, GetMyEmpDetails.GetMyAllEmployeeDetailsListener, GetMyClientDetails.GetMyClientDetailsListener {
 
     GetMyEmpDetails getMyEmpDetails;
+    GetMyClientDetails getMyClientDetails;
+
     List<ManageEmployeeResponse> employeeNameDTOList;
+    List<MyClientResponse> myClientResponseArrayList;
 
 
     @Override
@@ -47,6 +52,10 @@ public class DrawerActivityManager extends AppCompatActivity
         employeeNameDTOList = new ArrayList<>();
         getMyEmpDetails = new GetMyEmpDetails(DrawerActivityManager.this, DrawerActivityManager.this);
         getMyEmpDetails.getEmployeeDetails();
+
+        myClientResponseArrayList = new ArrayList<>();
+        getMyClientDetails = new GetMyClientDetails(DrawerActivityManager.this, DrawerActivityManager.this);
+        getMyClientDetails.getMyClientList();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -120,7 +129,7 @@ public class DrawerActivityManager extends AppCompatActivity
 
         } else if (id == R.id.assignClients) {
 
-            fragment = new AssignClientsFragment();
+            fragment = new AssignClientsFragment(myClientResponseArrayList);
 
         } else if (id == R.id.manageCheckins) {
             //fragment = new ManageCheckInsFragment();
@@ -166,6 +175,13 @@ public class DrawerActivityManager extends AppCompatActivity
         }*/
 
         employeeNameDTOList = manageEmployeeResponse;
+
+    }
+
+    @Override
+    public void getMyClient(List<MyClientResponse> myClientResponseArrayList) {
+
+        this.myClientResponseArrayList = myClientResponseArrayList;
 
     }
 }
