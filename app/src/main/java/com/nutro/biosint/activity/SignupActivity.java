@@ -129,7 +129,7 @@ public class SignupActivity extends AppCompatActivity {
     private void launchPasswordActivity(String email) {
 
         Intent intent = new Intent(SignupActivity.this, PasswordActivity.class);
-        intent.putExtra("EMAIL",email);
+        intent.putExtra("EMAIL", email);
         startActivity(intent);
 
     }
@@ -175,6 +175,12 @@ public class SignupActivity extends AppCompatActivity {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
             String personName = contactPerson.getText().toString().trim();
             String email = contactEmail.getText().toString().trim();
             String mobileNum = contactMobileNum.getText().toString().trim();
@@ -189,11 +195,6 @@ public class SignupActivity extends AppCompatActivity {
             } else if (!createAccount.isEnabled()) {
 
             }
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
 
         }
 
