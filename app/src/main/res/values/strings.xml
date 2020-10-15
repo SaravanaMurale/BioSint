@@ -78,6 +78,6 @@
     <string name="select_emp">Select Employees</string>
     <string name="select_client">Select Client</string>
     <string name="priority">Set Priority</string>
-    <string name="assign_client">Assign Client</string>
+    <string name="assign_client">Assign Client To Employee</string>
 
 </resources>

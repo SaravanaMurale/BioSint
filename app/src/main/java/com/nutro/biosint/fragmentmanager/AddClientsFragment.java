@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Layout;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.core.OrderBy;
 import com.nutro.biosint.R;
 import com.nutro.biosint.modelrequest.AddClientDTO;
 import com.nutro.biosint.utils.MathUtil;
@@ -86,12 +91,20 @@ public class AddClientsFragment extends Fragment {
                 } else {
                     Toast.makeText(getActivity(), genderradioButton.getText().toString(), Toast.LENGTH_SHORT).show();
 
-                    AddClientDTO addClientDTO = new AddClientDTO(login_client_name.getText().toString(), login_client_designation.getText().toString(), login_client_organization.getText().toString(), login_client_mobile.getText().toString(), login_client_email.getText().toString(), login_client_address.getText().toString(), login_client_details.getText().toString(), genderradioButton.getText().toString(), PreferenceUtil.getManagerId(getActivity()), "", MathUtil.dateAndTime());
+                    AddClientDTO addClientDTO = new AddClientDTO(login_client_name.getText().toString(), login_client_designation.getText().toString(), login_client_organization.getText().toString(), login_client_mobile.getText().toString(), login_client_email.getText().toString(), login_client_address.getText().toString(), login_client_details.getText().toString(), genderradioButton.getText().toString(), PreferenceUtil.getManagerId(getActivity()), "", MathUtil.dateAndTime(), false, 0, "");
 
                     addClientsInFireStore(addClientDTO, new AddClientListener() {
                         @Override
                         public void addClient() {
                             Toast.makeText(getActivity(), "Client Added Successfully", Toast.LENGTH_LONG).show();
+
+                            getDocumentIdAndUpdate(new GetDocumentIdOfClientListener() {
+                                @Override
+                                public void getLastDocumentId(String docuId) {
+
+                                }
+                            });
+
                         }
                     });
 
@@ -102,6 +115,32 @@ public class AddClientsFragment extends Fragment {
         });
 
         return view;
+    }
+
+    interface GetDocumentIdOfClientListener {
+        public void getLastDocumentId(String docuId);
+    }
+
+    private void getDocumentIdAndUpdate(final GetDocumentIdOfClientListener getDocumentIdOfClientListener) {
+
+        addClientsCollection.orderBy("managerUserId", Query.Direction.DESCENDING).limit(1).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                String docuId = "";
+                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                    System.out.println("IamExecuted " + documentSnapshot.getId());
+
+                    docuId = documentSnapshot.getId();
+                }
+
+                getDocumentIdOfClientListener.getLastDocumentId(docuId);
+
+
+            }
+        });
+
+
     }
 
     private void addClientsInFireStore(AddClientDTO addClientDTO, final AddClientListener addClientListener) {

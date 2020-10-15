@@ -13,11 +13,14 @@ public class AddClientDTO {
     private String managerUserId;
     private String empId;
     private String dateAndTime;
+    private boolean isClientAssigned;
+    private int workProgress;
+    private String clientDocId;
 
     public AddClientDTO() {
     }
 
-    public AddClientDTO(String clientName, String clientDesig, String clientOrg, String clientMobileNumber, String clientEmail, String clientAddr, String clientDetails, String clientRadioBtn, String managerUserId, String empId, String dateAndTime) {
+    public AddClientDTO(String clientName, String clientDesig, String clientOrg, String clientMobileNumber, String clientEmail, String clientAddr, String clientDetails, String clientRadioBtn, String managerUserId, String empId, String dateAndTime, boolean isClientAssigned, int workProgress, String clientDocId) {
         this.clientName = clientName;
         this.clientDesig = clientDesig;
         this.clientOrg = clientOrg;
@@ -29,6 +32,9 @@ public class AddClientDTO {
         this.managerUserId = managerUserId;
         this.empId = empId;
         this.dateAndTime = dateAndTime;
+        this.isClientAssigned = isClientAssigned;
+        this.workProgress = workProgress;
+        this.clientDocId = clientDocId;
     }
 
     public String getClientName() {
@@ -117,5 +123,29 @@ public class AddClientDTO {
 
     public void setDateAndTime(String dateAndTime) {
         this.dateAndTime = dateAndTime;
+    }
+
+    public boolean isClientAssigned() {
+        return isClientAssigned;
+    }
+
+    public void setClientAssigned(boolean clientAssigned) {
+        isClientAssigned = clientAssigned;
+    }
+
+    public int getWorkProgress() {
+        return workProgress;
+    }
+
+    public void setWorkProgress(int workProgress) {
+        this.workProgress = workProgress;
+    }
+
+    public String getClientDocId() {
+        return clientDocId;
+    }
+
+    public void setClientDocId(String clientDocId) {
+        this.clientDocId = clientDocId;
     }
 }
