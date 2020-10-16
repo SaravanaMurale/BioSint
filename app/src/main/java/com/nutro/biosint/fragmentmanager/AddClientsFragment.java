@@ -100,7 +100,18 @@ public class AddClientsFragment extends Fragment {
 
                             getDocumentIdAndUpdate(new GetDocumentIdOfClientListener() {
                                 @Override
-                                public void getLastDocumentId(String docuId) {
+                                public void getLastDocumentId(final String docuId) {
+
+                                    //update document id in recently added client
+
+                                    updateDocIdInLastInsertedDocument(docuId, new UpdateDocIdiInLastInsertedDocListener() {
+                                        @Override
+                                        public void updateDocumentId() {
+
+                                            Toast.makeText(getActivity(), "Docuement Updated Successfully", Toast.LENGTH_LONG).show();
+
+                                        }
+                                    });
 
                                 }
                             });
@@ -117,9 +128,28 @@ public class AddClientsFragment extends Fragment {
         return view;
     }
 
+    private void updateDocIdInLastInsertedDocument(String docuId, final UpdateDocIdiInLastInsertedDocListener updateDocIdiInLastInsertedDocListener) {
+
+        addClientsCollection.document(docuId).update("clientDocId", docuId).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    updateDocIdiInLastInsertedDocListener.updateDocumentId();
+                }
+
+            }
+        });
+
+    }
+
     interface GetDocumentIdOfClientListener {
         public void getLastDocumentId(String docuId);
     }
+
+    interface UpdateDocIdiInLastInsertedDocListener {
+        public void updateDocumentId();
+    }
+
 
     private void getDocumentIdAndUpdate(final GetDocumentIdOfClientListener getDocumentIdOfClientListener) {
 

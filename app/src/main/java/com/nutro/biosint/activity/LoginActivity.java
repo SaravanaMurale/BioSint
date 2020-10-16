@@ -126,7 +126,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private void dogetLoginDetails(final UserCallBackListener userCallBackListener) {
         //userDocumentRef = userCollectionRef.document(loginEmail.getText().toString());
-        userCollectionRef.whereEqualTo("password", loginPassword.getText().toString()).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        userCollectionRef
+                .whereEqualTo("email",loginEmail.getText().toString())
+                .whereEqualTo("password", loginPassword.getText().toString()).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
