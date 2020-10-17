@@ -11,7 +11,7 @@ public class AddClientDTO {
     private String clientDetails;
     private String clientRadioBtn;
     private String managerUserId;
-    private String empId;
+    private String toAssignEmpId;
     private String dateAndTime;
     private boolean isClientAssigned;
     private int workProgress;
@@ -20,7 +20,7 @@ public class AddClientDTO {
     public AddClientDTO() {
     }
 
-    public AddClientDTO(String clientName, String clientDesig, String clientOrg, String clientMobileNumber, String clientEmail, String clientAddr, String clientDetails, String clientRadioBtn, String managerUserId, String empId, String dateAndTime, boolean isClientAssigned, int workProgress, String clientDocId) {
+    public AddClientDTO(String clientName, String clientDesig, String clientOrg, String clientMobileNumber, String clientEmail, String clientAddr, String clientDetails, String clientRadioBtn, String managerUserId, String toAssignEmpId, String dateAndTime, boolean isClientAssigned, int workProgress, String clientDocId) {
         this.clientName = clientName;
         this.clientDesig = clientDesig;
         this.clientOrg = clientOrg;
@@ -30,7 +30,7 @@ public class AddClientDTO {
         this.clientDetails = clientDetails;
         this.clientRadioBtn = clientRadioBtn;
         this.managerUserId = managerUserId;
-        this.empId = empId;
+        this.toAssignEmpId = toAssignEmpId;
         this.dateAndTime = dateAndTime;
         this.isClientAssigned = isClientAssigned;
         this.workProgress = workProgress;
@@ -110,11 +110,11 @@ public class AddClientDTO {
     }
 
     public String getEmpId() {
-        return empId;
+        return toAssignEmpId;
     }
 
     public void setEmpId(String empId) {
-        this.empId = empId;
+        this.toAssignEmpId = empId;
     }
 
     public String getDateAndTime() {

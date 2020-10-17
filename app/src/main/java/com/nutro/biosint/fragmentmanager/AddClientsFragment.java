@@ -91,7 +91,7 @@ public class AddClientsFragment extends Fragment {
                 } else {
                     Toast.makeText(getActivity(), genderradioButton.getText().toString(), Toast.LENGTH_SHORT).show();
 
-                    AddClientDTO addClientDTO = new AddClientDTO(login_client_name.getText().toString(), login_client_designation.getText().toString(), login_client_organization.getText().toString(), login_client_mobile.getText().toString(), login_client_email.getText().toString(), login_client_address.getText().toString(), login_client_details.getText().toString(), genderradioButton.getText().toString(), PreferenceUtil.getManagerId(getActivity()), "", MathUtil.dateAndTime(), false, 0, "");
+                    AddClientDTO addClientDTO = new AddClientDTO(login_client_name.getText().toString(), login_client_designation.getText().toString(), login_client_organization.getText().toString(), login_client_mobile.getText().toString(), login_client_email.getText().toString(), login_client_address.getText().toString(), login_client_details.getText().toString(), genderradioButton.getText().toString(), PreferenceUtil.getEmpUserId(getActivity()), "", MathUtil.dateAndTime(), false, 0, "");
 
                     addClientsInFireStore(addClientDTO, new AddClientListener() {
                         @Override
@@ -153,7 +153,7 @@ public class AddClientsFragment extends Fragment {
 
     private void getDocumentIdAndUpdate(final GetDocumentIdOfClientListener getDocumentIdOfClientListener) {
 
-        addClientsCollection.orderBy("managerUserId", Query.Direction.DESCENDING).limit(1).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        addClientsCollection.orderBy("managerUserId", Query.Direction.ASCENDING).limit(1).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
@@ -163,6 +163,8 @@ public class AddClientsFragment extends Fragment {
 
                     docuId = documentSnapshot.getId();
                 }
+
+
 
                 getDocumentIdOfClientListener.getLastDocumentId(docuId);
 
