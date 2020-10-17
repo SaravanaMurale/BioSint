@@ -37,7 +37,7 @@ public class GetMyClientDetails {
     public void getMyClientList() {
 
         getMyClientCollectionRef
-                .whereEqualTo("managerUserId", PreferenceUtil.getManagerId(context))
+                .whereEqualTo("managerUserId", PreferenceUtil.getEmpUserId(context))
                 .whereEqualTo("isClientAssigned", false).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {

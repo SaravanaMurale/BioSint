@@ -53,6 +53,15 @@
         android:layout_marginTop="@dimen/ten_dp"
         />
 
+
+    <Spinner
+        android:id="@+id/addEmpInSpinnerCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/fifty_dp"
+        android:layout_marginTop="10dp" />
+
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

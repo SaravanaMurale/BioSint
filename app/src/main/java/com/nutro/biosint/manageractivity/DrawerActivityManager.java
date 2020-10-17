@@ -129,7 +129,7 @@ public class DrawerActivityManager extends AppCompatActivity
 
         } else if (id == R.id.assignClients) {
 
-            fragment = new AssignClientsFragment(myClientResponseArrayList);
+            fragment = new AssignClientsFragment(myClientResponseArrayList,employeeNameDTOList);
 
         } else if (id == R.id.manageCheckins) {
             //fragment = new ManageCheckInsFragment();

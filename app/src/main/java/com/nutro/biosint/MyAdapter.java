@@ -24,7 +24,7 @@ public class MyAdapter extends ArrayAdapter<SpinAdapter> {
 
     SpinnerCheckBoxSelectedListener spinnerCheckBoxSelectedListener;
 
-    interface SpinnerCheckBoxSelectedListener{
+    public interface SpinnerCheckBoxSelectedListener{
         public void selectSpinnerCheckBox(String item);
     }
 
