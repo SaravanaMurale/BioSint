@@ -32,5 +32,11 @@ public class AppConstants {
     public static final String RESULT_DATA_KEY = "RESULT_DATA_KEY";
     public static final String LOCATION_DATA_EXTRA = PACKAGE_NAME + ".LOCATION_DATA_EXTRA";
 
+    //Client Added State
+    public static final int WORK_NOT_INIT=-1;
+    public static final int WORK_INIT=0;
+    public static final int WORK_ASSIGNED=1;
+    public static final int WORK_COMPLETED=2;
+
 
 }

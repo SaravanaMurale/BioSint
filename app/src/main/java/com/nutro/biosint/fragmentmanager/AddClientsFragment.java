@@ -35,6 +35,8 @@ import com.nutro.biosint.modelrequest.AddClientDTO;
 import com.nutro.biosint.utils.MathUtil;
 import com.nutro.biosint.utils.PreferenceUtil;
 
+import static com.nutro.biosint.utils.AppConstants.WORK_INIT;
+import static com.nutro.biosint.utils.AppConstants.WORK_NOT_INIT;
 import static com.nutro.biosint.utils.MathUtil.validateEmail;
 import static com.nutro.biosint.utils.MathUtil.validateMobile;
 import static com.nutro.biosint.utils.MathUtil.validateName;
@@ -91,7 +93,7 @@ public class AddClientsFragment extends Fragment {
                 } else {
                     Toast.makeText(getActivity(), genderradioButton.getText().toString(), Toast.LENGTH_SHORT).show();
 
-                    AddClientDTO addClientDTO = new AddClientDTO(login_client_name.getText().toString(), login_client_designation.getText().toString(), login_client_organization.getText().toString(), login_client_mobile.getText().toString(), login_client_email.getText().toString(), login_client_address.getText().toString(), login_client_details.getText().toString(), genderradioButton.getText().toString(), PreferenceUtil.getEmpUserId(getActivity()), "", MathUtil.dateAndTime(), false, 0, "");
+                    AddClientDTO addClientDTO = new AddClientDTO(login_client_name.getText().toString(), login_client_designation.getText().toString(), login_client_organization.getText().toString(), login_client_mobile.getText().toString(), login_client_email.getText().toString(), login_client_address.getText().toString(), login_client_details.getText().toString(), genderradioButton.getText().toString(), PreferenceUtil.getEmpUserId(getActivity()), "", MathUtil.dateAndTime(), false, WORK_NOT_INIT, "");
 
                     addClientsInFireStore(addClientDTO, new AddClientListener() {
                         @Override
@@ -100,7 +102,7 @@ public class AddClientsFragment extends Fragment {
 
                             getDocumentIdAndUpdate(new GetDocumentIdOfClientListener() {
                                 @Override
-                                public void getLastDocumentId(final String docuId) {
+                                public void geDocumentId(final String docuId) {
 
                                     //update document id in recently added client
 
@@ -130,7 +132,9 @@ public class AddClientsFragment extends Fragment {
 
     private void updateDocIdInLastInsertedDocument(String docuId, final UpdateDocIdiInLastInsertedDocListener updateDocIdiInLastInsertedDocListener) {
 
-        addClientsCollection.document(docuId).update("clientDocId", docuId).addOnCompleteListener(new OnCompleteListener<Void>() {
+        addClientsCollection.
+                document(docuId).update("clientDocId", docuId,"workProgress",WORK_INIT)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
@@ -143,7 +147,7 @@ public class AddClientsFragment extends Fragment {
     }
 
     interface GetDocumentIdOfClientListener {
-        public void getLastDocumentId(String docuId);
+        public void geDocumentId(String docuId);
     }
 
     interface UpdateDocIdiInLastInsertedDocListener {
@@ -153,7 +157,8 @@ public class AddClientsFragment extends Fragment {
 
     private void getDocumentIdAndUpdate(final GetDocumentIdOfClientListener getDocumentIdOfClientListener) {
 
-        addClientsCollection.orderBy("managerUserId", Query.Direction.ASCENDING).limit(1).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        addClientsCollection.whereEqualTo("workProgress", WORK_NOT_INIT)
+                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
@@ -165,8 +170,7 @@ public class AddClientsFragment extends Fragment {
                 }
 
 
-
-                getDocumentIdOfClientListener.getLastDocumentId(docuId);
+                getDocumentIdOfClientListener.geDocumentId(docuId);
 
 
             }

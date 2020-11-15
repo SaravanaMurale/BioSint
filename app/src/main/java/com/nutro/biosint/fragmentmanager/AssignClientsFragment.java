@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -53,7 +52,7 @@ public class AssignClientsFragment extends Fragment implements AdapterView.OnIte
 
         List<String> empName = GetMyEmpDetails.getEmployeeName(employeeNameDTOList);
 
-        empName.add(0,"Select Employee");
+        empName.add(0, "Select Employee");
 
         listVOs = new ArrayList<>();
 
