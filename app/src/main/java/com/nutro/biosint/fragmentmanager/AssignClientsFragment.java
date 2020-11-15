@@ -63,9 +63,6 @@ public class AssignClientsFragment extends Fragment implements AdapterView.OnIte
             listVOs.add(stateVO);
         }
 
-        List<String> getClientNameAndOrg = GetMyClientDetails.getClientNameAndOrganization(myClientResponseArrayList);
-        System.out.println("ClientSize " + getClientNameAndOrg.size());
-        getClientNameAndOrg.add(0, "Select Client");
 
         MyAdapter myAdapter = new MyAdapter(getActivity(), 0, listVOs, AssignClientsFragment.this);
 
@@ -73,6 +70,9 @@ public class AssignClientsFragment extends Fragment implements AdapterView.OnIte
 
         addEmpInSpinnerCheckbox.setAdapter(myAdapter);
 
+        List<String> getClientNameAndOrg = GetMyClientDetails.getClientNameAndOrganization(myClientResponseArrayList);
+        System.out.println("ClientSize " + getClientNameAndOrg.size());
+        getClientNameAndOrg.add(0, "Select Client");
 
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, getClientNameAndOrg);

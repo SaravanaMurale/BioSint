@@ -181,7 +181,11 @@ public class DrawerActivityManager extends AppCompatActivity
     @Override
     public void getMyClient(List<MyClientResponse> myClientResponseArrayList) {
 
+        System.out.println("MyAllClientListSize"+myClientResponseArrayList.size());
+
         this.myClientResponseArrayList = myClientResponseArrayList;
+
+
 
     }
 }

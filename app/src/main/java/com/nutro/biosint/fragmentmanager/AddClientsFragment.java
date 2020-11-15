@@ -32,6 +32,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.core.OrderBy;
 import com.nutro.biosint.R;
 import com.nutro.biosint.modelrequest.AddClientDTO;
+import com.nutro.biosint.utils.GetMyClientDetails;
 import com.nutro.biosint.utils.MathUtil;
 import com.nutro.biosint.utils.PreferenceUtil;
 
@@ -80,6 +81,7 @@ public class AddClientsFragment extends Fragment {
         login_client_email.addTextChangedListener(new MyTextWatcher(login_client_email));
         login_client_address.addTextChangedListener(new MyTextWatcher(login_client_address));
         login_client_details.addTextChangedListener(new MyTextWatcher(login_client_details));
+
 
         btn_addClient.setOnClickListener(new View.OnClickListener() {
             @Override

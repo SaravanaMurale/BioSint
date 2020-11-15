@@ -159,7 +159,7 @@ public class DrawerActivityEmployee extends AppCompatActivity
 
         Intent intent = new Intent(DrawerActivityEmployee.this, LoginActivity.class);
         startActivity(intent);
-        finish();
+        //finish();
 
     }
 }

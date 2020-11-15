@@ -10,7 +10,6 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.nutro.biosint.modelresponse.ManageEmployeeResponse;
 import com.nutro.biosint.modelresponse.MyClientResponse;
 
 import java.util.ArrayList;
@@ -36,9 +35,15 @@ public class GetMyClientDetails {
 
     public void getMyClientList() {
 
+        String userManager=PreferenceUtil.getManagerId(context);
+        System.out.println("USERMANAGER"+userManager);
+
+        String manager=PreferenceUtil.getValueString(context,PreferenceUtil.MANAGER_USER_ID);
+        System.out.println("MYMANAGERID"+manager);
+
         getMyClientCollectionRef
-                .whereEqualTo("managerUserId", PreferenceUtil.getEmpUserId(context))
-                .whereEqualTo("isClientAssigned", false).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                .whereEqualTo("managerUserId", PreferenceUtil.getManagerId(context))
+                .whereEqualTo("clientAssigned", false).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
