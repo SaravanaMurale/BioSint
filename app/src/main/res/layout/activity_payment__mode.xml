@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black"
+    tools:context=".payment.Payment_Mode">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_text"
+        android:gravity="center"
+        android:textColor="#1EF3FF"
+        android:padding="10dp"
+        android:layout_margin="30dp"
+        android:textSize="20sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="20dp"
+        android:padding="15dp"
+        android:background="@drawable/background_shape_white"
+        android:layout_marginTop="50dp">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:text="@string/user_Count"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+       <!-- <Spinner android:id="@+id/spinner"
+        android:layout_width="50dp"
+        android:textSize="16sp"
+        android:layout_marginLeft="50dp"
+        android:layout_height="wrap_content"/>-->
+
+            <EditText android:id="@+id/getUserCount"
+                android:layout_width="100dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_marginLeft="50dp"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/total_Amt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_shape_white"
+        android:layout_margin="20dp"
+        android:padding="15dp"
+        android:gravity="center"
+
+        android:textColor="@color/black"
+        android:text="Total Amount :"
+        android:layout_marginTop="30dp"
+        android:textSize="20sp"
+        />
+
+    <Button
+        android:id="@+id/money_Payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_shape_white"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/Proceed_To_Pay"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="50dp"
+        android:src="@drawable/payment"/>
+
+</LinearLayout>

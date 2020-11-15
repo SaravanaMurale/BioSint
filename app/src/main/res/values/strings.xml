@@ -80,4 +80,11 @@
     <string name="priority">Set Priority</string>
     <string name="assign_client">Assign Client To Employee</string>
 
+    <!--Payment Integration-->
+
+    <string name="welcome_text">We are happy to see you... Please proceed to use application</string>
+    <string name="user_Count">Number of users</string>
+    <string name="Proceed_To_Pay">Proceed to Pay</string>
+    <string name="payment_Error">Payment Error</string>
+
 </resources>
