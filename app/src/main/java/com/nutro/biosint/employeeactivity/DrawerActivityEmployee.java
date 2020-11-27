@@ -1,4 +1,4 @@
-package com.nutro.biosint.activity;
+package com.nutro.biosint.employeeactivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 import com.nutro.biosint.R;
+import com.nutro.biosint.commonactivity.LoginActivity;
 import com.nutro.biosint.fragmentemployee.AddCheckInFragment;
 import com.nutro.biosint.fragmentemployee.AddExpenseFragment;
 import com.nutro.biosint.fragmentemployee.EmpAttendanceFragment;

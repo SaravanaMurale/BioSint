@@ -15,13 +15,14 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 import com.nutro.biosint.R;
-import com.nutro.biosint.activity.LoginActivity;
+import com.nutro.biosint.commonactivity.LoginActivity;
 import com.nutro.biosint.fragmentmanager.HomeFragmentManager;
 import com.nutro.biosint.fragmentmanager.AddClientsFragment;
 import com.nutro.biosint.fragmentmanager.AssignClientsFragment;
 import com.nutro.biosint.fragmentmanager.AddUserFragment;
 import com.nutro.biosint.fragmentmanager.SettingsFragment;
 import com.nutro.biosint.fragmentmanager.ViewEmployeeCheckInReportFragment;
+import com.nutro.biosint.fragmentmanager.ViewMyEmpExpenseReportFragment;
 import com.nutro.biosint.modelresponse.ManageEmployeeResponse;
 import com.nutro.biosint.modelresponse.MyClientResponse;
 import com.nutro.biosint.utils.GetMyClientDetails;
@@ -138,6 +139,10 @@ public class DrawerActivityManager extends AppCompatActivity
         } else if (id == R.id.settings) {
 
             fragment = new SettingsFragment();
+
+        }else if (id == R.id.viewMyEmpExpense) {
+
+            fragment = new ViewMyEmpExpenseReportFragment(employeeNameDTOList);
 
         } else if (id == R.id.logOut) {
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <Spinner
+        android:id="@+id/myEmpExpenseSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty_dp"
+        android:layout_margin="@dimen/ten_dp"
+
+        />
+
+    <TextView
+        android:id="@+id/selectViewExpenseFromDate"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty_dp"
+        android:layout_margin="@dimen/ten_dp"
+        android:background="@drawable/rounded_border"
+        android:gravity="center"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/selectViewExpenseToDate"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty_dp"
+        android:layout_margin="@dimen/ten_dp"
+        android:background="@drawable/rounded_border"
+        android:gravity="center"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/btn_viewExpenseReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_report"
+        android:layout_gravity="center_horizontal"
+        />
+
+
+</LinearLayout>

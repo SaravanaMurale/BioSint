@@ -1,7 +1,6 @@
 package com.nutro.biosint.fragmentmanager;
 
 import android.annotation.SuppressLint;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -25,15 +24,9 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.nutro.biosint.R;
-import com.nutro.biosint.activity.SignupActivity;
 import com.nutro.biosint.modelrequest.AddEmployeeDTO;
 import com.nutro.biosint.utils.AppConstants;
 import com.nutro.biosint.utils.PreferenceUtil;
-
-import static com.nutro.biosint.utils.MathUtil.validateEmail;
-import static com.nutro.biosint.utils.MathUtil.validateMobile;
-import static com.nutro.biosint.utils.MathUtil.validateName;
-import static com.nutro.biosint.utils.MathUtil.validatePassword;
 
 public class AddEmployeeFragment extends Fragment {
 

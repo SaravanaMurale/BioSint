@@ -1,4 +1,4 @@
-package com.nutro.biosint.activity;
+package com.nutro.biosint.commonactivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

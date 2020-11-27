@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.Employee_Location">
+    tools:context=".employeeactivity.Employee_Location">
 
     <LinearLayout
         android:layout_width="match_parent"

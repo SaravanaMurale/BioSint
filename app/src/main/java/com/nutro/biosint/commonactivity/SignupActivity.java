@@ -1,4 +1,4 @@
-package com.nutro.biosint.activity;
+package com.nutro.biosint.commonactivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;

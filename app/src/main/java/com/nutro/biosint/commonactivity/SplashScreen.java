@@ -1,4 +1,4 @@
-package com.nutro.biosint.activity;
+package com.nutro.biosint.commonactivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 
 import com.nutro.biosint.R;
+import com.nutro.biosint.employeeactivity.DrawerActivityEmployee;
 import com.nutro.biosint.manageractivity.DrawerActivityManager;
 import com.nutro.biosint.utils.AppConstants;
 import com.nutro.biosint.utils.PreferenceUtil;

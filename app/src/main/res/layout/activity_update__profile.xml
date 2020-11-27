@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.Update_Profile">
+    tools:context=".commonactivity.Update_Profile">
 
     <TextView
         android:layout_width="match_parent"
