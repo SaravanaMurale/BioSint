@@ -90,11 +90,11 @@ public class SignupActivity extends AppCompatActivity {
                                         String userId = mAuth.getCurrentUser().getUid();
                                         String email = mAuth.getCurrentUser().getEmail();
 
-                                        PreferenceUtil.setValueString(SignupActivity.this, PreferenceUtil.USERID, userId);
+                                        PreferenceUtil.setValueString(SignupActivity.this, PreferenceUtil.MY_USER_ID, userId);
 
                                         addUserDocument = addUserCollection.document(email);
 
-                                        AddManagerDTO userDTO = new AddManagerDTO(userId, contactMobileNum.getText().toString(), AppConstants.getDeviceID(SignupActivity.this), true, AppConstants.ADMIN_ROLE, contactEmail.getText().toString(), "aaaaaa");
+                                        AddManagerDTO userDTO = new AddManagerDTO(userId, contactMobileNum.getText().toString(), AppConstants.getDeviceID(SignupActivity.this), true, AppConstants.MANAGER_ROLE, contactEmail.getText().toString(), "aaaaaa");
 
                                         addUserDocument.set(userDTO);
 
@@ -114,7 +114,7 @@ public class SignupActivity extends AppCompatActivity {
 
 
                         } else if (userResponse.getUserId() != null) {
-                            PreferenceUtil.setValueString(SignupActivity.this, PreferenceUtil.USERID, userResponse.getUserId());
+                            PreferenceUtil.setValueString(SignupActivity.this, PreferenceUtil.MY_USER_ID, userResponse.getUserId());
                             launchPasswordActivity(userResponse.getEmail());
                         }
 

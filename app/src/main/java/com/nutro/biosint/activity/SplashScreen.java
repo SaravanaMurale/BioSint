@@ -13,7 +13,8 @@ import com.nutro.biosint.utils.PreferenceUtil;
 
 public class SplashScreen extends AppCompatActivity {
 
-    private String user_id;
+    private String manager_user_id;
+    private String my_user_id;
     private int role;
 
     @Override
@@ -42,16 +43,18 @@ public class SplashScreen extends AppCompatActivity {
 
             Intent intent = null;
 
-            user_id = PreferenceUtil.getValueString(SplashScreen.this, PreferenceUtil.USERID);
+            manager_user_id = PreferenceUtil.getValueString(SplashScreen.this, PreferenceUtil.MY_MANAGER_USER_ID);
+            my_user_id = PreferenceUtil.getValueString(SplashScreen.this, PreferenceUtil.MY_USER_ID);
             role = PreferenceUtil.getValueInt(SplashScreen.this, PreferenceUtil.USER_ROLE);
 
-            if (user_id != null && AppConstants.ADMIN_ROLE == role) {
+
+            if (manager_user_id != null && AppConstants.MANAGER_ROLE == role) {
                 intent = new Intent(SplashScreen.this, DrawerActivityManager.class);
 
-            } else if (user_id != null && AppConstants.EMP_ROLE == role) {
+            } else if (my_user_id != null && AppConstants.EMP_ROLE == role) {
                 intent = new Intent(SplashScreen.this, DrawerActivityEmployee.class);
 
-            } else if (user_id == null) {
+            } else if (manager_user_id == null && my_user_id == null) {
                 intent = new Intent(SplashScreen.this, LoginActivity.class);
             }
 

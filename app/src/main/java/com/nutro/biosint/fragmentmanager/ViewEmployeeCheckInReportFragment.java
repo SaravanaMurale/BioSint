@@ -131,7 +131,7 @@ public class ViewEmployeeCheckInReportFragment extends Fragment implements Adapt
     private void getMyEmpCheckInDetailsFromFireStore(String empUserId, final MyEmpCheckInListener myEmpCheckInListener) {
 
         viewMyEmployeeCheckInCollection
-                .whereEqualTo("managerUserId", PreferenceUtil.getManagerId(getContext()))
+                .whereEqualTo("managerUserId", PreferenceUtil.getValueString(getContext(),PreferenceUtil.MY_MANAGER_USER_ID))
                 .whereEqualTo("empUserId", empUserId)
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override

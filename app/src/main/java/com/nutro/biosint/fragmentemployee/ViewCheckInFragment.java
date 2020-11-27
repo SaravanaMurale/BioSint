@@ -141,8 +141,8 @@ public class ViewCheckInFragment extends Fragment implements ViewCheckInAdapter.
         System.out.println("Iamcalled");
 
         viewEmployeeCheckInCollection
-                .whereEqualTo("managerUserId", PreferenceUtil.getManagerId(getContext()))
-                .whereEqualTo("empUserId", PreferenceUtil.getEmpUserId(getContext()))
+                .whereEqualTo("managerUserId", PreferenceUtil.getValueString(getContext(),PreferenceUtil.MY_MANAGER_USER_ID))
+                .whereEqualTo("empUserId", PreferenceUtil.getValueString(getContext(),PreferenceUtil.MY_USER_ID))
                 .whereEqualTo("date", userSelectedDate)
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override

@@ -158,7 +158,7 @@ public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
                         public void run() {
                             getDeviceLocation();
                         }
-                    },10000);
+                    }, 10000);
 
                 } else if (!gpsEnabledStatus) {
                     System.out.println("IamcalledEnalbleGPS");
@@ -373,7 +373,7 @@ public class AddCheckInFragment extends Fragment implements OnMapReadyCallback {
 
         addEmployeeCheckInDocument = addEmployeeCheckInCollection.document();
         GeoPoint geoPoint = new GeoPoint(myLocationLat, myLocationLon);
-        AddEmployeeCheckInDTO addEmployeeCheckInDTO = new AddEmployeeCheckInDTO(PreferenceUtil.getManagerId(getContext()), PreferenceUtil.getEmpUserId(getContext()), name, details, geoPoint, MathUtil.date(), MathUtil.time());
+        AddEmployeeCheckInDTO addEmployeeCheckInDTO = new AddEmployeeCheckInDTO(PreferenceUtil.getValueString(getContext(), PreferenceUtil.MY_MANAGER_USER_ID), PreferenceUtil.getValueString(getContext(), PreferenceUtil.MY_USER_ID), name, details, geoPoint, MathUtil.date(), MathUtil.time());
 
         addCheckInDetails(addEmployeeCheckInDTO, new AddCheckInListener() {
             @Override

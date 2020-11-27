@@ -101,7 +101,7 @@ public class AddUserFragment extends Fragment implements ViewUserAdapter.Employe
 
     private void getEmployeeDetails(final EmployeeDetailsGetListener employeeDetailsGetListener) {
 
-        String managerUserId = PreferenceUtil.getValueString(getActivity(), PreferenceUtil.USERID);
+        String managerUserId = PreferenceUtil.getValueString(getActivity(), PreferenceUtil.MY_USER_ID);
 
         employeeCollectionRef.whereEqualTo("managerUserId", managerUserId).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override

@@ -35,7 +35,7 @@ public class GetMyEmpDetails {
 
     public void getEmployeeDetails() {
 
-        String managerUserId = PreferenceUtil.getValueString(context, PreferenceUtil.USERID);
+        String managerUserId = PreferenceUtil.getValueString(context, PreferenceUtil.MY_USER_ID);
 
         employeeCollectionRef.whereEqualTo("managerUserId", managerUserId).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override

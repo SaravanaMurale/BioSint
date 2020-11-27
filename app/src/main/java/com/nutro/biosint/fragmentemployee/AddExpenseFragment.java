@@ -182,7 +182,7 @@ public class AddExpenseFragment extends Fragment {
 
         addEmployeeExpenseDocument = addEmployeeExpenseCollection.document();
 
-        AddExpenseDTO addExpenseDTO = new AddExpenseDTO(PreferenceUtil.getManagerId(getContext()), PreferenceUtil.getEmpUserId(getContext()), purpose, userSelectedDate, details, amount, MathUtil.time());
+        AddExpenseDTO addExpenseDTO = new AddExpenseDTO(PreferenceUtil.getValueString(getContext(),PreferenceUtil.MY_MANAGER_USER_ID), PreferenceUtil.getValueString(getContext(),PreferenceUtil.MY_USER_ID), purpose, userSelectedDate, details, amount, MathUtil.time());
 
         addEmployeeExpenseDocument.set(addExpenseDTO).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -51,7 +52,7 @@ public class AddEmployeeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.layout_add_employee_fragment, container,false);
+        View view = inflater.inflate(R.layout.layout_add_employee_fragment, container, false);
 
         FirebaseApp.initializeApp(getActivity());
         mAuth = FirebaseAuth.getInstance();
@@ -124,13 +125,15 @@ public class AddEmployeeFragment extends Fragment {
                                     String empEmail = mAuth.getCurrentUser().getEmail();
 
                                     addEmployeeDocument = addEmployeeCollection.document(empEmail);
-                                    String managerUserId = PreferenceUtil.getValueString(getContext(), PreferenceUtil.USERID);
+                                    String managerUserId = PreferenceUtil.getValueString(getContext(), PreferenceUtil.MY_USER_ID);
 
-                                    AddEmployeeDTO addEmployeeDTO=new AddEmployeeDTO(empUserId,managerUserId,name,email,password,mobileNum,AppConstants.getDeviceID(getActivity()),empDesignation,shiftStartTime,shiftEndTime,AppConstants.EMP_ROLE,true);
+                                    AddEmployeeDTO addEmployeeDTO = new AddEmployeeDTO(empUserId, managerUserId, name, email, password, mobileNum, AppConstants.getDeviceID(getActivity()), empDesignation, shiftStartTime, shiftEndTime, AppConstants.EMP_ROLE, true);
 
                                     addEmployeeDocument.set(addEmployeeDTO);
 
 
+                                } else {
+                                    Toast.makeText(getContext(), "User is not Added", Toast.LENGTH_LONG).show();
                                 }
 
                             }

@@ -84,11 +84,12 @@ public class LoginActivity extends AppCompatActivity {
                             System.out.println("ManagerUserId " + userResponse.getManagerUserId());
 
                             if (userResponse.getManagerUserId() != null) {
-                                PreferenceUtil.setValueString(LoginActivity.this, PreferenceUtil.MANAGER_USER_ID, userResponse.getManagerUserId());
+                                //He is Employee
+                                PreferenceUtil.setValueString(LoginActivity.this, PreferenceUtil.MY_MANAGER_USER_ID, userResponse.getManagerUserId());
                             }
 
-                            PreferenceUtil.setValueString(LoginActivity.this, PreferenceUtil.USERID, userResponse.getUserId());
-
+                            //He is manager
+                            PreferenceUtil.setValueString(LoginActivity.this, PreferenceUtil.MY_USER_ID, userResponse.getUserId());
                             PreferenceUtil.setValueSInt(LoginActivity.this, PreferenceUtil.USER_ROLE, userResponse.getUserRole());
 
                             launchHomeActivity();

@@ -35,14 +35,13 @@ public class GetMyClientDetails {
 
     public void getMyClientList() {
 
-        String userManager=PreferenceUtil.getManagerId(context);
-        System.out.println("USERMANAGER"+userManager);
 
-        String manager=PreferenceUtil.getValueString(context,PreferenceUtil.MANAGER_USER_ID);
+
+        String manager=PreferenceUtil.getValueString(context,PreferenceUtil.MY_USER_ID);
         System.out.println("MYMANAGERID"+manager);
 
         getMyClientCollectionRef
-                .whereEqualTo("managerUserId", PreferenceUtil.getManagerId(context))
+                .whereEqualTo("managerUserId", manager)
                 .whereEqualTo("clientAssigned", false).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {

@@ -123,8 +123,8 @@ public class ViewExpenseFragment extends Fragment implements ViewExpenseAdapter.
 
     private void getExpenseReport(String userSelectedDate, final DateWiseExpenseReportListener dateWiseExpenseReportListener) {
 
-        viewEmployeeExpenseCollection.whereEqualTo("managerUserId", PreferenceUtil.getManagerId(getContext()))
-                .whereEqualTo("empUserId", PreferenceUtil.getEmpUserId(getContext()))
+        viewEmployeeExpenseCollection.whereEqualTo("managerUserId", PreferenceUtil.getValueString(getContext(),PreferenceUtil.MY_MANAGER_USER_ID))
+                .whereEqualTo("empUserId", PreferenceUtil.getValueString(getContext(),PreferenceUtil.MY_USER_ID))
                 .whereEqualTo("expenseDate", userSelectedDate)
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override

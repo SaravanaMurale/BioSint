@@ -8,10 +8,10 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class PreferenceUtil {
 
-    public static final String USERID = "user_id";
     public static final String SHARED_PREF_NAME = "biosint";
     public static final String USER_ROLE = "user_role";
-    public static final String MANAGER_USER_ID="manager_user_id";
+    public static final String MY_USER_ID="my_user_id";
+    public static final String MY_MANAGER_USER_ID="my_manager_user_id";
 
     public static void setValueString(Context context, String key, String value) {
 
@@ -64,14 +64,6 @@ public class PreferenceUtil {
         editor.apply();
     }
 
-    public static String getEmpUserId(Context context) {
-        String empId = PreferenceUtil.getValueString(context, PreferenceUtil.USERID);
-        return empId;
-    }
 
-    public static String getManagerId(Context context) {
-        String managetId = PreferenceUtil.getValueString(context, PreferenceUtil.MANAGER_USER_ID);
-        return managetId;
-    }
 
 }
