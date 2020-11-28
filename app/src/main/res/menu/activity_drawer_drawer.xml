@@ -27,7 +27,7 @@
             android:title="@string/settings" />
         <item
             android:id="@+id/viewMyEmpExpense"
-            android:title="@string/settings" />
+            android:title="@string/view_myemp_expense" />
         <item
             android:id="@+id/logOut"
             android:title="@string/logout" />

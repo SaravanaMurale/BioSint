@@ -50,6 +50,11 @@ public class ViewMyEmpExpenseAdapter extends RecyclerView.Adapter<ViewMyEmpExpen
     @Override
     public void onBindViewHolder(@NonNull ViewMyEmpExpenseViewHolder holder, int position) {
 
+        holder.myEmpExpensePurposeDetail.setText(viewExpenseResponseList.get(position).getPurposeDetail());
+        holder.myEmpExpenseViewExpDate.setText(viewExpenseResponseList.get(position).getViewExpDate());
+        holder.myEmpExpenseViewExpPrice.setText(viewExpenseResponseList.get(position).getViewExpPrice());
+        holder.myEmpExpensePacksTaken.setText(viewExpenseResponseList.get(position).getPacksTaken());
+
     }
 
     @Override

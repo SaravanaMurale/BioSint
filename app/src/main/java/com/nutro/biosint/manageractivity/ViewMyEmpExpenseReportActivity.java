@@ -79,9 +79,9 @@ public class ViewMyEmpExpenseReportActivity extends AppCompatActivity implements
     private void getExpenseReport(String fromDate, String toDate, String userId, final MyEmpExpenseReportListener myEmpExpenseReportListener) {
 
         viewMyEmpExpenseCollection.whereEqualTo("managerUserId", PreferenceUtil.getValueString(ViewMyEmpExpenseReportActivity.this, PreferenceUtil.MY_MANAGER_USER_ID))
-                .whereEqualTo("empUserId", PreferenceUtil.getValueString(ViewMyEmpExpenseReportActivity.this, PreferenceUtil.MY_USER_ID))
-                .whereLessThan("expenseDate", fromDate)
-                .whereGreaterThan("expenseDate", toDate)
+                .whereEqualTo("empUserId", userId)
+                .whereEqualTo("expenseDate", fromDate)
+                //.whereGreaterThan("expenseDate", toDate)
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {

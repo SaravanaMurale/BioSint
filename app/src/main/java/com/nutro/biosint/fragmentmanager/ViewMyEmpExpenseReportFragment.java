@@ -28,7 +28,7 @@ import java.util.List;
 
 public class ViewMyEmpExpenseReportFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
-    Spinner spinner;
+    private Spinner spinner;
     List<ManageEmployeeResponse> employeeNameDTOList;
     Button btn_viewExpenseReport;
     TextView selectViewExpenseFromDate, selectViewExpenseToDate;
@@ -51,6 +51,8 @@ public class ViewMyEmpExpenseReportFragment extends Fragment implements AdapterV
         View view = inflater.inflate(R.layout.layout_view_my_emp_expense_report, container, false);
 
         spinner = (Spinner) view.findViewById(R.id.myEmpExpenseSpinner);
+        selectViewExpenseFromDate = (TextView) view.findViewById(R.id.selectViewExpenseFromDate);
+        selectViewExpenseToDate = (TextView) view.findViewById(R.id.selectViewExpenseToDate);
         btn_viewExpenseReport = (Button) view.findViewById(R.id.btn_viewExpenseReport);
 
         List<String> empName = GetMyEmpDetails.getEmployeeName(employeeNameDTOList);
@@ -112,8 +114,10 @@ public class ViewMyEmpExpenseReportFragment extends Fragment implements AdapterV
 
                 if (userInput == 1) {
                     selectViewExpenseFromDate.setText(date);
+                    fromDate = date;
                 } else if (userInput == 2) {
                     selectViewExpenseToDate.setText(date);
+                    toDate = date;
                 }
 
             }
@@ -127,6 +131,8 @@ public class ViewMyEmpExpenseReportFragment extends Fragment implements AdapterV
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         System.out.println("SelectedSpinnerIs " + employeeNameDTOList.get(position).getName());
         System.out.println("SelectedSpinnerId " + employeeNameDTOList.get(position).getUserId());
+
+        selectedUserId=employeeNameDTOList.get(position).getUserId();
 
         Toast.makeText(getActivity(), "selected " + employeeNameDTOList.get(position).getName(), Toast.LENGTH_LONG).show();
         Toast.makeText(getActivity(), "selected Id " + employeeNameDTOList.get(position).getUserId(), Toast.LENGTH_LONG).show();
