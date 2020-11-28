@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
@@ -16,12 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".commonactivity.PasswordActivity"></activity>
-        <activity android:name=".commonactivity.SignupActivity"></activity>
-        <!--<activity android:name=".activity.SplashScreen" />-->
-        <activity android:name=".employeeactivity.DrawerActivityEmployee"></activity>
-        <activity android:name=".commonactivity.LoginActivity" />
-        <!--<activity android:name=".manageractivity.DrawerActivityManager" />-->
+        <activity android:name=".manageractivity.ViewMyEmpExpenseReportActivity"></activity>
+        <activity android:name=".commonactivity.PasswordActivity" />
+        <activity android:name=".commonactivity.SignupActivity" /> <!-- <activity android:name=".activity.SplashScreen" /> -->
+        <activity android:name=".employeeactivity.DrawerActivityEmployee" />
+        <activity android:name=".commonactivity.LoginActivity" /> <!-- <activity android:name=".manageractivity.DrawerActivityManager" /> -->
         <activity android:name=".manageractivity.DrawerActivityManager">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,8 +38,6 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
-
     </application>
 
 </manifest>

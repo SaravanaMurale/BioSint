@@ -1,6 +1,7 @@
 package com.nutro.biosint.fragmentmanager;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.nutro.biosint.R;
+import com.nutro.biosint.manageractivity.ViewMyEmpExpenseReportActivity;
 import com.nutro.biosint.modelresponse.ManageEmployeeResponse;
 import com.nutro.biosint.utils.GetMyEmpDetails;
 
@@ -30,7 +32,7 @@ public class ViewMyEmpExpenseReportFragment extends Fragment implements AdapterV
     List<ManageEmployeeResponse> employeeNameDTOList;
     Button btn_viewExpenseReport;
     TextView selectViewExpenseFromDate, selectViewExpenseToDate;
-    String fromDate=null,toDate=null,selectedUserId=null;
+    String fromDate = null, toDate = null, selectedUserId = null;
 
 
     Calendar calendar = Calendar.getInstance();
@@ -82,7 +84,13 @@ public class ViewMyEmpExpenseReportFragment extends Fragment implements AdapterV
             @Override
             public void onClick(View v) {
 
-                if(fromDate!=null && toDate!=null && selectedUserId!=null){
+                if (fromDate != null && toDate != null && selectedUserId != null) {
+
+                    Intent intent = new Intent(getActivity(), ViewMyEmpExpenseReportActivity.class);
+                    intent.putExtra("FROM_DATE", fromDate);
+                    intent.putExtra("TO_DATE", toDate);
+                    intent.putExtra("USER_ID", selectedUserId);
+                    startActivity(intent);
 
                 }
 

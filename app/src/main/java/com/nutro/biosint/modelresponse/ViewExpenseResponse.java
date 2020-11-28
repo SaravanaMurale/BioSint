@@ -4,6 +4,8 @@ import com.google.firebase.firestore.PropertyName;
 
 public class ViewExpenseResponse {
 
+    private String expenseDocId;
+
     @PropertyName("expensePurpuse")
     private String purposeDetail;
     @PropertyName("expenseDetails")
@@ -23,6 +25,14 @@ public class ViewExpenseResponse {
         this.viewExpDate = viewExpDate;
         this.viewExpStatus = viewExpStatus;
         this.viewExpPrice = viewExpPrice;
+    }
+
+    public String getExpenseDocId() {
+        return expenseDocId;
+    }
+
+    public void setExpenseDocId(String expenseDocId) {
+        this.expenseDocId = expenseDocId;
     }
 
     @PropertyName("expensePurpuse")

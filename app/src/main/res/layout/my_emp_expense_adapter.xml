@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
@@ -17,75 +17,102 @@
             android:padding="@dimen/ten_dp">
 
             <TextView
-                android:id="@+id/purposeText"
+                android:id="@+id/myEmpPurposeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/purpose"
                 android:textColor="@color/black" />
 
             <TextView
-                android:id="@+id/purposeDetail"
+                android:id="@+id/myEmpPurposeDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/purposeText"
-                android:maxLines="1"
                 android:layout_marginLeft="@dimen/ten_dp"
+                android:layout_toRightOf="@id/myEmpPurposeText"
+                android:maxLines="1"
                 android:text="Parcel Office" />
 
             <TextView
-                android:id="@+id/packsTaken"
+                android:id="@+id/myEmpPacksTaken"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/purposeText"
+                android:layout_below="@id/myEmpPurposeText"
                 android:layout_marginTop="@dimen/ten_dp"
                 android:maxLines="1"
                 android:text="100kg sales packs taken" />
 
             <View
-                android:id="@+id/line"
+                android:id="@+id/myEmpline"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_below="@id/packsTaken"
+                android:layout_below="@id/myEmpPacksTaken"
                 android:layout_marginTop="@dimen/ten_dp"
                 android:background="@color/gray" />
 
             <TextView
-                android:id="@+id/viewExpDate"
+                android:id="@+id/myEmpViewExpDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/line"
+                android:layout_below="@id/myEmpline"
                 android:layout_marginTop="@dimen/ten_dp"
                 android:text="22nd Sep 2020" />
 
             <ImageView
-                android:id="@+id/viewExpStatus"
+                android:id="@+id/myEmpViewExpStatus"
                 android:layout_width="@dimen/thirty_dp"
                 android:layout_height="@dimen/thirty_dp"
-                android:layout_below="@id/line"
+                android:layout_below="@id/myEmpline"
                 android:layout_marginLeft="@dimen/five_dp"
                 android:layout_marginTop="@dimen/ten_dp"
-                android:layout_toRightOf="@id/viewExpDate"
+                android:layout_toRightOf="@id/myEmpViewExpDate"
                 android:src="@drawable/camera" />
 
             <TextView
-                android:id="@+id/viewExpPrice"
+                android:id="@+id/myEmpViewExpPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/line"
+                android:layout_below="@id/myEmpline"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="@dimen/ten_dp"
                 android:layout_marginRight="@dimen/ten_dp"
                 android:text="40" />
 
             <TextView
+                android:id="@+id/myEmpExpenseAmountText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/line"
+                android:layout_below="@id/myEmpline"
                 android:layout_marginTop="@dimen/ten_dp"
                 android:layout_marginRight="@dimen/five_dp"
-                android:layout_toLeftOf="@id/viewExpPrice"
+                android:layout_toLeftOf="@id/myEmpViewExpPrice"
                 android:text="@string/amount" />
 
+            <TextView
+                android:id="@+id/myEmpExpenseAccept"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/myEmpViewExpDate"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="@dimen/eight_dp"
+                android:text="@string/accpet" />
+
+            <TextView
+                android:id="@+id/myEmpExpenseDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/myEmpViewExpDate"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/eight_dp"
+                android:text="@string/delete" />
+
+            <TextView
+                android:id="@+id/myEmpExpenseReject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/myEmpViewExpDate"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/eight_dp"
+                android:text="@string/reject" />
         </RelativeLayout>
 
 
