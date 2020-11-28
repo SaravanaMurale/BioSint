@@ -23,7 +23,7 @@ public class ViewMyEmpExpenseAdapter extends RecyclerView.Adapter<ViewMyEmpExpen
 
     public interface MyEmpExpenseStatusClickListener {
 
-        public void onClickMyEmpExpenseStatus();
+        public void onClickMyEmpExpenseStatus(String expenseDocId);
 
     }
 
@@ -72,6 +72,28 @@ public class ViewMyEmpExpenseAdapter extends RecyclerView.Adapter<ViewMyEmpExpen
             myEmpExpenseAccept=(TextView)itemView.findViewById(R.id.myEmpExpenseAccept);
             myEmpExpenseDelete=(TextView)itemView.findViewById(R.id.myEmpExpenseDelete);
             myEmpExpenseReject=(TextView)itemView.findViewById(R.id.myEmpExpenseReject);
+
+            myEmpExpenseAccept.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    myEmpExpenseStatusClickListener.onClickMyEmpExpenseStatus(viewExpenseResponseList.get(getAdapterPosition()).getExpenseDocId());
+
+                }
+            });
+
+            myEmpExpenseDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    myEmpExpenseStatusClickListener.onClickMyEmpExpenseStatus(viewExpenseResponseList.get(getAdapterPosition()).getExpenseDocId());
+                }
+            });
+
+            myEmpExpenseReject.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    myEmpExpenseStatusClickListener.onClickMyEmpExpenseStatus(viewExpenseResponseList.get(getAdapterPosition()).getExpenseDocId());
+                }
+            });
 
         }
     }

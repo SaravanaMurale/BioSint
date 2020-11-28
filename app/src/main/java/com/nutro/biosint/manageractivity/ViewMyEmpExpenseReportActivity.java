@@ -16,21 +16,24 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.nutro.biosint.R;
+import com.nutro.biosint.adapter.ViewMyEmpExpenseAdapter;
 import com.nutro.biosint.modelresponse.ViewExpenseResponse;
 import com.nutro.biosint.utils.PreferenceUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewMyEmpExpenseReportActivity extends AppCompatActivity {
+public class ViewMyEmpExpenseReportActivity extends AppCompatActivity implements ViewMyEmpExpenseAdapter.MyEmpExpenseStatusClickListener {
 
     RecyclerView myEmpExpenseRecyclerView;
+    ViewMyEmpExpenseAdapter viewMyEmpExpenseAdapter;
     Button btnMyEmpExpenseDownload;
-    FirebaseFirestore db;
 
+    FirebaseFirestore db;
     private CollectionReference viewMyEmpExpenseCollection;
 
     List<ViewExpenseResponse> viewExpenseResponseList;
+
 
     interface MyEmpExpenseReportListener {
         public void onViewMyEmpExpense(List<ViewExpenseResponse> viewExpenseResponseList);
@@ -49,11 +52,15 @@ public class ViewMyEmpExpenseReportActivity extends AppCompatActivity {
         String toDate = intent.getStringExtra("TO_DATE");
         String userId = intent.getStringExtra("USER_ID");
 
-        viewExpenseResponseList=new ArrayList<>();
+        viewExpenseResponseList = new ArrayList<>();
+
+        viewMyEmpExpenseAdapter = new ViewMyEmpExpenseAdapter(this, viewExpenseResponseList, this);
 
         myEmpExpenseRecyclerView = (RecyclerView) findViewById(R.id.myEmpExpenseRecyclerView);
         myEmpExpenseRecyclerView.setLayoutManager(new LinearLayoutManager(ViewMyEmpExpenseReportActivity.this));
         myEmpExpenseRecyclerView.setHasFixedSize(true);
+
+        myEmpExpenseRecyclerView.setAdapter(viewMyEmpExpenseAdapter);
 
         btnMyEmpExpenseDownload = (Button) findViewById(R.id.btnMyEmpExpenseDownload);
 
@@ -61,6 +68,7 @@ public class ViewMyEmpExpenseReportActivity extends AppCompatActivity {
             @Override
             public void onViewMyEmpExpense(List<ViewExpenseResponse> viewExpenseResponseList) {
 
+                viewMyEmpExpenseAdapter.setData(viewExpenseResponseList);
 
 
             }
@@ -98,5 +106,11 @@ public class ViewMyEmpExpenseReportActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    public void onClickMyEmpExpenseStatus(String expenseDocId) {
+
+        System.out.println("MyExpenseDocmentId " + expenseDocId);
     }
 }
