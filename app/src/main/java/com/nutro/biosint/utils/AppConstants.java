@@ -34,5 +34,8 @@ public class AppConstants {
     public static final int MANAGER_ROLE=1;
     public static final int EMP_ROLE=2;
 
+    //JobIntentService
+    public static final int RESULT_CODE=5;
+
 
 }
