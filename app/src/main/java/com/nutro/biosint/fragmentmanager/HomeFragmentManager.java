@@ -12,6 +12,7 @@ import android.os.ResultReceiver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,16 +31,8 @@ import static com.nutro.biosint.utils.AppConstants.LOCATION_PERMISSION_REQUEST_C
 
 public class HomeFragmentManager extends Fragment {
 
-    private FusedLocationProviderClient mFusedLocationProviderClient;
     private boolean gpsEnabledStatus;
     public boolean isGPS;
-
-    private Location mLastKnownLocation;
-    private LocationCallback locationCallback;
-    private final float DEFAULT_ZOOM = 13;
-
-    public LocationManager locationManager;
-    Double myLocationLat, myLocationLon;
 
     @Nullable
     @Override
@@ -72,14 +65,13 @@ public class HomeFragmentManager extends Fragment {
 
                 if (gpsEnabledStatus) {
 
-                    getDeviceLocation();
-                    /*new Handler().postDelayed(new Runnable() {
+       //             getDeviceLocation();
+                    new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             getDeviceLocation();
                         }
                     }, 10000);
-*/
                 } else if (!gpsEnabledStatus) {
                     System.out.println("IamcalledEnalbleGPS");
                     enableGPS();
@@ -94,6 +86,8 @@ public class HomeFragmentManager extends Fragment {
 
     @SuppressLint("MissingPermission")
     private void getDeviceLocation() {
+
+        System.out.println("GetDeviceLocationIsCalled");
 
         MyResultReceiver myResultReceiver = new MyResultReceiver(null);
 
@@ -150,20 +144,30 @@ public class HomeFragmentManager extends Fragment {
 
     private class MyResultReceiver extends ResultReceiver {
 
+
+
         public MyResultReceiver(Handler handler) {
             super(handler);
+
+            System.out.println("MyResultReceiverIsCalled");
         }
 
         @Override
         protected void onReceiveResult(int resultCode, Bundle resultData) {
             super.onReceiveResult(resultCode, resultData);
 
+            System.out.println("outside");
+
             if (resultCode == AppConstants.RESULT_CODE && resultData != null) {
+
+                System.out.println("Inseide");
 
                 Double lat = resultData.getDouble("MYLATITIDE");
                 Double lon = resultData.getDouble("MYLONGITUTE");
 
                 System.out.println("MYLATLONGI" + lat + " " + lon);
+
+                Toast.makeText(getActivity(),"MyLat "+lat+" "+lon,Toast.LENGTH_LONG).show();
 
 
               /*  handler.post(new Runnable() {

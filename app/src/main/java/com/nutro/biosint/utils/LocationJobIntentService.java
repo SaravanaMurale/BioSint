@@ -33,13 +33,15 @@ public class LocationJobIntentService extends JobIntentService {
     public static LocationManager locationManager;
     Double myLocationLat, myLocationLon;
 
+    static Context context;
+
 
     public static void enqueueWork(Context context, Intent serviceIntent) {
 
         enqueueWork(context, LocationJobIntentService.class, 1, serviceIntent);
 
-        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context);
-        locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+
+
 
     }
 
@@ -48,8 +50,11 @@ public class LocationJobIntentService extends JobIntentService {
     @Override
     protected void onHandleWork(@NonNull Intent intent) {
 
+        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context);
+        locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 
-        final ResultReceiver resultReceiver=intent.getParcelableExtra("MYRESULTRECEIVER");
+
+        final ResultReceiver resultReceiver = intent.getParcelableExtra("MYRESULTRECEIVER");
 
 
         mFusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
@@ -66,11 +71,11 @@ public class LocationJobIntentService extends JobIntentService {
 
                         System.out.println("LATITIDEANDLONGITITE " + myLocationLat + " " + myLocationLon);
 
-                        Bundle latLong=new Bundle();
-                        latLong.putDouble("MYLATITIDE",myLocationLat);
-                        latLong.putDouble("MYLONGITUTE",myLocationLon);
+                        Bundle latLong = new Bundle();
+                        latLong.putDouble("MYLATITIDE", myLocationLat);
+                        latLong.putDouble("MYLONGITUTE", myLocationLon);
 
-                        resultReceiver.send(AppConstants.RESULT_CODE,latLong);
+                        resultReceiver.send(AppConstants.RESULT_CODE, latLong);
 
 
                     } else if (mLastKnownLocation == null) {
@@ -99,11 +104,11 @@ public class LocationJobIntentService extends JobIntentService {
 
                                     System.out.println("MyLocationLatLong" + myLocationLat + " " + myLocationLon);
 
-                                    Bundle latLong=new Bundle();
-                                    latLong.putDouble("MYLATITIDE",myLocationLat);
-                                    latLong.putDouble("MYLONGITUTE",myLocationLon);
+                                    Bundle latLong = new Bundle();
+                                    latLong.putDouble("MYLATITIDE", myLocationLat);
+                                    latLong.putDouble("MYLONGITUTE", myLocationLon);
 
-                                    resultReceiver.send(AppConstants.RESULT_CODE,latLong);
+                                    resultReceiver.send(AppConstants.RESULT_CODE, latLong);
 
 
                                     mFusedLocationProviderClient.removeLocationUpdates(locationCallback);
