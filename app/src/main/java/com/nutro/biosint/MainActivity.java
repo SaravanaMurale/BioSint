@@ -24,6 +24,13 @@ public class MainActivity extends AppCompatActivity {
 
     Button sendEmail;
 
+    /*
+biosint2020@gmail.com
+bios!nt123
+
+MAP KEY AIzaSyDwP202Xl7sNJMLa4YvOgD8OpzVUpelkBk*/
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
