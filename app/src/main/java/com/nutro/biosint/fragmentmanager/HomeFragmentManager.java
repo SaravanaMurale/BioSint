@@ -33,6 +33,13 @@ public class HomeFragmentManager extends Fragment {
 
     private boolean gpsEnabledStatus;
     public boolean isGPS;
+    
+    public interface addMyLocationListener{
+        
+        public void addMyLocationClick(Double latitute,Double longitute);
+        
+        
+    }
 
     @Nullable
     @Override
@@ -65,7 +72,7 @@ public class HomeFragmentManager extends Fragment {
 
                 if (gpsEnabledStatus) {
 
-       //             getDeviceLocation();
+                    //             getDeviceLocation();
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -145,7 +152,6 @@ public class HomeFragmentManager extends Fragment {
     private class MyResultReceiver extends ResultReceiver {
 
 
-
         public MyResultReceiver(Handler handler) {
             super(handler);
 
@@ -165,9 +171,11 @@ public class HomeFragmentManager extends Fragment {
                 Double lat = resultData.getDouble("MYLATITIDE");
                 Double lon = resultData.getDouble("MYLONGITUTE");
 
+                addMyCurrentLocationInFireStore(lat, lon);
+
                 System.out.println("MYLATLONGI" + lat + " " + lon);
 
-                Toast.makeText(getActivity(),"MyLat "+lat+" "+lon,Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "MyLat " + lat + " " + lon, Toast.LENGTH_LONG).show();
 
 
               /*  handler.post(new Runnable() {
@@ -182,6 +190,13 @@ public class HomeFragmentManager extends Fragment {
             }
 
         }
+    }
+
+    private void addMyCurrentLocationInFireStore(Double lat, Double lon) {
+        
+        //addMyLocationInFS(lat,lon,new addMyLocationListener())
+        
+
     }
 
 
