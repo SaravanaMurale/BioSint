@@ -23,6 +23,10 @@
             android:title="@string/manage_checkins" />
 
         <item
+            android:id="@+id/trackEmployee"
+            android:title="@string/track_emp" />
+
+        <item
             android:id="@+id/settings"
             android:title="@string/settings" />
         <item

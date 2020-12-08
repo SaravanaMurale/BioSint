@@ -21,6 +21,7 @@ import com.nutro.biosint.fragmentmanager.AddClientsFragment;
 import com.nutro.biosint.fragmentmanager.AssignClientsFragment;
 import com.nutro.biosint.fragmentmanager.AddUserFragment;
 import com.nutro.biosint.fragmentmanager.SettingsFragment;
+import com.nutro.biosint.fragmentmanager.TrackEmployeeFragment;
 import com.nutro.biosint.fragmentmanager.ViewEmployeeCheckInReportFragment;
 import com.nutro.biosint.fragmentmanager.ViewMyEmpExpenseReportFragment;
 import com.nutro.biosint.modelresponse.ManageEmployeeResponse;
@@ -130,17 +131,19 @@ public class DrawerActivityManager extends AppCompatActivity
 
         } else if (id == R.id.assignClients) {
 
-            fragment = new AssignClientsFragment(myClientResponseArrayList,employeeNameDTOList);
+            fragment = new AssignClientsFragment(myClientResponseArrayList, employeeNameDTOList);
 
         } else if (id == R.id.manageCheckins) {
             //fragment = new ManageCheckInsFragment();
             fragment = new ViewEmployeeCheckInReportFragment(employeeNameDTOList);
 
+        } else if (id == R.id.trackEmployee) {
+            fragment=new TrackEmployeeFragment(employeeNameDTOList);
         } else if (id == R.id.settings) {
 
             fragment = new SettingsFragment();
 
-        }else if (id == R.id.viewMyEmpExpense) {
+        } else if (id == R.id.viewMyEmpExpense) {
 
             fragment = new ViewMyEmpExpenseReportFragment(employeeNameDTOList);
 
@@ -186,10 +189,9 @@ public class DrawerActivityManager extends AppCompatActivity
     @Override
     public void getMyClient(List<MyClientResponse> myClientResponseArrayList) {
 
-        System.out.println("MyAllClientListSize"+myClientResponseArrayList.size());
+        System.out.println("MyAllClientListSize" + myClientResponseArrayList.size());
 
         this.myClientResponseArrayList = myClientResponseArrayList;
-
 
 
     }
