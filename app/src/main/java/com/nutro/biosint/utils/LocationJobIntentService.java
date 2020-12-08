@@ -33,14 +33,15 @@ public class LocationJobIntentService extends JobIntentService {
     public static LocationManager locationManager;
     Double myLocationLat, myLocationLon;
 
-    static Context context;
+    static Context mCtx;
 
 
     public static void enqueueWork(Context context, Intent serviceIntent) {
 
+        System.out.println("InSideEnqueue");
+
         enqueueWork(context, LocationJobIntentService.class, 1, serviceIntent);
-
-
+        mCtx=context;
 
 
     }
@@ -50,8 +51,10 @@ public class LocationJobIntentService extends JobIntentService {
     @Override
     protected void onHandleWork(@NonNull Intent intent) {
 
-        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context);
-        locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+        System.out.println("InsideOnHandleWork");
+
+        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(mCtx);
+        locationManager = (LocationManager) mCtx.getSystemService(Context.LOCATION_SERVICE);
 
 
         final ResultReceiver resultReceiver = intent.getParcelableExtra("MYRESULTRECEIVER");

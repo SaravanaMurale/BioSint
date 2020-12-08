@@ -71,7 +71,7 @@ public class HomeFragmentManager extends Fragment {
                         public void run() {
                             getDeviceLocation();
                         }
-                    }, 10000);
+                    }, 5000);
                 } else if (!gpsEnabledStatus) {
                     System.out.println("IamcalledEnalbleGPS");
                     enableGPS();
@@ -131,7 +131,7 @@ public class HomeFragmentManager extends Fragment {
                     public void run() {
                         getDeviceLocation();
                     }
-                }, 10000);
+                }, 5000);
 
 
             }
