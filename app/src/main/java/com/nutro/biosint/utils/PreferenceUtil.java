@@ -13,6 +13,12 @@ public class PreferenceUtil {
     public static final String MY_USER_ID="my_user_id";
     public static final String MY_MANAGER_USER_ID="my_manager_user_id";
 
+    public static final String LOGIN_DATE="login_date";
+    public static final String LOGIN_TIME="login_time";
+    public static final String LOGOUT_DATE="logout_date";
+    public static final String LOGOUT_TIME="logout_time";
+    public static final String LOGIN_STATUS="login_status";
+
     public static void setValueString(Context context, String key, String value) {
 
         if (context == null) return;

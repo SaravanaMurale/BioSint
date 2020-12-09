@@ -40,6 +40,8 @@ public class AppConstants {
     //Attendance
     public static final String LOGIN="Login";
     public static final String LOGOUT="Logout";
+    public static final int LOGGED_IN=1;
+    public static final int LOGGED_OUT=0;
 
 
 }

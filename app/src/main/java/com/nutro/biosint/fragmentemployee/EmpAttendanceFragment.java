@@ -29,6 +29,8 @@ public class EmpAttendanceFragment extends Fragment {
     Button btnLogin;
     RippleBackground rippleBackground;
 
+    TextView shiftStartDate, shiftStartTime, shiftEndDate, shiftEndTime;
+
     private FirebaseFirestore db;
     private CollectionReference addEmpAttendanceTimeCollection;
     private DocumentReference addEmpAttendanceTimeDocument;
@@ -53,9 +55,24 @@ public class EmpAttendanceFragment extends Fragment {
         addEmpAttendanceTimeCollection = db.collection("EmpAttendance");
         //addSignoutdoc=addEmpAttendanceTimeCollection.document();
 
+        shiftStartDate = (TextView) view.findViewById(R.id.shiftStartDate);
+        shiftStartTime = (TextView) view.findViewById(R.id.shiftStartTime);
+        shiftEndDate = (TextView) view.findViewById(R.id.shiftEndDate);
+        shiftEndTime = (TextView) view.findViewById(R.id.shiftEndTime);
+
 
         btnLogin = (Button) view.findViewById(R.id.btnLogin);
         rippleBackground = (RippleBackground) view.findViewById(R.id.rippleEffect);
+
+        if(PreferenceUtil.getValueInt(getActivity(),PreferenceUtil.LOGIN_STATUS)==1){
+            btnLogin.setText(AppConstants.LOGOUT);
+            rippleBackground.startRippleAnimation();
+            shiftStartDate.setText(PreferenceUtil.getValueString(getActivity(), PreferenceUtil.LOGIN_DATE));
+            shiftStartTime.setText(PreferenceUtil.getValueString(getActivity(), PreferenceUtil.LOGIN_TIME));
+
+            shiftEndDate.setText("--");
+            shiftEndTime.setText("--");
+        }
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +108,19 @@ public class EmpAttendanceFragment extends Fragment {
             @Override
             public void empLoginClick() {
 
+                PreferenceUtil.setValueString(getActivity(), PreferenceUtil.LOGIN_DATE, MathUtil.date());
+                PreferenceUtil.setValueString(getActivity(), PreferenceUtil.LOGIN_TIME, MathUtil.time());
+                PreferenceUtil.setValueSInt(getActivity(), PreferenceUtil.LOGIN_STATUS, AppConstants.LOGGED_IN);
+
+                shiftStartDate.setText(PreferenceUtil.getValueString(getActivity(), PreferenceUtil.LOGIN_DATE));
+                shiftStartTime.setText(PreferenceUtil.getValueString(getActivity(), PreferenceUtil.LOGIN_TIME));
+
+                shiftEndDate.setText("--");
+                shiftEndTime.setText("--");
+
+
                 Toast.makeText(getActivity(), "You logged in successfully", Toast.LENGTH_LONG).show();
+
 
             }
         });
@@ -124,6 +153,14 @@ public class EmpAttendanceFragment extends Fragment {
         addLogoutTime(new EmpLogoutClickListener() {
             @Override
             public void empLogoutClick() {
+
+                PreferenceUtil.setValueString(getActivity(), PreferenceUtil.LOGOUT_DATE, MathUtil.date());
+                PreferenceUtil.setValueString(getActivity(), PreferenceUtil.LOGOUT_TIME, MathUtil.time());
+                PreferenceUtil.setValueSInt(getActivity(), PreferenceUtil.LOGIN_STATUS, AppConstants.LOGGED_OUT);
+
+                shiftEndDate.setText(PreferenceUtil.getValueString(getActivity(), PreferenceUtil.LOGOUT_DATE));
+                shiftEndTime.setText(PreferenceUtil.getValueString(getActivity(), PreferenceUtil.LOGOUT_TIME));
+
 
                 Toast.makeText(getActivity(), "You logged out successfully", Toast.LENGTH_LONG).show();
 
