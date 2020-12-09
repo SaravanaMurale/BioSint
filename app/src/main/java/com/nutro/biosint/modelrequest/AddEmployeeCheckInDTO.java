@@ -34,6 +34,13 @@ public class AddEmployeeCheckInDTO extends EmployeeBaseDTO {
 
     }
 
+    public AddEmployeeCheckInDTO(String managerUserId, String empUserId, GeoPoint geoPoint, String date, String time) {
+        super(managerUserId, empUserId);
+        this.geoPoint = geoPoint;
+        this.date = date;
+        this.time = time;
+    }
+
     public String getCheckInName() {
         return checkInName;
     }
