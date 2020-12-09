@@ -64,15 +64,8 @@ public class EmpAttendanceFragment extends Fragment {
         btnLogin = (Button) view.findViewById(R.id.btnLogin);
         rippleBackground = (RippleBackground) view.findViewById(R.id.rippleEffect);
 
-        if(PreferenceUtil.getValueInt(getActivity(),PreferenceUtil.LOGIN_STATUS)==1){
-            btnLogin.setText(AppConstants.LOGOUT);
-            rippleBackground.startRippleAnimation();
-            shiftStartDate.setText(PreferenceUtil.getValueString(getActivity(), PreferenceUtil.LOGIN_DATE));
-            shiftStartTime.setText(PreferenceUtil.getValueString(getActivity(), PreferenceUtil.LOGIN_TIME));
+        checkEmpLoginStatus();
 
-            shiftEndDate.setText("--");
-            shiftEndTime.setText("--");
-        }
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +92,25 @@ public class EmpAttendanceFragment extends Fragment {
 
 
         return view;
+    }
+
+    private void checkEmpLoginStatus() {
+
+        if (PreferenceUtil.getValueInt(getActivity(), PreferenceUtil.LOGIN_STATUS) == 1) {
+            btnLogin.setText(AppConstants.LOGOUT);
+            rippleBackground.startRippleAnimation();
+            shiftStartDate.setText(PreferenceUtil.getValueString(getActivity(), PreferenceUtil.LOGIN_DATE));
+            shiftStartTime.setText(PreferenceUtil.getValueString(getActivity(), PreferenceUtil.LOGIN_TIME));
+
+            shiftEndDate.setText("--");
+            shiftEndTime.setText("--");
+        } else {
+            shiftStartDate.setText("--");
+            shiftStartTime.setText("--");
+            shiftEndDate.setText("--");
+            shiftEndTime.setText("--");
+        }
+
     }
 
 
