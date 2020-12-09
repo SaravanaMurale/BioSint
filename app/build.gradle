@@ -58,6 +58,9 @@ dependencies {
     //Payment Integration
     implementation 'com.razorpay:checkout:1.5.16'
 
+    //Ripple Effect
+    implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
+
 
 
 }
