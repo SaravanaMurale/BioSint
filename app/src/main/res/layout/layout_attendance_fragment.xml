@@ -20,15 +20,6 @@
         app:rb_rippleAmount="4"
         app:rb_scale="6">
 
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="350dp"
-            android:layout_height="350dp"
-            android:layout_centerInParent="true"
-            android:background="@drawable/round_shapre"
-
-            />
-
         <TextView
             android:id="@+id/loginTxt"
             android:layout_width="wrap_content"
@@ -38,6 +29,17 @@
             android:textColor="@color/black"
             android:textSize="@dimen/forty_sp"
             android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/round_shapre"
+
+            />
+
+
 
     </com.skyfishjy.library.RippleBackground>
 
