@@ -55,6 +55,7 @@ public class EmployeeHomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.layout_employee__home_fragment, container, false);
+        db = FirebaseFirestore.getInstance();
 
         addEmployeeCurrentLocationCollection = db.collection("EmpCurrentLocation");
 

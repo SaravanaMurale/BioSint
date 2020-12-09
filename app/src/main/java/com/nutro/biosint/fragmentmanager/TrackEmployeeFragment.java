@@ -1,6 +1,8 @@
 package com.nutro.biosint.fragmentmanager;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +15,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -23,12 +30,13 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.nutro.biosint.R;
 import com.nutro.biosint.modelresponse.ManageEmployeeResponse;
 import com.nutro.biosint.modelresponse.ViewCheckInResponse;
+import com.nutro.biosint.utils.AppConstants;
 import com.nutro.biosint.utils.GetMyEmpDetails;
 import com.nutro.biosint.utils.PreferenceUtil;
 
 import java.util.List;
 
-public class TrackEmployeeFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class TrackEmployeeFragment extends Fragment implements AdapterView.OnItemSelectedListener, OnMapReadyCallback {
 
     FirebaseFirestore db;
     CollectionReference viewMyEmployeeCurrentLocationCollection;
@@ -41,6 +49,8 @@ public class TrackEmployeeFragment extends Fragment implements AdapterView.OnIte
 
     Double myEmpCurLat;
     Double myEmpCurLong;
+    MarkerOptions myEmpCurrentLocation;
+    Marker myEmpCurrentLocationMarker;
 
 
     interface MyEmpLocationListener {
@@ -61,11 +71,8 @@ public class TrackEmployeeFragment extends Fragment implements AdapterView.OnIte
 
         db = FirebaseFirestore.getInstance();
         viewMyEmployeeCurrentLocationCollection = db.collection("EmpCurrentLocation");
-
-
         trackEmpSpinner = (Spinner) view.findViewById(R.id.trackEmpSpinner);
         List<String> empName = GetMyEmpDetails.getEmployeeName(employeeNameDTOList);
-
 
 
         ArrayAdapter<String> adapter =
@@ -74,6 +81,10 @@ public class TrackEmployeeFragment extends Fragment implements AdapterView.OnIte
 
         trackEmpSpinner.setAdapter(adapter);
         trackEmpSpinner.setOnItemSelectedListener(this);
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.trackEmpMap);
+        mapFragment.getMapAsync(this);
+        mapView = mapFragment.getView();
 
 
         return view;
@@ -97,6 +108,16 @@ public class TrackEmployeeFragment extends Fragment implements AdapterView.OnIte
 
     }
 
+    @SuppressLint("MissingPermission")
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
+        mGoogleMap = googleMap;
+        mGoogleMap.setMyLocationEnabled(false);
+
+    }
+
+
     private void getMyEmpLocationdetails(String userId) {
 
         getMyEmpLocationFromFireStore(userId, new MyEmpLocationListener() {
@@ -106,8 +127,32 @@ public class TrackEmployeeFragment extends Fragment implements AdapterView.OnIte
                 myEmpCurLat = viewCheckInResponse.getGeoPoint().getLatitude();
                 myEmpCurLong = viewCheckInResponse.getGeoPoint().getLongitude();
 
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        addMarker(myEmpCurLat, myEmpCurLong);
+                    }
+                }, 2000);
+
+                moveCamera(myEmpCurLat, myEmpCurLong);
+
             }
         });
+    }
+
+    private void moveCamera(Double myEmpCurLat, Double myEmpCurLong) {
+
+        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(myEmpCurLat, myEmpCurLong), AppConstants.DEFAULT_ZOOM));
+
+    }
+
+    private void addMarker(Double myEmpCurLat, Double myEmpCurLong) {
+
+        myEmpCurrentLocation = new MarkerOptions().position(new LatLng(myEmpCurLat, myEmpCurLong)).title("Murali");
+        myEmpCurrentLocationMarker = mGoogleMap.addMarker(myEmpCurrentLocation);
+        myEmpCurrentLocationMarker.showInfoWindow();
+
+
     }
 
     private void getMyEmpLocationFromFireStore(String userId, final MyEmpLocationListener myEmpLocationListener) {
