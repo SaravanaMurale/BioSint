@@ -37,5 +37,9 @@ public class AppConstants {
     //JobIntentService
     public static final int RESULT_CODE=5;
 
+    //Attendance
+    public static final String LOGIN="Login";
+    public static final String LOGOUT="Logout";
+
 
 }
