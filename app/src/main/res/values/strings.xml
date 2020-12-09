@@ -101,6 +101,7 @@
     <string name="payment_Error">Payment Error</string>
 
     <!--Attendance-->
+    <string name="start_txt">Your Shift Started Time is</string>
 
 
 </resources>

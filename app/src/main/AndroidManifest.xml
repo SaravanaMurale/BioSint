@@ -18,9 +18,9 @@
         <activity android:name=".manageractivity.ViewMyEmpExpenseReportActivity"></activity>
         <activity android:name=".commonactivity.PasswordActivity" />
         <activity android:name=".commonactivity.SignupActivity" /> <!-- <activity android:name=".activity.SplashScreen" /> -->
-        <activity android:name=".employeeactivity.DrawerActivityEmployee" />
+        <!--<activity android:name=".employeeactivity.DrawerActivityEmployee" />-->
         <activity android:name=".commonactivity.LoginActivity" /> <!-- <activity android:name=".manageractivity.DrawerActivityManager" /> -->
-        <activity android:name=".manageractivity.DrawerActivityManager">
+        <activity android:name=".employeeactivity.DrawerActivityEmployee">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

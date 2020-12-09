@@ -17,7 +17,6 @@ import com.skyfishjy.library.RippleBackground;
 public class EmpAttendanceFragment extends Fragment {
 
     Button btnLogin;
-    TextView loginText;
     RippleBackground rippleBackground;
 
     @Nullable
@@ -25,25 +24,26 @@ public class EmpAttendanceFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_attendance_fragment, container, false);
 
-        btnLogin=(Button)view.findViewById(R.id.btnLogin);
-        loginText=(TextView)view.findViewById(R.id.loginTxt);
-        rippleBackground=(RippleBackground)view.findViewById(R.id.rippleEffect);
+        btnLogin = (Button) view.findViewById(R.id.btnLogin);
+        rippleBackground = (RippleBackground) view.findViewById(R.id.rippleEffect);
 
-        loginText.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(loginText.getText().equals("Login")){
-                    loginText.setText("Logout");
+                String btnText=btnLogin.getText().toString();
+                System.out.println("BTNTEXT"+btnText);
+
+                if (btnLogin.getText().toString().equals("Login")) {
+                    btnLogin.setText("Logout");
                     rippleBackground.startRippleAnimation();
-                }else if(loginText.getText().equals("Logout")){
-                    loginText.setText("Login");
+                } else if (btnLogin.getText().toString().equals("Logout")) {
+                    btnLogin.setText("Login");
                     rippleBackground.stopRippleAnimation();
                 }
-
-
             }
         });
+
 
         return view;
     }

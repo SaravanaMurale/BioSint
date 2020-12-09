@@ -4,44 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".employeeactivity.Attendance_Activity">
 
-    <com.skyfishjy.library.RippleBackground xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <TextView
+        android:id="@+id/attendaceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/twenty_dp"
+        android:text="Login to start your day" />
+
+    <com.skyfishjy.library.RippleBackground
         android:id="@+id/rippleEffect"
-        android:layout_width="380dp"
-        android:layout_height="380dp"
-        android:layout_centerInParent="true"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_below="@id/attendaceText"
+        android:layout_margin="@dimen/twenty_dp"
         app:rb_color="@color/red"
-        app:rb_duration="3000"
-        app:rb_radius="32dp"
-        app:rb_rippleAmount="4"
+        app:rb_radius="40dp"
+        app:rb_rippleAmount="6"
         app:rb_scale="6">
 
-        <TextView
-            android:id="@+id/loginTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/login"
-            android:textColor="@color/black"
-            android:textSize="@dimen/forty_sp"
-            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnLogin"
-            android:layout_width="350dp"
-            android:layout_height="350dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:layout_centerInParent="true"
             android:background="@drawable/round_shapre"
-
-            />
-
-
-
+            android:text="@string/login" />
     </com.skyfishjy.library.RippleBackground>
+
+    <TextView
+        android:id="@+id/startText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_txt"
+        android:layout_below="@id/rippleEffect"
+        android:layout_marginTop="@dimen/ten_dp"
+        android:layout_centerHorizontal="true"
+        />
+
+
+    <TextView
+        android:id="@+id/shiftStartDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20-11-2020"
+        android:layout_below="@id/startText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/ten_dp"
+        />
+    <TextView
+        android:id="@+id/shiftStartTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="11:30"
+        android:layout_below="@id/shiftStartDate"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/ten_dp"
+        />
+
+    <TextView
+        android:id="@+id/shiftStartAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/client_address"
+        android:layout_below="@id/shiftStartTime"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/ten_dp"
+        />
+
 
 
 </RelativeLayout>
