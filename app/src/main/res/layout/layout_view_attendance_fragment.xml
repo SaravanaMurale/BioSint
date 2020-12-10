@@ -24,6 +24,8 @@
         android:layout_below="@+id/selectViewAttendanceFromDate"
         android:textColor="@color/white" />
 
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/viewAttendanceRecyclerview"
         android:layout_width="match_parent"

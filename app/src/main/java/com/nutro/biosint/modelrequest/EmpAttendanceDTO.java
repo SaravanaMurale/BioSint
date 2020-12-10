@@ -6,12 +6,14 @@ public class EmpAttendanceDTO extends EmployeeBaseDTO {
 
     private String empLoginDate;
     private String empAttendanceTime;
+    private int empAttendaceStatus;
 
 
-    public EmpAttendanceDTO(String managerUserId, String empUserId, String empLoginDate, String empAttendanceTime) {
+    public EmpAttendanceDTO(String managerUserId, String empUserId, String empLoginDate, String empAttendanceTime,int empAttendaceStatus) {
         super(managerUserId, empUserId);
         this.empLoginDate = empLoginDate;
         this.empAttendanceTime = empAttendanceTime;
+        this.empAttendaceStatus=empAttendaceStatus;
     }
 
     public String getEmpLoginDate() {
@@ -28,5 +30,13 @@ public class EmpAttendanceDTO extends EmployeeBaseDTO {
 
     public void setEmpAttendanceTime(String empAttendanceTime) {
         this.empAttendanceTime = empAttendanceTime;
+    }
+
+    public int getEmpAttendaceStatus() {
+        return empAttendaceStatus;
+    }
+
+    public void setEmpAttendaceStatus(int empAttendaceStatus) {
+        this.empAttendaceStatus = empAttendaceStatus;
     }
 }

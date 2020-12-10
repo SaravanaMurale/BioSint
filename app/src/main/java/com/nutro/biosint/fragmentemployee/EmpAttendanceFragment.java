@@ -78,6 +78,7 @@ public class EmpAttendanceFragment extends Fragment {
                     btnLogin.setText(AppConstants.LOGOUT);
                     rippleBackground.startRippleAnimation();
 
+
                     addLoginTimeInFireStore();
 
 
@@ -144,7 +145,7 @@ public class EmpAttendanceFragment extends Fragment {
 
         addEmpAttendanceTimeDocument = addEmpAttendanceTimeCollection.document();
 
-        EmpAttendanceDTO empAttendanceDTO = new EmpAttendanceDTO(PreferenceUtil.getValueString(getContext(), PreferenceUtil.MY_MANAGER_USER_ID), PreferenceUtil.getValueString(getContext(), PreferenceUtil.MY_USER_ID), MathUtil.date(), MathUtil.time());
+        EmpAttendanceDTO empAttendanceDTO = new EmpAttendanceDTO(PreferenceUtil.getValueString(getContext(), PreferenceUtil.MY_MANAGER_USER_ID), PreferenceUtil.getValueString(getContext(), PreferenceUtil.MY_USER_ID), MathUtil.date(), MathUtil.time(),AppConstants.LOGGED_IN);
         addEmpAttendanceTimeDocument.set(empAttendanceDTO).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -184,7 +185,7 @@ public class EmpAttendanceFragment extends Fragment {
     private void addLogoutTime(final EmpLogoutClickListener empLogoutClickListener) {
 
         addEmpAttendanceTimeDocument = addEmpAttendanceTimeCollection.document();
-        EmpAttendanceDTO empAttendanceDTO = new EmpAttendanceDTO(PreferenceUtil.getValueString(getContext(), PreferenceUtil.MY_MANAGER_USER_ID), PreferenceUtil.getValueString(getContext(), PreferenceUtil.MY_USER_ID), MathUtil.date(), MathUtil.time());
+        EmpAttendanceDTO empAttendanceDTO = new EmpAttendanceDTO(PreferenceUtil.getValueString(getContext(), PreferenceUtil.MY_MANAGER_USER_ID), PreferenceUtil.getValueString(getContext(), PreferenceUtil.MY_USER_ID), MathUtil.date(), MathUtil.time(),AppConstants.LOGGED_OUT);
         addEmpAttendanceTimeDocument.set(empAttendanceDTO).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
