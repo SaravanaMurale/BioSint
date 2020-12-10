@@ -4,9 +4,32 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
+    <TextView
+        android:id="@+id/selectViewAttendanceFromDate"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty_dp"
+        android:layout_margin="@dimen/ten_dp"
+        android:background="@drawable/rounded_border"
+        android:gravity="center"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/selectViewAttendanceToDate"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty_dp"
+        android:layout_margin="@dimen/ten_dp"
+        android:background="@drawable/rounded_border"
+        android:gravity="center"
+        android:layout_below="@+id/selectViewAttendanceFromDate"
+        android:textColor="@color/white" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/viewAttendanceRecyclerview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/ten_dp"
+        android:layout_below="@+id/selectViewAttendanceToDate"
+        />
 
 </RelativeLayout>
