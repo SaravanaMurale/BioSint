@@ -22,6 +22,7 @@ import com.nutro.biosint.fragmentemployee.EmpAttendanceFragment;
 import com.nutro.biosint.fragmentemployee.EmployeeHomeFragment;
 import com.nutro.biosint.fragmentemployee.EmployeeLocationFragment;
 import com.nutro.biosint.fragmentemployee.EmployeeProfileFragment;
+import com.nutro.biosint.fragmentemployee.ViewAttendanceFragment;
 import com.nutro.biosint.fragmentemployee.ViewCheckInFragment;
 import com.nutro.biosint.fragmentemployee.ViewExpenseFragment;
 import com.nutro.biosint.fragmentmanager.HomeFragmentManager;
@@ -123,6 +124,9 @@ public class DrawerActivityEmployee extends AppCompatActivity
         } else if (id == R.id.empAttendance) {
 
             fragment = new EmpAttendanceFragment();
+
+        } else if (id == R.id.empViewAttendance) {
+            fragment = new ViewAttendanceFragment();
 
         } else if (id == R.id.empLocation) {
 

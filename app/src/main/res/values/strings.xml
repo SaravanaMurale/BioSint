@@ -45,6 +45,7 @@
     <string name="emp_add_expense">Add Expense</string>
     <string name="emp_view_expense">View Expense</string>
     <string name="emp_attendance">Attendance</string>
+    <string name="emp_view_attendance">View Attendance</string>
     <string name="emp_location">Location</string>
     <string name="emp_profile">Profile</string>
     <string name="share">Share</string>

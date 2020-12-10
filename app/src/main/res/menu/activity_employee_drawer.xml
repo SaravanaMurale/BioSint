@@ -23,6 +23,11 @@
         <item
             android:id="@+id/empAttendance"
             android:title="@string/emp_attendance" />
+
+        <item
+            android:id="@+id/empViewAttendance"
+            android:title="@string/emp_view_attendance" />
+
         <item
             android:id="@+id/empLocation"
             android:title="@string/emp_location" />
