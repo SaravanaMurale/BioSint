@@ -52,7 +52,7 @@ MAP KEY AIzaSyDwP202Xl7sNJMLa4YvOgD8OpzVUpelkBk*/
         sendEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Intent email = new Intent(Intent.ACTION_SEND);
+                Intent email = new Intent(Intent.ACTION_SEND);
                 email.putExtra(Intent.EXTRA_EMAIL, new String[]{ "saravanamurali24@gmail.com"});
                 email.putExtra(Intent.EXTRA_SUBJECT, "BioSint Username and Password");
                 email.putExtra(Intent.EXTRA_TEXT, "123456789");
@@ -60,9 +60,9 @@ MAP KEY AIzaSyDwP202Xl7sNJMLa4YvOgD8OpzVUpelkBk*/
                 //need this to prompts email client only
                 email.setType("message/rfc822");
 
-                startActivity(Intent.createChooser(email, "Choose an Email client :"));*/
+                startActivity(Intent.createChooser(email, "Choose Mail To Send :"));
 
-                if (!PermissionUtils.hasPermission(MainActivity.this, Manifest.permission.SEND_SMS)) {
+                /*if (!PermissionUtils.hasPermission(MainActivity.this, Manifest.permission.SEND_SMS)) {
                     //If it is not true(false) it will come inside
                     PermissionUtils.requestPermissions(MainActivity.this, new String[]{Manifest.permission.SEND_SMS}, LOCATION_PERMISSION_REQUEST_CODE);
 
@@ -73,7 +73,7 @@ MAP KEY AIzaSyDwP202Xl7sNJMLa4YvOgD8OpzVUpelkBk*/
                     smsManager.sendTextMessage("9123521374", null, "12345678", null, null);
                     Toast.makeText(getApplicationContext(), "Message Sent",
                             Toast.LENGTH_LONG).show();
-                }
+                }*/
 
             }
         });

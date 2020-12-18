@@ -1,6 +1,7 @@
 package com.nutro.biosint.fragmentmanager;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -124,6 +125,8 @@ public class AddEmployeeFragment extends Fragment {
 
                                     addEmployeeDocument.set(addEmployeeDTO);
 
+                                    sendEmployeeCredentialToMail(email, password);
+
 
                                 } else {
                                     Toast.makeText(getContext(), "User is not Added", Toast.LENGTH_LONG).show();
@@ -145,6 +148,20 @@ public class AddEmployeeFragment extends Fragment {
         public void afterTextChanged(Editable s) {
 
         }
+    }
+
+    private void sendEmployeeCredentialToMail(String userName, String password) {
+
+        Intent email = new Intent(Intent.ACTION_SEND);
+        email.putExtra(Intent.EXTRA_EMAIL, new String[]{userName});
+        email.putExtra(Intent.EXTRA_SUBJECT, "BioSint Username and Password");
+        email.putExtra(Intent.EXTRA_TEXT, "UserName: " + userName+"\n "+"Password: " + password);
+
+        //need this to prompts email client only
+        email.setType("message/rfc822");
+
+        startActivity(Intent.createChooser(email, "Choose Mail To Send :"));
+
     }
 
 
