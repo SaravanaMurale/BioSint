@@ -2,6 +2,7 @@ package com.nutro.biosint.modelresponse;
 
 public class UserResponse {
 
+private String name;
     private String deviceId;
     private String mobileNumber;
     private boolean userActiveStatus;
@@ -45,6 +46,14 @@ public class UserResponse {
 
     public void setUserActiveStatus(boolean userActiveStatus) {
         this.userActiveStatus = userActiveStatus;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getUserId() {
